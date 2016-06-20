@@ -5,4 +5,17 @@ class TeambuildingCreateController < ApplicationController
     
     redirect_to "/teamlist"
   end
+  
+  def create
+    new_team = Team.new(
+                  name: params[:team_name],
+                  abstract: params[:team_abstract],
+                  content: params[:team_content],
+                  number: params[:team_number],
+                  picture: params[:team_picture]
+                )
+    new_team.save
+    
+    redirect_to "/teamlist"
+  end
 end

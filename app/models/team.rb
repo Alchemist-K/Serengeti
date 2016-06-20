@@ -1,4 +1,4 @@
 class Team < ActiveRecord::Base
   has_many :teambuilds
-  has_many :users, through: :teambuilds
+  has_many :members, through: :teambuilds
 end

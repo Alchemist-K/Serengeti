@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   get 'notice/index'
   get 'home/index'
   get '/teamlist' => 'teambuilding_list#index'
+  get '/teambuild' => 'teambuilding_create#index'
   get 'teambuilding_choose/choose'
   
   post 'teambuilding_choose/write'
-  post 'teambuilding_create/apply' => 'teambuilding_create#apply'
+  post 'teambuilding_create/apply'
+  post 'teambuilding_create/create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

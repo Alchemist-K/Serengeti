@@ -7,11 +7,11 @@
       		<dl>
       			<dt><%= t.abstract %></dt>
       			<dd><%= t.content %></dd>
-      			<% t.users.each do |u| %>
+      			<% t.members.each do |u| %>
       			  <dd><%= u.email %></dd>
       			<% end %>
       			<br>
-      			<dd>팀원 : <%= t.users.count %>명 / <%= t.number %>명</dd>
+      			<dd>팀원 : <%= t.members.count %>명 / <%= t.number %>명</dd>
       		</dl>
       	</a>
       <div id="wrapper-part-info">
