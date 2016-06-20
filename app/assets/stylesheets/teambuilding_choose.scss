@@ -218,7 +218,6 @@ body,html{
 .post-reply{margin-top:50px;}
 
 .name-reply-post,.name-reply-post-2{
-	float:left;
 	width:calc(100% - 95px);
 	font-family: Helvetica, sans-serif;
 	-webkit-font-smoothing: antialiased;
@@ -242,6 +241,25 @@ body,html{
 	-webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
+	font-weight:400;
+	color:#999;
+	margin-top:-10px;
+	border-bottom:solid #E9E9E9 1px;
+	padding:20px;
+	margin-top:-20px;
+}
+
+.time-reply-post,.time-reply-post-2{
+	float:left;
+	text-align:left;
+	height:auto;
+	line-height:140%;
+	margin-left:95px;
+	width:calc(90% - 95px);
+	font-family: Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 15px;
 	font-weight:400;
 	color:#999;
 	margin-top:-10px;

@@ -63,10 +63,9 @@
                 </div>
                 
                 <hr>
-                  <%= form_tag("/teambuilding_choose/reply", method: "post") do %>
+                  <%= form_tag("/teambuilding_choose/replypost", method: "post") do %>
                   <label for="exampleInputEmail1">이 아이디어에 대해 자유롭게 의견을 남겨주세요!!</label>
-                  <input type="hidden" value="<%= current_user.id %>" name="userid">
-                  <input type="text" class="form-control" name="team_reply" placeholder="피드백, 질문하고싶은 점, 참여의사, 기타 다양한 의견들을 남겨주세요^^">
+                  <input type="text" class="form-control" name="reply_post" placeholder="피드백, 질문하고싶은 점, 참여의사, 기타 다양한 의견들을 남겨주세요^^">
                   <%= submit_tag("프로젝트 매니저에게 전송하기") %>
                 <% end %>
                 
@@ -77,27 +76,35 @@
                     	<div class="text-reply-post">Awesome mockup, i like it very much ! It will help me for my website i was looking for since few days. Thank you a lot.</div>
                 	</div>
                     
-                  <div class="post-reply-2">
-                    	<div class="image-reply-post-2"></div>
-                    	<div class="name-reply-post-2">Nathan Shaw</div>
-                    	<div class="text-reply-post-2">Well done ! I like the way you did it. Awesome ! </div>
+                  <div class="post-reply">
+                    	<div class="image-reply-post"></div>
+                    	<div class="name-reply-post">Nathan Shaw</div>
+                    	<div class="text-reply-post">Well done ! I like the way you did it. Awesome ! </div>
                 	</div>
-                    
                 
-                <div class="post-reply">
-                  <% @team_post_reply.each do |p| %>
-                        <div class="row posting">
-                          <div class="col s12">
-                            <p><% p.user.email %></p>
-                            <p><%= p.created_at %></p>
-                            <div class="content">
-                              <p><%= p.team_post_reply %></p>
-                            </div>
-                          </div>
-                          <div class="col s12">
-                      <% end %>
-                   
-               </div>
+                    <% @team_post.each do |p| %>
+                  <div class="post-reply">
+                        <a class="name-reply-post" href="/mypage/#"><%= p.user.email %></a>
+                        <div class="time-reply-post"><%= p.created_at %></div>
+                        <div class="text-reply-post"><%= p.team_post %> <a href="/teambuilding_choose/destroy/<%= p.id %>">[삭제하기]</a> 
+                
+                            <a href="#">[답글달기]</a>
+                            <input type="hidden" value="<% p.id %>" name="reply_post_id">
+                            <%= form_tag("/teambuilding_choose/replyreply", method: "post") do %>
+                              <input type="text" class="form-control" name="reply_reply" placeholder="답글달기!">
+                              <%= submit_tag("댓글을 단 사람에게 전송하기") %>
+                            <% end %>
+                         </div>
+                         
+                            <% p.team_post_replies.each do |s| %>
+                                <div class="text-reply-post"> <%= s.user_id %> </div>
+                                <div class="text-reply-post"> <%= s.team_post_reply %> </div>
+                                <div class="time-reply-post"> <%= s.created_at %> </div>
+                            <% end %>
+                        <hr>
+                        
+                  </div>
+                    <% end %>
 			</div>	
 		</div>
    </div>      
