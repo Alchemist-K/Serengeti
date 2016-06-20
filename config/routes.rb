@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/teamlist' => 'teambuilding_list#index'
   get '/teambuild' => 'teambuilding_create#index'
   get 'teambuilding_choose/choose'
+  get 'teambuilding_create/delete/:id' => 'teambuilding_create#delete'
+  get 'teambuilding_create/update/:id' => 'teambuilding_create#update'
   
   post 'teambuilding_choose/write'
   post 'teambuilding_choose/reply'

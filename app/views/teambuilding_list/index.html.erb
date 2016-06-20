@@ -7,19 +7,25 @@
       		<dl>
       			<dt><%= t.abstract %></dt>
       			<dd><%= t.content %></dd>
+      			<br>
+      			<dd>팀장 : <%= User.find(t.leader).email %></dd>
       			<% t.members.each do |u| %>
       			  <dd><%= u.email %></dd>
       			<% end %>
-      			<br>
       			<dd>팀원 : <%= t.members.count %>명 / <%= t.number %>명</dd>
       		</dl>
       	</a>
       <div id="wrapper-part-info">
         <div class="part-info-image"><img src="<%= image_path "teamlist/icon-psd.svg" %>" alt="" width="28" height="28"/></div>
         <div id="part-info">Wordpress theme</div>
-        <%= form_tag("/teambuilding_create/apply", method: "POST") do %>
-          <input type="hidden" name="team_id" value="<%= t.id %>"/>
-          <button type="submit">가입</button>
+        <% if t.leader == current_user.id %><!-- 팀장일 경우 -->
+          <button onclick="location.href='/teambuilding_create/delete/<%= t.id %>'">삭제</button>
+          <button onclick="location.href='/teambuilding_create/update/<%= t.id %>'">수정</button>
+        <% else %><!-- 팀원으로 지원하는 경우 -->
+          <%= form_tag("/teambuilding_create/apply", method: "POST") do %>
+            <input type="hidden" name="team_id" value="<%= t.id %>"/>
+            <button type="submit">가입</button>
+          <% end %>
         <% end %>
       </div>
       </figure>

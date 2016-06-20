@@ -42,8 +42,10 @@ ActiveRecord::Schema.define(version: 20160620105509) do
     t.text     "content"
     t.integer  "number"
     t.string   "picture"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "leader"
+    t.boolean  "published",  default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|
