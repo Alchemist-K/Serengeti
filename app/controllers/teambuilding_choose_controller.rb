@@ -1,10 +1,10 @@
 class TeambuildingChooseController < ApplicationController
   def choose
     if user_signed_in?
-    @team_post_reply=TeamPostReply.all
-  else
-    redirect_to "/users/sign_in"
-  end
+      @team_post_reply=TeamPostReply.all
+    else
+      redirect_to "/users/sign_in"
+    end
   end
 
     def reply
