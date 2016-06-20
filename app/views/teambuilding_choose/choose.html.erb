@@ -1,0 +1,23 @@
+<div class="container">
+
+<%= form_tag("/teambuilding_choose/write", method: "post") do %>
+  <div class="form-group">
+    <label for="exampleInputEmail1">팀 명</label>
+    <input type="text" class="form-control" name="team_name" placeholder="팀 이름을 정해주세요!">
+  </div>
+     <div class="form-group">
+      <label for="comment">간단한 팀 소개</label>
+      <textarea class="form-control" rows="5" name="team_abstact" placeholder="리스트 페이지에 올라갈 간단한 팀 소개를 적어주세요!"></textarea>
+    </div>
+  <button type="submit" class="btn btn-default">제출하기</button>
+<% end %>
+
+
+<% @team_post.each do |p| %>
+<%= p.team_post_title %>
+<%= p.team_post_content %>
+
+<% end %>
+
+
+</div>
