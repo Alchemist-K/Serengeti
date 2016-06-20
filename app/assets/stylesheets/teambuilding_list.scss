@@ -1,3 +1,153 @@
 // Place all the styles related to the teambuilding_list controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body,html{
+	padding:0;margin:0;
+}
+
+#wrapper-container{
+	float:left;
+	width:100%;
+	height:auto;
+}
+
+.container,.container-footer {
+    position:relative;
+    width: 1200px;
+    margin-left:-600px;
+}
+
+.object {
+    transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out; /** Chrome & Safari **/
+    -moz-transition: all 0.25s ease-in-out; /** Firefox **/
+    -o-transition: all 0.25s ease-in-out; /** Opera **/
+}
+
+#main-container-image {
+    float:left;
+    width:100%;
+    height:auto;
+	background-color:#F4F4F4;
+	margin-top:25px;
+	opacity:0;
+}
+
+.work figure {
+    float:left;
+	width:calc(100% / 4 - 30px);
+    height:auto;
+    line-height:auto;
+    position: relative;
+    padding: 0 !important;
+    margin: 15px;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+	-webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.2);
+	box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.2);
+	background-color:#FFF;
+}
+
+.work figure.white dl{
+    background: #FFF;
+}
+
+
+.work figure a img {
+    height: 90%;
+    width: 90%;
+	margin-left:5%;
+	margin-top:5%;
+}
+
+.work figure dl {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    padding: 10px;
+    margin: 0;
+    line-height: 2.5; 
+    color: white;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+}
+
+.work figure:hover dl {
+    opacity: 1;
+}
+
+.work figure dl dt {
+	font-family: Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 13px;
+    margin-bottom:0;
+	font-weight:600;
+	width:80%;
+	margin-left:10%;
+	color:#666;
+	text-align:left;
+	height:20px;
+	line-height:100%;
+	margin-top:40px;
+
+}
+
+.work figure dl dd {
+    margin-left: 0;
+	font-family: Helvetica, sans-serif;
+    font-size: 12px;
+	font-weight:400;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	line-height:150%;
+	color:#999;
+	width:80%;
+	margin-left:10%;
+	text-align:left;
+	
+}
+
+.part-info-image{
+	float:left;
+	margin-left:15px;
+	margin-top:8px;
+}
+
+.part-info-image img{
+    width:100%;
+    height:100%;
+}
+
+#part-info{
+	float:left;
+	width:calc(100% - 53px);
+	text-align:left;
+	line-height:44px;
+	font-family: Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 15px;
+	font-weight:400;
+	color:#666;
+	margin-left:10px;
+	height:44px;
+}
+
+#wrapper-part-info{
+	position:relative;
+	width:100%;
+	height:44px;
+	background-color:#FFFFFF;
+}
