@@ -4,4 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :team_post_replies
+  
+  has_many :teambuilds
+  has_many :teams, through: :teambuilds
 end

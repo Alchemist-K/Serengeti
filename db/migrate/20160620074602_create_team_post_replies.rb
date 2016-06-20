@@ -6,6 +6,7 @@ class CreateTeamPostReplies < ActiveRecord::Migration
       t.integer :team_post_id
       t.integer :user_id
 
+
       t.timestamps null: false
     end
   end
