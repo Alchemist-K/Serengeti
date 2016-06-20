@@ -1,8 +1,200 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<head>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
 
-<% unless user_signed_in? %>
-  <%= link_to '로그인하기', new_user_session_path %>
-<% else %>
-  <%= link_to '로그아웃', destroy_user_session_path, method: 'DELETE' %>
-<% end %>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+
+    <!-- Template styles -->
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!--Navbar-->
+    <nav class="navbar navbar-dark navbar-fixed-top scrolling-navbar">
+
+    <!-- Collapse button-->
+    <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    <div class="container">
+        <!--Collapse content-->
+            <div class="collapse navbar-toggleable-xs" id="collapseEx">
+                <!--Navbar Brand-->
+                <a class="navbar-brand" href="/home/index" target="_blank">SERENGETI</a>
+                <!--Links-->
+                <ul class="nav navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/home/index">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Board(Notice?)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/teambuilding_list/index">Team Building</a>
+                    </li>
+                    
+                    <% unless user_signed_in? %>
+                    <% else %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">My Page</a>
+                    </li>
+                    <% end %>
+                </ul>
+                
+                <!--Search form-->
+                <!--<form class="form-inline">-->
+                <!--    <input class="form-control" type="text" placeholder="Team Search">-->
+                <!--</form>-->
+                
+            </div>
+            <!--/.Collapse content-->
+        </div>
+        
+                  <% unless user_signed_in? %>
+                  <%= link_to '로그인하기', new_user_session_path %>
+                    <a class="nav-link" style="float:right; font-weight:bold; color:white;" href="/users/sign_in">로그인하기</a>
+                  <% else %>
+                  <%= link_to '로그아웃', destroy_user_session_path, method: 'DELETE' %>
+                    <p style="margin-right:0px; font-weight:bold; color:white;"> <%= current_user.email %></p>
+                    <a style="margin-right:0px; font-weight:bold; color:white;" href="/users/sign_out">로그아웃</a>
+                  <% end %>
+                 
+       <!--/.Navbar-->       
+    </nav>
+
+    <!--Carousel Wrapper-->
+    <div id="carousel-example-1" class="carousel slide carousel-fade" data-ride="carousel" data-interval="false">
+        <!--Indicators-->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-1" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-1" data-slide-to="1"></li>
+            <li data-target="#carousel-example-1" data-slide-to="2"></li>
+        </ol>
+        <!--/.Indicators-->
+
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+
+            <!--First slide-->
+            <div class="carousel-item active">
+                <!--Mask-->
+                <div class="view hm-black-light">
+                    <div class="full-bg-img flex-center">
+                        <ul class="animated fadeInUp col-md-12">
+                            <li>
+                                <h1 class="h1-responsive flex-item">Serengeti</h1>
+                                <li>
+                                    <p class="flex-item">세렝게티 초원에서 마음껏 뛰어놀 여러분을 위하여</p>
+                                </li>
+                                <li>
+                                  <% unless user_signed_in? %>
+                                    <a target="_blank" href="/sign_up" class="btn btn-primary btn-lg flex-item">함께하기</a>
+                                  <% else %>
+                                    <a target="_blank" href="/teambuilding_list/index" class="btn btn-primary btn-lg flex-item">함께하기</a>
+                                  <% end %>
+                                </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--/.Mask-->
+            </div>
+            <!--/.First slide-->
+
+            <!--Second slide -->
+            <div class="carousel-item">
+                <!--Mask-->
+                <div class="view hm-black-light">
+                    <div class="full-bg-img flex-center">
+                        <ul class="animated fadeInUp col-md-12">
+                            <li>
+                                <h1 class="h1-responsive">Team Lists</h1>
+                            </li>
+                            <li>
+                                <p>오늘 세렝게티에 함께하는 팀</p>
+                            </li>
+                            <li>
+                                <a target="_blank" href="/teamlist" class="btn btn-primary btn-lg">팀에 참여하기</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--/.Mask-->
+            </div>
+            <!--/.Second slide -->
+
+
+            <!--Third slide-->
+            <div class="carousel-item">
+                <!--Mask-->
+                <div class="view hm-black-light">
+                    <div class="full-bg-img flex-center">
+                        <ul class="animated fadeInUp col-md-12">
+                            <li>
+                                <h1 class="h1-responsive">세상을 바꿀 사자들에게</h1></li>
+                            <li>
+                            <p>Let's make the world work better</p>
+                            </li>
+                            <li>
+                                <a target="_blank" href="http://mdbootstrap.com/forums/forum/support/" class="btn btn-default btn-lg">How to use Serengeti?</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--/.Mask-->
+            </div>
+            <!--/.Third slide-->
+            
+        </div>
+        <!--/.Slides-->
+
+        <!--Controls-->
+        <a class="left carousel-control" href="#carousel-example-1" role="button" data-slide="prev">
+            <span class="icon-prev" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-1" role="button" data-slide="next">
+            <span class="icon-next" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        <!--/.Controls-->
+    </div>
+    <!--/.Carousel Wrapper-->
+    <!--/.Main layout-->
+
+        <!--Copyright-->
+        <div class="footer-copyright">
+            <div class="container-fluid">
+                © 2015 Copyright: <a href="http://www.serengeti.com"> serengeti.com </a> <br>
+                Made By <strong>갓정건, 갓동욱, 갓현민, 갓현영, 갓동민, 갓경도 </strong> from SNU Likelion 4th <br>
+                picture by National Geography
+
+            </div>
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
+
+
+    <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/tether.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
+</body>

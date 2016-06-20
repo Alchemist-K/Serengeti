@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post 'teambuilding_choose/replypost'
   post 'teambuilding_choose/replyreply'
   get '/teambuilding_choose/destroy/:post_id' => 'teambuilding_choose#destroy'
+  get 'teambuilding_list/index'
   
   post 'teambuilding_create/apply'
   post 'teambuilding_create/create'
