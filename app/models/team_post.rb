@@ -1,3 +1,3 @@
 class TeamPost < ActiveRecord::Base
-    has_many :replies
+    has_many :team_post_replies
 end

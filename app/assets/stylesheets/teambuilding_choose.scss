@@ -1,3 +1,383 @@
 // Place all the styles related to the teambuilding_choose controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+@font-face {
+    font-family: 'socialicoregular';
+    src: url('font/socialico-webfont.eot');
+    src: url('font/socialico-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/socialico-webfont.woff2') format('woff2'),
+         url('font/socialico-webfont.woff') format('woff'),
+         url('font/socialico-webfont.ttf') format('truetype'),
+         url('font/socialico-webfont.svg#socialicoregular') format('svg');
+}
+
+@font-face {
+    font-family: 'socialico_plusregular';
+    src: url('font/socialico_plus-webfont.eot');
+    src: url('font/socialico_plus-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/socialico_plus-webfont.woff2') format('woff2'),
+         url('font/socialico_plus-webfont.woff') format('woff'),
+         url('font/socialico_plus-webfont.ttf') format('truetype'),
+         url('font/socialico_plus-webfont.svg#socialico_plusregular') format('svg');
+}
+
+
+.disable-hover {
+	pointer-events: none;
+}
+
+img{vertical-align:bottom;}
+
+a {
+	text-decoration:none;
+}
+
+ul { 
+	list-style-type: none; 
+	margin:0;
+	padding:0;
+}
+
+.anim-1,.anim-2{display:none;}
+
+/*-------------------------*/
+/* MAIN TRANSITION FOR EFFECT HOVER*/
+/*-------------------------*/
+
+.object {
+    transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out; /** Chrome & Safari **/
+    -moz-transition: all 0.25s ease-in-out; /** Firefox **/
+    -o-transition: all 0.25s ease-in-out; /** Opera **/
+}
+
+/*----------------------------*/
+/* BODY SETTINGS */
+/*----------------------------*/
+
+body,html{
+	padding:0;margin:0;
+	background-color:#F4F4F4;
+}
+
+// /*----------------------------*/
+// /* MAIN DIV */
+// /*----------------------------*/
+
+#wrapper-container{
+	float:left;
+	width:100%;
+	height:auto;
+}
+
+// /*----------------------------*/
+// /* MAIN DIV WITH IMAGE */
+// /*----------------------------*/
+
+
+
+#wrapper-part-info{
+	position:relative;
+	width:100%;
+	height:auto;
+	background-color:#FFFFFF;
+}
+
+.part-info-image{
+	float:left;
+	margin-bottom:17.5px;
+}
+#wrapper-part-info .part-info-image img{height:20%;width:20%;}
+
+.wrapper-text-description{
+	position:absolute;
+	width:20%;
+	right:7.5%;
+	height:auto;
+	margin-top:85px;	
+}
+
+.wrapper-view,.wrapper-file,.wrapper-weight,.wrapper-desc,.wrapper-download{
+	float:left;
+	width:100%;
+	border-bottom:solid #E0E0E0 1px;
+}
+.wrapper-file,.wrapper-weight,.wrapper-desc,.wrapper-download{
+	border-top:solid #FFF 1px;
+}
+
+.wrapper-view,.wrapper-file,.wrapper-weigh,.wrapper-download,.wrapper-morefrom{height:40px;}
+.wrapper-desc,.wrapper-morefrom{height:auto;}
+
+.icon-view,.icon-file,.icon-weight,.icon-desc,.icon-download{
+	float:left;
+	left:0;
+	margin-right:25px;
+}
+.icon-view{margin-top:10px;}
+.icon-file{margin-top:9px;margin-left:2px;}
+.icon-weight{margin-top:8px;margin-left:2px;}
+.icon-desc{margin-top:7px;}
+.icon-download{margin-top:6px;margin-left:3px;}
+
+.icon-view img,.icon-file img,.icon-weight img,.icon-desc img,.icon-download img{height:100%;width:100%;}
+
+.text-view,.text-file,.text-weight,.text-desc,.text-download{
+	float:left;
+	text-align:left;
+	font-family: Helvetica, sans-serif;
+    font-size: 15px;
+	font-weight:400;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	color:#A1A1A1;
+}
+.text-view,.text-file,.text-weight,.text-download{
+	height:40px;
+	line-height:40px;
+}
+.text-desc{
+	width:calc(100% - 49px);
+	line-height:130%;
+	height:auto;
+	margin-bottom:25px;
+	margin-top:10px;
+}
+
+.text-download a{
+	color:#A1A1A1;
+	transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out; 
+    -moz-transition: all 0.2s ease-in-out; 
+    -o-transition: all 0.2s ease-in-out;
+}
+
+.text-download a:hover{color:#666;}
+
+.text-morefrom{
+	float:left;
+	text-align:left;
+	font-family: Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+	font-weight:600;
+	color:#686868;
+	width:100%;
+	margin-left:0;
+	line-height:130%;
+	height:auto;
+	margin-bottom:0;
+	margin-top:20px;
+}
+
+.image-morefrom{
+	float:left;
+	width:100%;
+	margin-top:20px;
+	height:auto;
+	margin-bottom:35px;
+}
+
+.image-morefrom-1,.image-morefrom-2,.image-morefrom-3,.image-morefrom-4{
+	float:left;
+	width:47.5%;
+	height:auto;
+	-webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.2);
+	box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.2);
+	background-color:#FFF;
+	transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	cursor:pointer;
+}
+
+.image-morefrom-1,.image-morefrom-3{margin-right:5%;}
+.image-morefrom-1,.image-morefrom-2{margin-bottom:12.5px;}
+
+.image-morefrom-1 img,.image-morefrom-2 img,.image-morefrom-3 img,.image-morefrom-4 img{
+	width:85%;
+	height:auto;
+	margin-left:7.5%;
+	padding-bottom:7.5%;
+	padding-top:7.5%;
+}
+.image-morefrom-1:hover,.image-morefrom-2:hover,.image-morefrom-3:hover,.image-morefrom-4:hover{opacity:0.5;}
+
+.post-reply,.post-reply-2{
+	float:left;
+	width:60%;
+	margin-left:7.5%;
+    height:auto;
+}
+
+.post-reply{margin-top:50px;}
+
+.name-reply-post,.name-reply-post-2{
+	float:left;
+	width:calc(100% - 95px);
+	font-family: Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+	font-weight:600;
+	color:#686868;
+	line-height:65px;
+	height:65px;
+	padding-left:30px;
+}
+
+.text-reply-post,.text-reply-post-2{
+	float:left;
+	text-align:left;
+	height:auto;
+	line-height:140%;
+	margin-left:95px;
+	width:calc(90% - 95px);
+	font-family: Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+	font-weight:400;
+	color:#999;
+	margin-top:-10px;
+	border-bottom:solid #E9E9E9 1px;
+	padding:20px;
+	margin-top:-20px;
+}
+
+
+.title-item{
+	float:left;
+	width:92.5%;
+	margin-left:7.5%;
+	height:68px;
+	margin-bottom:10px;
+}
+
+.title-icon{
+	float:left;
+	width:68px;
+	height:68px;
+	background: url(img/title-icon-ps.svg) no-repeat;
+	margin-right:20px;
+}
+
+.title-text{
+	font-family: Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 22px;
+	font-weight:600;
+	color:#686868;
+	line-height:125%;
+	height:auto;
+	width:calc(100% - 88px);
+	margin-top:8px;
+}
+
+.title-text-2{
+	font-family: Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 15px;
+	font-weight:400;
+	color:#A1A1A1;
+	line-height:125%;
+	height:auto;
+	width:calc(100% - 88px);
+	margin-top:8px;
+}
+
+// /*----------------------------*/
+// /* THX PART AND OLDNEW   */
+// /*----------------------------*/
+
+#wrapper-thank{
+	float:left;
+	width:100%;
+	height:190px;
+	background-color:#F2F2F2;
+	margin-top:40px;
+}
+
+.work figure,.post-reply,.post-reply-2,.title-item,.post-send {
+	margin-left:15px;
+}
+.wrapper-text-description{
+	right:15px;
+	width:30%;
+}
+
+// }
+
+/* Smaller viewports — more tablets, old monitors */
+ 
+@media only screen and (max-width: 860px) {
+
+.part-info-image{
+	margin-bottom:11px;
+}
+
+}
+
+/* Even smaller viewports — more tablets, etc. */
+ 
+@media only screen and (max-width: 740px) {
+
+.wrapper-text-description{
+	width:calc(100% - 30px);
+	float:left;
+	position: relative;
+	right:0;
+	margin-left:15px;
+	margin-top:25px;
+}
+}
+
+/* Mobile phones (Landscape) and Tablets (Portrait) */
+ 
+@media only screen and (max-width: 610px) {
+.part-info-image{
+	float:left;
+	margin-bottom:17px;
+}
+#wrapper-part-info .part-info-image img{
+	height:92%;
+	width:92%;
+	margin-left:4%;
+}
+
+    
+}
+
+/* Mobile phones (Landscape) and Tablets (Portrait) */
+ 
+@media only screen and (max-width: 480px) {
+
+.title-item{
+	width:calc(100% - 30px);
+	margin-left:15px;
+}
+.title-icon{
+	margin-right:10px;
+}
+.title-text{
+    font-size: 22px;
+	width:100%;
+	margin-top:8px;
+}
+.part-info-image{
+	float:left;
+	margin-bottom:15px;
+}
+#wrapper-part-info .part-info-image img{
+	height:90%;
+	width:90%;
+	margin-left:5%;
+}
+}

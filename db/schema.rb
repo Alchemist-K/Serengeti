@@ -14,15 +14,19 @@
 ActiveRecord::Schema.define(version: 20160620074602) do
 
   create_table "team_post_replies", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "team_post_reply"
+    t.integer  "team_post_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "team_posts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "team_post_title"
+    t.text     "team_post_content"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
-ActiveRecord::Schema.define(version: 20160620073744) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

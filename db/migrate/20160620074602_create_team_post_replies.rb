@@ -3,7 +3,8 @@ class CreateTeamPostReplies < ActiveRecord::Migration
     create_table :team_post_replies do |t|
 
       t.text    :team_post_reply
-      t.integer :team_post.id
+      t.integer :team_post_id
+      t.integer :user_id
 
       t.timestamps null: false
     end

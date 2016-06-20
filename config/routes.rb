@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'teambuilding_choose/choose'
   post 'teambuilding_choose/write'
-
+  post 'teambuilding_choose/reply'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
