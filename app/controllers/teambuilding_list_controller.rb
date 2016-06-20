@@ -1,0 +1,2 @@
+class TeambuildingListController < ApplicationController
+end
