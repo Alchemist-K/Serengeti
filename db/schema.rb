@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160620074513) do
 
   create_table "teams", force: :cascade do |t|
@@ -23,9 +22,6 @@ ActiveRecord::Schema.define(version: 20160620074513) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-=======
-ActiveRecord::Schema.define(version: 20160620073744) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -45,5 +41,4 @@ ActiveRecord::Schema.define(version: 20160620073744) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
->>>>>>> b97cb31c97855f9f1b917b42464676683665de23
 end

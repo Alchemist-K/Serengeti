@@ -1,0 +1,15 @@
+<% @teams.each do |t| %>
+  <figure class="white">
+  	<a href="">
+  		<img src=<%= t.picture %> alt="" />
+  		<dl>
+  			<dt><%= t.abstract %></dt>
+  			<dd><%= t.content %></dd>	
+  		</dl>
+  	</a>
+  <div id="wrapper-part-info">
+    <div class="part-info-image"><img src="<%= asset_path "icon-psd.svg" %>" alt="" width="28" height="28"/></div>
+    <div id="part-info">Wordpress theme</div>
+  </div>
+  </figure>
+<% end %>
