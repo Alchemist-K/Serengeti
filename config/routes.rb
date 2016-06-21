@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'teambuilding_list/index'
   get 'teambuild' => 'teambuilding_create#index'
   get 'teambuilding_choose/choose'
+  get 'teambuilding_create/create'
   get 'teambuilding_create/delete/:id' => 'teambuilding_create#delete'
   get 'teambuilding_create/update/:id' => 'teambuilding_create#update'
   get 'teambuilding_choose/destroy/:post_id' => 'teambuilding_choose#destroy'

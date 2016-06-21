@@ -9,6 +9,10 @@ class TeambuildingCreateController < ApplicationController
   end
   
   def create
+    
+  end
+  
+  def create_process
     new_team = Team.new(
                   name: params[:team_name],
                   abstract: params[:team_abstract],

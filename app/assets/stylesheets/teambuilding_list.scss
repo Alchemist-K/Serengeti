@@ -4,6 +4,16 @@
 
 body,html{
 	padding:0;margin:0;
+	background-image: url("/img/serengeti_list.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn-team-create {
+	position: relative;
+	left: 50%;
+	height: 80px;
+	width: 250px;
 }
 
 #wrapper-container{

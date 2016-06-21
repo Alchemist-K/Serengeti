@@ -1,5 +1,6 @@
-<h1><%= current_user.email %></h1>
-<div class="container object">
+<div class="container object" style="margin-top: 120px;">
+  <button class="btn-team-create btn btn-success" style="margin-left:-125px;" onclick="location.href='/teambuilding_create/create'">팀 만들기</button>
+  
   <section class="work">
     <% @teams.each do |t| %>
       <figure class="white">
