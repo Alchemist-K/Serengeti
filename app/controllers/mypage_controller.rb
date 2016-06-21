@@ -1,5 +1,5 @@
 class MypageController < ApplicationController
-  def index
+    def index
         @myTeam = findMyTeam
     end
     
@@ -21,9 +21,9 @@ class MypageController < ApplicationController
         redirect_to :back
     end
   
-  def member
+    def member
 
       @appliedteam = User.find(current_user.id).teams.all
       
-  end
+    end
 end

@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   get 'teambuilding_choose/destroy/:post_id' => 'teambuilding_choose#destroy'
  
   get 'mypage/index'
+  get 'mypage' => 'mypage#index'
   get 'mypage/index/accept/:request_id' => 'mypage#accept'
   get 'mypage/index/deny/:request_id' => 'mypage#deny'
-  get 'mypage' => 'mypage#index'
   get 'teambuilding_choose/choose/:id' => 'teambuilding_choose#choose'
   
   post 'teambuilding_choose/write'

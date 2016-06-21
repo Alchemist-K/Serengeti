@@ -66,27 +66,33 @@
 
                 <!--Main column-->
                 <div class="col-md-8">
-                <% if @myTeam.nil? %>
-                <p>가입신청이 없습니다</p>
+                <% if @myTeam.size == 0 %>
+                <p>가입신청이 없습니다.</p>
                 <% else %>
                   <% @myTeam.each do |t| %>
-                    <% Teambuild.findWaitingTeambuild(t.id).each do |r| %>
-                      <!--Post-->
-                      <div class="post-wrapper">
-                          <!--Post data-->
-                          <h1 class="h1-responsive"><%= r.used_id %></h1>
-                          <h5>Written at <%= r.created_at %></h5>
-                          
-                          <!--"Read more" button-->
-                        <button class="btn btn-primary">팀원이 되었습니다!</button>
-                        <%= form_tag("/mypage/leader/accept/#{r.id}", method: "GET") do %>
-                        <button class="btn btn-primary-outline waves-effect btn-size" type="submit">함께해요~</button>
-                        <% end %>
-                        <%= form_tag("/mypage/leader/deny/#{r.id}", method: "GET") do %>
-                        <button class="btn btn-primary-outline waves-effect btn-size" type="submit">미안해요~</button>
-                        <% end %>
-                      </div>
+                    <h3><%= t.name %></h3>
+                    <% if Teambuild.findWaitingTeambuild(t.id).size == 0 %>
+                      <p>이 팀에 대한 가입신청이 없습니다.</p>
+                    <% else %>
+                      <% Teambuild.findWaitingTeambuild(t.id).each do |r| %>
+                        <!--Post-->
+                        <div class="post-wrapper">
+                            <!--Post data-->
+                            <h5><%= User.find(r.user_id).name %></h5>
+                            <p>Written at <%= r.created_at %></p>
+                            
+                            <!--"Read more" button-->
+                          <%= form_tag("/mypage/index/accept/#{r.id}", method: "GET") do %>
+                          <button class="btn btn-primary" type="submit">함께해요~</button>
+                          <% end %>
+                          <%= form_tag("/mypage/index/deny/#{r.id}", method: "GET") do %>
+                          <button class="btn btn-danger" type="submit">미안해요~</button>
+                          <% end %>
+                          <br>
+                        </div>
+                      <% end %>
                     <% end %>
+                    <hr>
                   <% end %>
                 <% end %>
                   
