@@ -89,7 +89,7 @@
                   <%= form_tag("/teambuilding_choose/replypost", method: "post", remote: true) do %>
                   <label for="exampleInputEmail1">이 아이디어에 대해 자유롭게 의견을 남겨주세요!!</label>
                   <input type="text" class="form-control" id="reply_post" name="reply_post" placeholder="피드백, 질문하고싶은 점, 참여의사, 기타 다양한 의견들을 남겨주세요^^">
-                  <%= submit_tag("프로젝트 매니저에게 전송하기") %>
+                  <%= submit_tag("프로젝트 매니저에게 전송하기", id:"reply_submit") %>
                 <% end %>
                 
                 	<div class="post-reply">
@@ -148,13 +148,15 @@
 
 
 <script>
-$('.reply_submit').click(function(){
-
+$('#reply_submit').on("click", $("#button"), function(event){
+  event.preventDefault;
   $.ajax({
+    
     method: "POST",
     url: "/teambuilding_choose/replypost",
-    data: { reply_post: $('#reply_post').val()},
+    data: { reply_post: $('#reply_post').val},
     dataType: 'json',
+    
     success: function(data){
       console.log("dksjf");
             $('#reply_post').val("");

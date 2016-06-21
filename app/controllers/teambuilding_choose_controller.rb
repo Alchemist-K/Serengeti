@@ -16,7 +16,7 @@ class TeambuildingChooseController < ApplicationController
         replypost.user_id=current_user.id
         replypost.save
   
-    replypostemail = TeamPost.user.email
+    replypostemail = current_user.email
     replypostcontent = params[:reply_post]
     replyposttime = replypost.created_at
     render json: {keye: replypostemail, keyc: replypostcontent, keyt: replyposttime}
