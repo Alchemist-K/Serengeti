@@ -2,7 +2,7 @@ class TeambuildingCreateController < ApplicationController
   before_action :authenticate_user!
   
   def apply
-    new_member = Teambuild.new(user_id: current_user.id, team_id: params[:team_id], status: 0)
+    new_member = Teambuild.new(user_id: current_user.id, team_id: params[:id], status: 0)
     new_member.save
     
     redirect_to :back
