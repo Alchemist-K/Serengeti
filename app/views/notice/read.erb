@@ -6,8 +6,12 @@
       <p><%= @notice.created_at %></p>
       <p class="lead">
           <a href="/notice/index"class="btn btn-primary btn-sm" role="button">목록으로</a>
-          <a href="/notice/update_view/<%= @notice.id %>"class="btn btn-primary btn-sm" role="button">수정하기</a>
-          <a href="/notice/delete/<%= @notice.id %>"class="btn btn-primary btn-sm" role="button">삭제하기</a>
+          <% if user_signed_in? %>
+            <% if current_user.admin? %> 
+            <a href="/notice/update_view/<%= @notice.id %>"class="btn btn-primary btn-sm" role="button">수정하기</a>
+            <a href="/notice/delete/<%= @notice.id %>"class="btn btn-primary btn-sm" role="button">삭제하기</a>
+            <% end %>
+          <% end %>  
       </p>
   </div>
 </div>

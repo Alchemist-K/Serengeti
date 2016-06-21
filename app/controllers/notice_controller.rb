@@ -1,9 +1,25 @@
 class NoticeController < ApplicationController
+  before_action :require_admin, only: [:write, :update, :delete]
+
+  def require_admin
+    if user_signed_in? == false
+      flash[:error] = "관리자 권한이 필요합니다."
+      redirect_to "/notice/index"
+    elsif
+      unless current_user.admin?
+        flash[:error] = "관리자 권한이 필요합니다."
+        redirect_to "/notice/index"
+      end
+    end
+    
+  end
+  
   #공지사항 목록
   def index
     @notice = Notice.all.reverse
     @i = Notice.all.count #글 번호 매기기
   end
+  
   #공지사항 올리기
   def write
     notice = Notice.create(title: params[:title], content: params[:content])
