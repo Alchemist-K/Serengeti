@@ -253,6 +253,25 @@ body,html{
 	margin-top:-20px;
 }
 
+.reply-reply-post{
+	float:left;
+	text-align:left;
+	height:auto;
+	line-height:140%;
+	margin-left:130px;
+	width:calc(90% - 95px);
+	font-family: Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+	font-weight:400;
+	color:#999;
+	margin-top:-10px;
+	border-bottom:solid #E9E9E9 1px;
+	padding:20px;
+	margin-top:-20px;
+}
+
 .time-reply-post,.time-reply-post-2{
 	float:left;
 	text-align:left;

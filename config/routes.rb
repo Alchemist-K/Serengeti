@@ -23,18 +23,31 @@ Rails.application.routes.draw do
   post 'teambuilding_choose/write'
   post 'teambuilding_choose/replypost'
   post 'teambuilding_choose/replyreply'
+  post 'teambuilding_create/apply/:id' => 'teambuilding_create#apply'
+  post 'teambuilding_create/create'
+  
   post 'teambuilding_create/apply'
   post 'teambuilding_create/create_process'
   post 'teambuilding_create/update_process/:id' => 'teambuilding_create#update_process'
 
   
   post 'notice/write'
+  
+  
+  get 'mypage/leader' => 'leader#index'
+  get 'mypage/leader/accept/:request_id' => 'leader#accept'
+  get 'mypage/leader/deny/:request_id' => 'leader#deny'
+  
   get 'notice/write_input'
   get 'notice/read/:post_id' => 'notice#read'
   get 'notice/delete/:post_id' => 'notice#delete'
   get 'notice/update_view/:post_id' => 'notice#update_view'
   post 'notice/update/:post_id' => 'notice#update'
 
+  
+  
+  get 'mypage/member' => 'mypage#member'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

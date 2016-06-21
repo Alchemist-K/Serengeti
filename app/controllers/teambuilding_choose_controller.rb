@@ -19,7 +19,11 @@ class TeambuildingChooseController < ApplicationController
         replypost.team_post=params[:reply_post]
         replypost.user_id=current_user.id
         replypost.save
-        redirect_to :back
+  
+    replypostemail = current_user.email
+    replypostcontent = params[:reply_post]
+    replyposttime = replypost.created_at
+    render json: {keye: replypostemail, keyc: replypostcontent, keyt: replyposttime}
     end
     
   # 댓글을 수정하는 기능
