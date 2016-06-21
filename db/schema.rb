@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621050917) do
+ActiveRecord::Schema.define(version: 20160621050925) do
+
+  create_table "notices", force: :cascade do |t|
+    t.string   "title"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "team_post_replies", force: :cascade do |t|
     t.text     "team_post_reply"
@@ -43,8 +50,10 @@ ActiveRecord::Schema.define(version: 20160621050917) do
     t.text     "content"
     t.integer  "number"
     t.string   "picture"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "leader"
+    t.boolean  "published",  default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,2 +1,35 @@
-<h1>Notice#index</h1>
-<p>Find me in app/views/notice/index.html.erb</p>
+
+
+
+<div class="container">
+  <!--공지사항 보여주기-->
+  
+  <% @notice.each do |p| %>
+    <%= p.title %>
+    <%= p.content %>
+    <br>
+  
+  <% end %>
+  
+  
+  
+  
+  <!--공지사항 글쓰기 -->
+  <%= form_tag("/notice/write", method: "post") do %>
+  
+    <div class="md-form">
+      <%= label_tag 'title', nil, class: 'form-control' %>
+      <%= text_field_tag 'ip', nil, maxlength: 15, size: 20, class: "form-control" %>
+      
+      <input type="text" id="form1" class="form-control">
+      <label for="form1" class="">Example label</label>
+    </div>
+  
+  
+    <%= label_tag(:title, "제목") %>
+    <%= text_field_tag(:title) %>
+    <%= label_tag(:content, "내용") %>
+    <%= text_field_tag(:content) %>
+    <%= submit_tag("공지쓰기") %>
+  <% end %>
+</div>
