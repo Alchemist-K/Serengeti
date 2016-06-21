@@ -6,18 +6,20 @@ Rails.application.routes.draw do
   get '/' => 'home#index'
   get 'notice/index'
   get 'home/index'
-  get '/teamlist' => 'teambuilding_list#index'
-  get '/teambuild' => 'teambuilding_create#index'
-  
+  get 'teambuilding_list/index'
+  get 'teambuild' => 'teambuilding_create#index'
   get 'teambuilding_choose/choose'
+  get 'teambuilding_create/delete/:id' => 'teambuilding_create#delete'
+  get 'teambuilding_create/update/:id' => 'teambuilding_create#update'
+  get 'teambuilding_choose/destroy/:post_id' => 'teambuilding_choose#destroy'
+ 
+  get 'mypage/index'
+  get 'mypage' => 'mypage#index'
+  get 'teambuilding_choose/choose/:id' => 'teambuilding_choose#choose'
+  
   post 'teambuilding_choose/write'
   post 'teambuilding_choose/replypost'
   post 'teambuilding_choose/replyreply'
-  get '/teambuilding_choose/destroy/:post_id' => 'teambuilding_choose#destroy'
-  get 'teambuilding_list/index'
-  get 'mypage/index'
-  get 'mypage' => 'mypage#index'
-  
   post 'teambuilding_create/apply'
   post 'teambuilding_create/create'
   

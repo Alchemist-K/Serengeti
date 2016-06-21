@@ -50,8 +50,10 @@ ActiveRecord::Schema.define(version: 20160621050925) do
     t.text     "content"
     t.integer  "number"
     t.string   "picture"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "leader"
+    t.boolean  "published",  default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,6 +69,9 @@ ActiveRecord::Schema.define(version: 20160621050925) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "university"
+    t.string   "favor"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
