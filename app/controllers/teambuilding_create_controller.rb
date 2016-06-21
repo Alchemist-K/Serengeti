@@ -18,7 +18,7 @@ class TeambuildingCreateController < ApplicationController
                 )
     new_team.save
     
-    redirect_to "/teamlist"
+    redirect_to "/teambuilding_list/index"
   end
   
   def delete
@@ -26,11 +26,10 @@ class TeambuildingCreateController < ApplicationController
     delete_team.published = false
     delete_team.save
     
-    redirect_to "/teamlist"
+    redirect_to "/teambuilding_list/index"
   end
   
   def update
     
-    redirect_to "/teamlist"
   end
 end
