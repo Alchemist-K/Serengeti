@@ -1,9 +1,15 @@
-<div class="container object">
+<div class="container object" style="margin-top: 120px;">
+  <button class="btn-team-create btn btn-success" style="margin-left:-125px;" onclick="location.href='/teambuilding_create/create'">팀 만들기</button>
+  
   <section class="work">
     <% @teams.each do |t| %>
       <figure class="white">
-      	<a href="/teambuilding_choose/choose/<%= t.id %>">
-      		<img src=<%= image_path "teamlist/#{t.picture}" %> alt="" />
+      	<a href="/teambuilding_choose/<%= t.id %>">
+      	  <% if t.picture != nil %>
+      		  <img src=<%= image_path "teamlist/#{t.picture}" %> alt="" />
+      		<% else %>
+      		  <img src=<%= image_path "teamlist/14.png" %> alt="" />
+      		<% end %>
       		<dl>
       			<dt><%= t.abstract %></dt>
       			<dd><%= t.content %></dd>
