@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620105509) do
+ActiveRecord::Schema.define(version: 20160621050917) do
 
   create_table "team_post_replies", force: :cascade do |t|
     t.text     "team_post_reply"
@@ -62,6 +62,9 @@ ActiveRecord::Schema.define(version: 20160620105509) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "university"
+    t.string   "favor"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
