@@ -67,17 +67,19 @@
                 <!--Main column-->
                 <div class="col-md-8">
 
+                 <% @appliedteam.each do |p| %>
+
                     <!--Post-->
                     <div class="post-wrapper">
                         <!--Post data-->
-                        <h1 class="h1-responsive">Team 1 <small class="text-muted">Secondary text</small></h1>
-                        <h5>Written by <a href="">User 1</a>, 30.04.2016</h5>
+                        <h1 class="h1-responsive"><%= p.name %> </h1>
+                        <h5>Written by <a href=""><%= p.leader %></a>, <%= p.created_at %></h5>
 
                         <br>
 
                         <!--Featured image -->
                         <div class="view overlay hm-white-light z-depth-1-half">
-                            <img src="http://mdbootstrap.com/images/slides/slide%20(11).jpg" class="img-fluid " alt="">
+                            <img src="http://mdbootstrap.com/images/slides/slide%20(11).jpg" class="img-fluid " alt="" href="/teambuilding_choose/choose">
                             <div class="mask">
                             </div>
                         </div>
@@ -85,67 +87,21 @@
                         <br>
 
                         <!--Post excerpt-->
-                        <p>Abstract : 매우 신나고 재미있는 일을 하고 싶은 사람들은 모이세요!</p>
-
+                        <p><%= p.abstract %></p>
+                        <hr>
+                        
                         <!--"Read more" button-->
+                        <% if Teambuild.find_by(team_id: p.id, user_id:current_user.id).status == 1 %>
                         <button class="btn btn-primary">팀원이 되었습니다!</button>
-                    </div>
-                    <!--/.Post-->
-
-                    <hr>
-
-                    <!--Post-->
-                    <div class="post-wrapper">
-                        <!--Post data-->
-                        <h1 class="h1-responsive">Team 4 </h1>
-                        <h5>Written by <a href="">User 2</a>, 30.04.2016</h5>
-
-                        <br>
-
-                        <!--Featured image -->
-                        <div class="view overlay hm-white-light z-depth-1-half">
-                            <img src="http://mdbootstrap.com/images/slides/slide%20(12).jpg" class="img-fluid " alt="">
-                            <div class="mask">
-                            </div>
-                        </div>
-
-                        <br>
-
-                        <small class="text-muted">Abstract</small>
-                        <!--Post excerpt-->
-                        <p>우리 마음껏 뛰어놀면서 재미있게 살아요!!</p>
-
-                        <!--"Read more" button-->
+                        <% elsif Teambuild.find_by(team_id: p.id, user_id:current_user.id).status==0 %>
                         <button class="btn btn-warning">아직 결정을 기다리는 중이에요!</button>
-                    </div>
-                    <!--/.Post-->
-
-                    <hr>
-
-                    <!--Post-->
-                    <div class="post-wrapper">
-                        <!--Post data-->
-                        <h1 class="h1-responsive">Team 5 </h1>
-                        <h5>Written by <a href="">User 7</a>, 30.04.2016</h5>
-
-                        <br>
-
-                        <!--Featured image -->
-                        <div class="view overlay hm-white-light z-depth-1-half">
-                            <img src="http://mdbootstrap.com/images/slides/slide%20(24).jpg" class="img-fluid" alt="">
-                            <div class="mask">
-                            </div>
-                        </div>
-
-                        <br>
-
-                        <!--Post excerpt-->
-                        <p>이런들 어떠하리 저런들 어떠하리</p>
-
-                        <!--"Read more" button-->
+                        <% else %>
                         <button class="btn btn-danger">팀원 신청이 거절당했어요ㅠㅠ</button>
+                        <% end %>
                     </div>
+                    <% end %>
                     <!--/.Post-->
+
 
                     <hr>
 
@@ -203,10 +159,6 @@
                                     <label for="form2"></label>
                                 </div>
                                 <button class="btn btn-primary">전송하기</button>
-                                    <input type="hidden" value="current_user.id" name="nowuser">
-                                    <% @appliedteam.each do |p| %>
-                                    <%= p.name %>
-                                    <% end %>
 
                             </div>
                         </div>
@@ -233,5 +185,4 @@
 
 
 </body>
-
 </html>
