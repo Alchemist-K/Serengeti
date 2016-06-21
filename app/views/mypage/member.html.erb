@@ -203,9 +203,10 @@
                                     <label for="form2"></label>
                                 </div>
                                 <button class="btn btn-primary">전송하기</button>
-
-                                    <%= @appliedteam %>
-
+                                    <input type="hidden" value="current_user.id" name="nowuser">
+                                    <% @appliedteam.each do |p| %>
+                                    <%= p.name %>
+                                    <% end %>
 
                             </div>
                         </div>

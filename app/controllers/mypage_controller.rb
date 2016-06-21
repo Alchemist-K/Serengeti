@@ -4,6 +4,8 @@ class MypageController < ApplicationController
   
   
   def member
-    @appliedteam = Teambuild.find(params[:current_user_id])
+
+      @appliedteam = User.find(current_user.id).teams.all
+      
   end
 end

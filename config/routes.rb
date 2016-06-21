@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   post 'teambuilding_choose/write'
   post 'teambuilding_choose/replypost'
   post 'teambuilding_choose/replyreply'
-  post 'teambuilding_create/apply'
+  post 'teambuilding_create/apply/:id' => 'teambuilding_create#apply'
   post 'teambuilding_create/create'
   
   
