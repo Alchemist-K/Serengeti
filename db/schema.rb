@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620105509) do
+ActiveRecord::Schema.define(version: 20160621050925) do
+
+  create_table "notices", force: :cascade do |t|
+    t.string   "title"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "team_post_replies", force: :cascade do |t|
     t.text     "team_post_reply"
