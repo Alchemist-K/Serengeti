@@ -13,17 +13,20 @@ Rails.application.routes.draw do
   get 'teambuilding_create/delete/:id' => 'teambuilding_create#delete'
   get 'teambuilding_create/update/:id' => 'teambuilding_create#update'
   get 'teambuilding_choose/destroy/:post_id' => 'teambuilding_choose#destroy'
+  get 'teambuilding_choose/:id' => 'teambuilding_choose#index'
  
   get 'mypage/index'
   get 'mypage' => 'mypage#index'
   get 'teambuilding_choose/choose/:id' => 'teambuilding_choose#choose'
+  get 'teambuilding_choose/:id' => 'teambuilding_choose#index'
   
   post 'teambuilding_choose/write'
   post 'teambuilding_choose/replypost'
   post 'teambuilding_choose/replyreply'
   post 'teambuilding_create/apply'
-  post 'teambuilding_create/create'
-  
+  post 'teambuilding_create/create_process'
+  post 'teambuilding_create/update_process/:id' => 'teambuilding_create#update_process'
+
   
   post 'notice/write'
   get 'notice/write_input'

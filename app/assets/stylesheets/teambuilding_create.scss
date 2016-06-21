@@ -29,3 +29,22 @@
   float: left;
   z-index: 3;
 }
+
+.input-tag {
+  float: left;
+  width: 20px;
+}
+
+#input-content {
+  position: relative;
+  top: 560px;
+  left: -260px;
+  height: 100px;
+  width: 630px;
+  margin-bottom: 40px;
+}
+
+.input-submit {
+  height: 50px;
+  width: 100px;
+}
