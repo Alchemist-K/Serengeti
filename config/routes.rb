@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'teambuilding_choose/destroy/:post_id' => 'teambuilding_choose#destroy'
  
   get 'mypage/index'
+  get 'mypage/index/accept/:request_id' => 'mypage#accept'
+  get 'mypage/index/deny/:request_id' => 'mypage#deny'
   get 'mypage' => 'mypage#index'
   get 'teambuilding_choose/choose/:id' => 'teambuilding_choose#choose'
   
@@ -26,10 +28,7 @@ Rails.application.routes.draw do
   
   post 'notice/write'
   
-  
-  get 'mypage/leader' => 'leader#index'
-  get 'mypage/leader/accept/:request_id' => 'leader#accept'
-  get 'mypage/leader/deny/:request_id' => 'leader#deny'
+ 
   
   get 'notice/write_input'
   get 'notice/read/:post_id' => 'notice#read'

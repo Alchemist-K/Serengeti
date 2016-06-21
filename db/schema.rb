@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20160621071237) do
   create_table "teambuilds", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "team_id"
-    t.integer  "status"    #-1 : 거절, 0 : 대기, 1 : 승인
+    t.integer  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
