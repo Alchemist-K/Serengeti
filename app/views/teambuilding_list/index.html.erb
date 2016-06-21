@@ -1,8 +1,9 @@
+<h1><%= current_user.email %></h1>
 <div class="container object">
   <section class="work">
     <% @teams.each do |t| %>
       <figure class="white">
-      	<a href="/teambuilding_choose/choose">
+      	<a href="/teambuilding_choose/choose/<%= t.id %>">
       		<img src=<%= image_path "teamlist/#{t.picture}" %> alt="" />
       		<dl>
       			<dt><%= t.abstract %></dt>
@@ -18,15 +19,6 @@
       <div id="wrapper-part-info">
         <div class="part-info-image"><img src="<%= image_path "teamlist/icon-psd.svg" %>" alt="" width="28" height="28"/></div>
         <div id="part-info">Wordpress theme</div>
-        <% if t.leader == current_user.id %><!-- 팀장일 경우 -->
-          <button onclick="location.href='/teambuilding_create/delete/<%= t.id %>'">삭제</button>
-          <button onclick="location.href='/teambuilding_create/update/<%= t.id %>'">수정</button>
-        <% else %><!-- 팀원으로 지원하는 경우 -->
-          <%= form_tag("/teambuilding_create/apply", method: "POST") do %>
-            <input type="hidden" name="team_id" value="<%= t.id %>"/>
-            <button type="submit">가입</button>
-          <% end %>
-        <% end %>
       </div>
       </figure>
     <% end %>
