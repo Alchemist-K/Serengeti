@@ -11,11 +11,18 @@ Rails.application.routes.draw do
   get 'teambuilding_choose/choose'
   get 'teambuilding_create/delete/:id' => 'teambuilding_create#delete'
   get 'teambuilding_create/update/:id' => 'teambuilding_create#update'
+  get '/teambuilding_choose/destroy/:post_id' => 'teambuilding_choose#destroy'
+  get 'teambuilding_list/index'
+  get 'mypage/index'
+  get 'mypage' => 'mypage#index'
+  get 'teambuilding_choose/choose'
   
   post 'teambuilding_choose/write'
-  post 'teambuilding_choose/reply'
+  post 'teambuilding_choose/replypost'
+  post 'teambuilding_choose/replyreply'
   post 'teambuilding_create/apply'
   post 'teambuilding_create/create'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
