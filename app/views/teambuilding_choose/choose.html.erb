@@ -86,10 +86,10 @@
                 </div>
                 
                 <hr>
-                  <%= form_tag("/teambuilding_choose/replypost", method: "post") do %>
+                  <%= form_tag("/teambuilding_choose/replypost", method: "post", remote: true) do %>
                   <label for="exampleInputEmail1">이 아이디어에 대해 자유롭게 의견을 남겨주세요!!</label>
-                  <input type="text" class="form-control" name="reply_post" placeholder="피드백, 질문하고싶은 점, 참여의사, 기타 다양한 의견들을 남겨주세요^^">
-                  <%= submit_tag("프로젝트 매니저에게 전송하기") %>
+                  <input type="text" class="form-control" id="reply_post" name="reply_post" placeholder="피드백, 질문하고싶은 점, 참여의사, 기타 다양한 의견들을 남겨주세요^^">
+                  <%= submit_tag("프로젝트 매니저에게 전송하기", id:"reply_submit") %>
                 <% end %>
                 
                 	<div class="post-reply">
@@ -106,14 +106,14 @@
                 
                     <% @team_post.each do |p| %>
                   <div class="post-reply">
-                        <a class="name-reply-post" href="/mypage/#"><%= p.user.email %></a>
-                        <div class="time-reply-post"><%= p.created_at %></div>
-                        <div class="text-reply-post"><%= p.team_post %> <a href="/teambuilding_choose/destroy/<%= p.id %>">[삭제하기]</a> 
+                        <a class="name-reply-post" href="/mypage/#" id="replypostemail"><%= p.user.email %></a>
+                        <div class="time-reply-post" id="replyposttime"><%= p.created_at %></div>
+                        <div class="text-reply-post" id="replypostcontent"><%= p.team_post %> <a href="/teambuilding_choose/destroy/<%= p.id %>">[삭제하기]</a> 
                 
                             <a href="#">[답글달기]</a>
-                            <input type="hidden" value="<% p.id %>" name="reply_post_id">
-                            <%= form_tag("/teambuilding_choose/replyreply", method: "post") do %>
+                            <%= form_tag("/teambuilding_choose/replyreply", method: "post", remote: true) do %>
                               <input type="text" class="form-control" name="reply_reply" placeholder="답글달기!">
+                              <input type="hidden" value="<%= p.id %>" name="reply_post_id">
                               <%= submit_tag("댓글을 단 사람에게 전송하기") %>
                             <% end %>
                          </div>
@@ -121,9 +121,9 @@
                          
                          
                             <% p.team_post_replies.each do |s| %>
-                                <div class="text-reply-post"> <%= s.user_id %> </div>
-                                <div class="text-reply-post"> <%= s.team_post_reply %> </div>
-                                <div class="time-reply-post"> <%= s.created_at %> </div>
+                                <div class="reply-reply-post"> <%= s.user.email %> </div>
+                                <div class="reply-reply-post"> <%= s.team_post_reply %> </div>
+                                <div class="reply-reply-post"> <%= s.created_at %> </div>
                             <% end %>
                         <hr>
                         
@@ -145,3 +145,30 @@
 
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="/js/mdb.min.js"></script>
+
+
+<script>
+$('#reply_submit').on("click", $("#button"), function(event){
+  event.preventDefault;
+  $.ajax({
+    
+    method: "POST",
+    url: "/teambuilding_choose/replypost",
+    data: { reply_post: $('#reply_post').val},
+    dataType: 'json',
+    
+    success: function(data){
+      console.log("dksjf");
+            $('#reply_post').val("");
+
+            $('#replypostemail').append(data.keye);
+            $('#replypostcontent').append(data.keyc);
+            $('#replyposttime').append(data.keyt);
+    },
+    error: function(data){
+      console.log('wow');
+
+    }
+  });
+});
+</script>

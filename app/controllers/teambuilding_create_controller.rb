@@ -2,10 +2,10 @@ class TeambuildingCreateController < ApplicationController
   before_action :authenticate_user!
   
   def apply
-    new_member = Teambuild.new(user_id: current_user.id, team_id: params[:team_id])
+    new_member = Teambuild.new(user_id: current_user.id, team_id: params[:id])
     new_member.save
     
-    redirect_to "/teamlist"
+    redirect_to "/teambuilding_list/index"
   end
   
   def create
@@ -18,7 +18,7 @@ class TeambuildingCreateController < ApplicationController
                 )
     new_team.save
     
-    redirect_to "/teamlist"
+    redirect_to "/teambuilding_list/index"
   end
   
   def delete
@@ -26,11 +26,10 @@ class TeambuildingCreateController < ApplicationController
     delete_team.published = false
     delete_team.save
     
-    redirect_to "/teamlist"
+    redirect_to "/teambuilding_list/index"
   end
   
   def update
     
-    redirect_to "/teamlist"
   end
 end

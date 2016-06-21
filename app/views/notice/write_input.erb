@@ -1,0 +1,26 @@
+<div class="container", style="margin-top:100px">
+
+<!--공지사항 글쓰기 -->
+  <%= form_tag("/notice/write", method: "post") do %>
+  
+    <div class="row1">
+      <div class="col-md-12">
+        <div class="md-form">
+          <%= text_field_tag(:title, nil, placeholder: "제목") %>
+        </div>
+      </div>
+    </div>
+    <br>
+    
+    <div class="row2">
+      <div class="col-md-12">
+        <div class="md-form">
+          <%= text_area_tag(:content, nil ,class: 'md-textarea', placeholder: "내용") %>
+        </div>
+      </div>
+    </div>  
+    
+    <button type="submit" class="btn btn-primary btn-sm">공지쓰기</button>
+  <% end %>
+  
+</div>
