@@ -26,7 +26,10 @@ Rails.application.routes.draw do
   
   post 'notice/write'
   
-
+  #test route
+  get 'mypage/leader' => 'leader#index'
+  get 'mypage/leader/accept/:request_id' => 'leader#accept'
+  get 'mypage/leader/deny/:request_id' => 'leader#deny'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
