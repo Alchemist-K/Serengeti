@@ -14,7 +14,7 @@
 </head>
 
 <body>
-
+         
             <!--Navbar-->
             <nav class="navbar navbar-dark navbar-fixed-top scrolling-navbar">
             <div class="container">
@@ -61,7 +61,7 @@
 
     <main>
         <!--Main layout-->
-        <div class="container" style="margin-top:170px;">
+        <div class="container" style="margin-top:150px;">
             <div class="row">
 
                 <!--Main column-->
@@ -172,7 +172,6 @@
                                 </a>
                             </li>
                         </ul>
-                    </nav>
                     <!--/.Pagination-->
 
                     <hr>
@@ -182,28 +181,34 @@
                 <!--Sidebar-->
                 <div class="col-md-4">
                     <div class="widget-wrapper">
-                        <h4><strong>MY PAGE</strong></h4>
+                        <h4 style="text-align:center;">MY PAGE</h4>
                         <div class="list-group">
-                            <a href="#" class="list-group-item active">As a Team Leader</a>
-                            <a href="/mypage/member" class="list-group-item">As a Team member</a>
+                            <a href="/mypage" class="list-group-item">As a Team Leader</a>
+                            <a href="/mypage/member" class="list-group-item active">As a Team member</a>
                             <a href="#" class="list-group-item">개인정보 수정</a>
                         </div>
                     </div>
-                <br>
+
 
 
                     <div class="widget-wrapper">
+                        <h4>Subscription form:</h4>
+                        <br>
                         <div class="card">
                             <div class="card-block">
-                                <p><strong>여러분의 피드백과 의견을 말해주세요!</strong></p>
-                                <p>개선되었으면 하는 점, 추가했으면 하는 점 등을 <br>모두 말씀해주세요!
-                                   세렝게티는 항상 여러분의 <br>의견에 귀기울이고 있습니다.</p>
+                                <p><strong>Subscribe to our newsletter</strong></p>
+                                <p>Once a week we will send you a summary of the most useful news</p>
                                 <div class="md-form">
-                                    <i class="fa fa-commenting-o"></i>
-                                    <input type="text" id="form2" class="form-control" placeholder="">
-                                    <label for="form2"></label>
+                                    <i class="fa fa-user prefix"></i>
+                                    <input type="text" id="form1" class="form-control">
+                                    <label for="form1">Your name</label>
                                 </div>
-                                <button class="btn btn-primary">전송하기</button>
+                                <div class="md-form">
+                                    <i class="fa fa-envelope prefix"></i>
+                                    <input type="text" id="form2" class="form-control">
+                                    <label for="form2">Your email</label>
+                                </div>
+                                <button class="btn btn-primary">Submit</button>
 
                             </div>
                         </div>
