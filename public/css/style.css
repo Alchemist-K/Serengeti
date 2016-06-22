@@ -72,7 +72,11 @@ footer.page-footer {
 }
 
 .white_teambuilding {
-  width: 50vw!important
+  width: 50vw!important;
+  height: 50vw
+}
+.team_image {
+  width: 50vw;
   height: 50vw
 }
 .carousel-item:nth-child(3) {
