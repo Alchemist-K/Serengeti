@@ -28,6 +28,6 @@ class MypageController < ApplicationController
     end
     
     def myinfo
-        @myinfo = User.find(current_user.id).all
+        @myinfo = User.where(email: current_user.email).all
     end
 end
