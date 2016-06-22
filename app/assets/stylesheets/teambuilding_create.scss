@@ -1,3 +1,50 @@
 // Place all the styles related to the teambuilding_create controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#file_upload {
+  position: absolute;
+  top: 0;
+  height: 480px;
+  width: 640px;
+  opacity: 0;
+  z-index: 1;
+}
+
+#file_upload_button {
+  background-image: url("/img/upload_file.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 80% 90%;
+  background-color: white;
+  height: 480px;
+  width: 640px;
+  z-index: 0;
+}
+
+.side-info {
+  top: -80px;
+}
+
+.team-input {
+  float: left;
+  z-index: 3;
+}
+
+.input-tag {
+  float: left;
+  width: 20px;
+}
+
+#input-content {
+  position: relative;
+  top: 560px;
+  left: -260px;
+  height: 100px;
+  width: 630px;
+  margin-bottom: 40px;
+}
+
+.input-submit {
+  height: 50px;
+  width: 100px;
+}

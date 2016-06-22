@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(email: "admin@snu.ac.kr", password:"12341234", password_confirmation:"12341234", admin: true)
-User.create(email: "user1@snu.ac.kr", password:"12341234", password_confirmation:"12341234")
-User.create(email: "user2@snu.ac.kr", password:"12341234", password_confirmation:"12341234")
+User.create(email: "admin@snu.ac.kr", password:"12341234", password_confirmation:"12341234", admin: true, name: 'kkd')
+User.create(email: "user1@snu.ac.kr", password:"12341234", password_confirmation:"12341234", name: "임정건")
+User.create(email: "user2@snu.ac.kr", password:"12341234", password_confirmation:"12341234", name: '이재성')
 User.create(email: "user3@snu.ac.kr", password:"12341234", password_confirmation:"12341234")
 User.create(email: "user4@snu.ac.kr", password:"12341234", password_confirmation:"12341234")
 User.create(email: "user5@snu.ac.kr", password:"12341234", password_confirmation:"12341234")
@@ -22,3 +22,8 @@ Team.create(name: 'team6', abstract: '뚱뚱한 팀입니다.', content: '정말
 Team.create(name: 'team7', abstract: '날씬한 팀입니다.', content: '정말정말 멋진7 팀입니다.', number: 5, picture: '7.png', leader: 2)
 Team.create(name: 'team8', abstract: '조용한 팀입니다.', content: '정말정말 멋진8 팀입니다.', number: 5, picture: '8.png', leader: 4)
 Team.create(name: 'team9', abstract: '멋진 팀입니다.', content: '정말정말 멋진9 팀입니다.', number: 5, picture: '9.png', leader: 3)
+
+Teambuild.create(user_id: 2, team_id: 1, status: 0)
+Teambuild.create(user_id: 3, team_id: 1, status: 0)
+Teambuild.create(user_id: 4, team_id: 1, status: 1)
+Teambuild.create(user_id: 5, team_id: 1, status: -1)

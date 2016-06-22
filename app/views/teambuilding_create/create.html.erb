@@ -7,7 +7,7 @@
     <div class="container object">
     
       <div class="work">
-        <%= form_tag("/teambuilding_create/update_process/#{@update_team.id}", method: "POST", multipart: true) do%>
+        <%= form_tag("/teambuilding_create/create_process", method: "POST", multipart: true) do%>
         	<figure class="white">
           	<input type="button" id="file_upload_button"/>
           	<input type="file" name="picture" id="file_upload"/>
@@ -22,16 +22,16 @@
 
           <div class="wrapper-text-description side-info">
             
-          	<input type="text" id="team_name" name="name" value="<%= @update_team.name %>"/>
+          	<input type="text" id="team_name" name="name"/>
           	<label for="team_name">Team Name</label>
           	
-          	<input type="text" name="abstract" value="<%= @update_team.abstract %>"/>
+          	<input type="text" name="abstract"/>
           	<label for="abstract">Abstract</label>
           	
-          	<input type="text" name="leader" value="<%= User.find(@update_team.leader).email %>" readonly/>
+          	<input type="text" name="leader" value="<%= current_user.email %>" readonly/>
           	<label for="team_number">Team Leader</label>
           	
-          	<input type="text" name="number" value="<%= @update_team.number %>"/>
+          	<input type="text" name="number"/>
           	<label for="team_number">Number</label>
               
             <div class="wrapper-morefrom">
@@ -43,11 +43,11 @@
               </div>
             </div>
             
-          <button type="submit" id="input-submit" class="btn btn-secondary">Submit</button>
+           <button type="submit" id="input-submit" class="btn btn-secondary">Submit</button>
             
           </div> <!-- wrapper-text-description -->
           
-          <textarea type="text" id="input-content" name="content" class="md-textarea" col=40><%= @update_team.content %></textarea>
+           <textarea type="text" id="input-content" name="content" class="md-textarea" col=40 placeholder="팀 아이디어에 대해 설명해 주세요."></textarea>
         <% end %>
 			</div> <!-- work -->
 		</div>

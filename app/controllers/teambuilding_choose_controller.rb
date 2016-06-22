@@ -1,6 +1,10 @@
 class TeambuildingChooseController < ApplicationController
-  
   # 첫 화면(팀을 고른 이후에 나타나게 되는 화면)
+  def index
+    team_id = params[:id].to_i
+    @each_team = Team.find(team_id)
+  end
+  
   def choose
     if user_signed_in?
       @team_post=TeamPost.all

@@ -1,0 +1,15 @@
+<!--Main layout-->
+<div class="container">
+ <div class="row">
+    <!--Main column-->
+     <div class="col-md-8">
+        <%= render partial: '/admin/menu_list' %>
+    </div>
+  </div>
+</div>
+
+
+              <%= form_for :feedback, url: 'feedback' do |f| %>
+                <%= f.text_area :text, :autocomplete => :off, rows: "5", class: "col-md-12 form-control" %>
+                <%= f.submit "feedback", class: "btn btn-sm btn-primary col-md-12" %>
+              <% end %>

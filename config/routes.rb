@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'admin/index'
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
@@ -9,13 +11,18 @@ Rails.application.routes.draw do
   get 'teambuilding_list/index'
   get 'teambuild' => 'teambuilding_create#index'
   get 'teambuilding_choose/choose'
+  get 'teambuilding_create/create'
   get 'teambuilding_create/delete/:id' => 'teambuilding_create#delete'
   get 'teambuilding_create/update/:id' => 'teambuilding_create#update'
   get 'teambuilding_choose/destroy/:post_id' => 'teambuilding_choose#destroy'
+  get 'teambuilding_choose/:id' => 'teambuilding_choose#index'
  
   get 'mypage/index'
   get 'mypage' => 'mypage#index'
+  get 'mypage/index/accept/:request_id' => 'mypage#accept'
+  get 'mypage/index/deny/:request_id' => 'mypage#deny'
   get 'teambuilding_choose/choose/:id' => 'teambuilding_choose#choose'
+  get 'teambuilding_choose/:id' => 'teambuilding_choose#index'
   
   post 'teambuilding_choose/write'
   post 'teambuilding_choose/replypost'
@@ -23,8 +30,15 @@ Rails.application.routes.draw do
   post 'teambuilding_create/apply/:id' => 'teambuilding_create#apply'
   post 'teambuilding_create/create'
   
+  post 'teambuilding_create/apply'
+  post 'teambuilding_create/create_process'
+  post 'teambuilding_create/update_process/:id' => 'teambuilding_create#update_process'
+
   
   post 'notice/write'
+  
+ 
+  
   get 'notice/write_input'
   get 'notice/read/:post_id' => 'notice#read'
   get 'notice/delete/:post_id' => 'notice#delete'
@@ -34,6 +48,7 @@ Rails.application.routes.draw do
   
   
   get 'mypage/member' => 'mypage#member'
+  get 'admin/index'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
