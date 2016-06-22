@@ -17,7 +17,7 @@
             <td class="col-sm-7">
               <a href="/notice/read/<%=p.id%>"><div style="text-align:center;"><%= p.title %></div></a>
             </td>
-            <td class="col-sm-4"><div style="text-align:center;"><%= p.created_at %></div></td>
+            <td class="col-sm-4"><div style="text-align:center;"><%= p.created_at.in_time_zone("Asia/Seoul").strftime("%Y년 %m월 %d일") %></div></td>
           </tr>
           <% @i -= 1 %>
       <% end %>

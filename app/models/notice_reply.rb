@@ -1,5 +1,6 @@
-class Notice < ActiveRecord::Base
-    has_many :notice_replies
+class NoticeReply < ActiveRecord::Base
+    belongs_to :user
+    belongs_to :notice
     
     #시간 몇초전/몇시간전/몇일전/몇달전
     def get_time

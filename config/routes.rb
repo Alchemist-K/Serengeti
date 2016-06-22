@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   get 'notice/delete/:post_id' => 'notice#delete'
   get 'notice/update_view/:post_id' => 'notice#update_view'
   post 'notice/update/:post_id' => 'notice#update'
+  post 'notice/reply_write'
 
   
   
