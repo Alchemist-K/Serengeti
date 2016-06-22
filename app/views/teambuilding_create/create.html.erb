@@ -42,14 +42,19 @@
                 <a href="#"><div class="image-morefrom-4"><img src="/img/psd-6.jpg" alt="" width="430" height="330"/></div></a>
               </div>
             </div>
-          <input type="hidden" id="tag-input" name="tag" value=""></input>  
+          
+          <input type="hidden" id="tag-input1" name="tag1" value=""></input>
+          <input type="hidden" id="tag-input2" name="tag2" value=""></input>
+          <input type="hidden" id="tag-input3" name="tag3" value=""></input>
+          
           <button type="submit" id="input-submit" class="btn btn-secondary">Submit</button>
             
           </div> <!-- wrapper-text-description -->
           
-           <textarea type="text" id="input-content" name="content" class="md-textarea" col=40 placeholder="팀 아이디어에 대해 설명해 주세요."></textarea>
-           <div class="row">
-            <button type="button" id="tag1" class="btn btn-default" onclick="getSelect();">건강</button>
+          <textarea type="text" id="input-content" name="content" class="md-textarea" col=40 placeholder="팀 아이디어에 대해 설명해 주세요."></textarea>
+          
+          <div id="tags" class="row">
+            <button type="button" id="tag1" class="btn btn-default">건강</button>
             <button type="button" id="tag2" class="btn btn-default">금융</button>
             <button type="button" id="tag3" class="btn btn-default">교육 및 취업</button>
             <button type="button" id="tag4" class="btn btn-default">라이프스타일 & 일상생활</button>
@@ -66,9 +71,34 @@
 		</div>
   </div>      
 </div> <!-- container -->
+
 <script>
-  $(document).on("click", ".btn", function(e) {
-    var a = $(e.target).attr("id");
-    console.log(a);
+  $(document).ready(function(){
+    $('#tags button').click(function(e) {
+      var txt = $(e.target).text();
+
+      if( $(e.target).attr("class").split(" ")[3] == "btn-warning") {
+
+        for(var i=1; i<4; i++) {
+          if( $('#tag-input'+i).val() == txt ) {
+            $('#tag-input'+i).val("");
+            $(e.target).removeClass("btn-warning").addClass("btn-default");
+          }
+        }
+      } else {
+        if( $('#tag-input1').val() == "" ) {
+          $('#tag-input1').attr('value', txt);
+          $(e.target).removeClass("btn-default").addClass("btn-warning");
+        } else if( $('#tag-input2').val() == "" ) {
+          $('#tag-input2').attr('value', txt);
+          $(e.target).removeClass("btn-default").addClass("btn-warning");
+        } else if( $('#tag-input3').val() == "") {
+          $('#tag-input3').attr('value', txt);
+          $(e.target).removeClass("btn-default").addClass("btn-warning");
+        } else {
+          alert("태그는 최대 3개까지 선택 가능합니다.");
+        }
+      }
+    });
   });
 </script>
