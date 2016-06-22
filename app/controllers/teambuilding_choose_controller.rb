@@ -1,6 +1,11 @@
 class TeambuildingChooseController < ApplicationController
-  
   # 첫 화면(팀을 고른 이후에 나타나게 되는 화면)
+  def index
+    team_id = params[:id].to_i
+    @each_team = Team.find(team_id)
+    @team_post = TeamPost.where(team_post_id: team_id)
+  end
+  
   def choose
     if user_signed_in?
       @team_post=TeamPost.all
@@ -11,15 +16,13 @@ class TeambuildingChooseController < ApplicationController
 
   # 해당하는 팀에 댓글을 다는 기능
     def replypost
-        replypost=TeamPost.new
-        replypost.team_post=params[:reply_post]
-        replypost.user_id=current_user.id
-        replypost.save
-  
-    replypostemail = current_user.email
-    replypostcontent = params[:reply_post]
-    replyposttime = replypost.created_at
-    render json: {keye: replypostemail, keyc: replypostcontent, keyt: replyposttime}
+      replypost = TeamPost.new
+      replypost.team_post = params[:reply_post]
+      replypost.user_id = current_user.id
+      replypost.team_post_id = params[:team_id]
+      replypost.save
+      
+      @team_post = TeamPost.where(team_post_id: params[:team_id].to_i)
     end
     
   # 댓글을 수정하는 기능

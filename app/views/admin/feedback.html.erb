@@ -1,0 +1,20 @@
+<!--Main layout-->
+<div class="container">
+ <div class="row">
+    <!--Main column-->
+     <div class="col-md-8">
+        <%= render partial: '/admin/menu_list' %>
+    </div>
+  </div>
+</div>
+
+            <% @feedbacks.each do |f| %>
+                <tr>
+                  <td style="width:10%"><%= f.id %></td>
+                  <td style="width:10%"><%= f.cat %></td>
+                  <td style="width:10%"><%= User.unscoped{ f.user.name } %></td>
+                  <td style="width:20%"><%= User.unscoped{ f.user.email } %></td>
+                  <td style="width:50%"><%= f.text %></td>
+                </tr>
+            <% end %>
+            

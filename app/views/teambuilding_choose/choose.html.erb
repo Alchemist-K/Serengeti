@@ -1,174 +1,119 @@
-<head>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-
-    <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Material Design Bootstrap -->
-    <link href="/css/mdb.min.css" rel="stylesheet">
-
-    <!-- Template styles -->
-    <link href="/css/style.css" rel="stylesheet">
-</head>
-
 <div class="container">
-
-<!-- PORTFOLIO -->
-
-	<div id="wrapper-container">
+  <div id="wrapper-container">
     <div class="container object">
-                <div class="title-item">
-                	<div class="title-icon"></div>
-                    <div class="title-text">Team 1 </div>
-                    <div class="title-text-2">Sept 25, 2015 by Onuur</div>
-                </div>
-                
-     			       
-				<div class="work">
-					<figure class="white">
-							 <img src="/img/psd-4.jpg" alt="" />
-                         <div id="wrapper-part-info">
-                             <div class="part-info-image">
-                                <img src="/img/mockup-1.jpg" alt="" width="628" height="437"/>
-                                <img src="/img/mockup-2.jpg" alt="" width="628" height="437"/>
-                                <img src="/img/mockup-3.jpg" alt="" width="628" height="437"/>
-                         </div>
-				</div>
-          </figure>	
+      
+      <div class="title-item">
+      	<div class="title-icon"></div>
+        <div class="title-text">Team 1 </div>
+        <div class="title-text-2">Sept 25, 2015 by Onuur</div>
+      </div>
+
+			<div class="work">
+				<figure class="white">
+				  <img src="/img/psd-4.jpg" alt="" />
+            <div id="wrapper-part-info">
+              <div class="part-info-image">
+              <img src="/img/mockup-1.jpg" alt="" width="628" height="437"/>
+              <img src="/img/mockup-2.jpg" alt="" width="628" height="437"/>
+              <img src="/img/mockup-3.jpg" alt="" width="628" height="437"/>
+            </div>
+		      </div>
+        </figure>	
 				
-                <div class="wrapper-text-description">
-                  <% if Team.find(params[:id].to_i).leader == current_user.id %><!-- 팀장일 경우 -->
-                    <button class="btn btn-danger-outline waves-effect btn-size" onclick="location.href='/teambuilding_create/delete/<%= params[:id] %>'">삭제</button>
-                    <button class="btn btn-warning-outline waves-effect btn-size" onclick="location.href='/teambuilding_create/update/<%= params[:id] %>'">수정</button>
-                  <% else %><!-- 팀원으로 지원하는 경우 -->
-                    <%= form_tag("/teambuilding_create/apply/#{params[:id]}", method: "POST") do %>
-                      <button class="btn btn-primary-outline waves-effect btn-size" type="submit">가입</button>
-                    <% end %>
-                  <% end %>
-                    
-                	<div class="wrapper-view">
-                    	<div class="icon-view"><img src="/img/icon-eye.svg" alt="" width="24" height="16"/></div>
-                        <div class="text-view">2,451 views</div>
-                    </div>
-                
-                	<div class="wrapper-file">
-                    	<div class="icon-file"><img src="/img/icon-psdfile.svg" alt="" width="21" height="21"/></div>
-                        <div class="text-file">Photoshop</div>
-                    </div>
-                    
-                    <div class="wrapper-weight">
-                    	<div class="icon-weight"><img src="/img/icon-weight.svg" alt="" width="20" height="23"/></div>
-                        <div class="text-weight">23 Mo</div>
-                    </div>
-                    
-                    <div class="wrapper-desc">
-                    	<div class="icon-desc"><img src="/img/icon-desc.svg" alt="" width="24" height="24"/></div>
-                        <div class="text-desc">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </div>
-                    </div>
-                    
-                    <div class="wrapper-download">
-                    	<div class="icon-download"><img src="/img/icon-download.svg" alt="" width="19" height="26"/></div>
-                        <div class="text-download"><a href="#"><b>Download</b></a></div>
-                    </div>
-                    
-                    <div class="wrapper-morefrom">
-                    	<div class="text-morefrom">More from .psd</div>
-                        <div class="image-morefrom">
-                        	<a href="#"><div class="image-morefrom-1"><img src="/img/psd-1.jpg" alt="" width="430" height="330"/></div></a>
-                            <a href="#"><div class="image-morefrom-2"><img src="/img/psd-2.jpg" alt="" width="430" height="330"/></div></a>
-                            <a href="#"><div class="image-morefrom-3"><img src="/img/psd-3.jpg" alt="" width="430" height="330"/></div></a>
-                            <a href="#"><div class="image-morefrom-4"><img src="/img/psd-6.jpg" alt="" width="430" height="330"/></div></a>
-                        </div>
-                        <a href="/teambuilding_list/index">팀 목록으로 돌아가기</a>
-                    </div>
-                    
-                </div>
-                
-                <hr>
-                  <%= form_tag("/teambuilding_choose/replypost", method: "post", remote: true) do %>
-                  <label for="exampleInputEmail1">이 아이디어에 대해 자유롭게 의견을 남겨주세요!!</label>
-                  <input type="text" class="form-control" id="reply_post" name="reply_post" placeholder="피드백, 질문하고싶은 점, 참여의사, 기타 다양한 의견들을 남겨주세요^^">
-                  <%= submit_tag("프로젝트 매니저에게 전송하기", id:"reply_submit") %>
+        <div class="wrapper-text-description">
+          <% if Team.find(params[:id].to_i).leader == current_user.id %><!-- 팀장일 경우 -->
+            <button class="btn btn-danger-outline waves-effect btn-size" onclick="location.href='/teambuilding_create/delete/<%= params[:id] %>'">삭제</button>
+            <button class="btn btn-warning-outline waves-effect btn-size" onclick="location.href='/teambuilding_create/update/<%= params[:id] %>'">수정</button>
+          <% else %><!-- 팀원으로 지원하는 경우 -->
+            <%= form_tag("/teambuilding_create/apply/#{params[:id]}", method: "POST") do %>
+              <button class="btn btn-primary-outline waves-effect btn-size" type="submit">가입</button>
+            <% end %>
+          <% end %>
+            
+        	<div class="wrapper-view">
+          	<div class="icon-view"><img src="/img/icon-eye.svg" alt="" width="24" height="16"/></div>
+            <div class="text-view">2,451 views</div>
+          </div>
+        
+        	<div class="wrapper-file">
+          	<div class="icon-file"><img src="/img/icon-psdfile.svg" alt="" width="21" height="21"/></div>
+            <div class="text-file">Photoshop</div>
+          </div>
+            
+          <div class="wrapper-weight">
+          	<div class="icon-weight"><img src="/img/icon-weight.svg" alt="" width="20" height="23"/></div>
+            <div class="text-weight">23 Mo</div>
+          </div>
+            
+          <div class="wrapper-desc">
+          	<div class="icon-desc"><img src="/img/icon-desc.svg" alt="" width="24" height="24"/></div>
+            <div class="text-desc">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </div>
+          </div>
+            
+          <div class="wrapper-download">
+          	<div class="icon-download"><img src="/img/icon-download.svg" alt="" width="19" height="26"/></div>
+            <div class="text-download"><a href="#"><b>Download</b></a></div>
+          </div>
+            
+          <div class="wrapper-morefrom">
+          	<div class="text-morefrom">More from .psd</div>
+            <div class="image-morefrom">
+            	<a href="#"><div class="image-morefrom-1"><img src="/img/psd-1.jpg" alt="" width="430" height="330"/></div></a>
+              <a href="#"><div class="image-morefrom-2"><img src="/img/psd-2.jpg" alt="" width="430" height="330"/></div></a>
+              <a href="#"><div class="image-morefrom-3"><img src="/img/psd-3.jpg" alt="" width="430" height="330"/></div></a>
+              <a href="#"><div class="image-morefrom-4"><img src="/img/psd-6.jpg" alt="" width="430" height="330"/></div></a>
+            </div>
+            <a href="/teambuilding_list/index">팀 목록으로 돌아가기</a>
+          </div>
+        
+        </div>
+    
+        <%#= form_tag(teambuilding_choose_replypost_path, method: "post", remote: true) do %>
+        <%#= form_tag("/teambuilding_choose/replypost/#{params[:id]}", method: "post", remote: true) do %>
+        <%= form_tag(teambuilding_choose_replypost_path(team_id: params[:id]), method: "post", remote: true) do %>
+          <input type="text" class="form-control" id="reply_post" name="reply_post" placeholder="피드백, 질문하고싶은 점, 참여의사, 기타 다양한 의견들을 남겨주세요^^">
+          <%= submit_tag("프로젝트 매니저에게 전송하기", id:"reply_submit") %>
+        <% end %>
+      
+      	<div class="post_list">
+      	  <% @team_post.each do |p| %>
+            <div class="post-reply">
+              <a class="name-reply-post" href="/mypage/#" id="replypostemail"><%= p.user.email %></a>
+              <div class="time-reply-post" id="replyposttime"><%= p.team_post %></div>
+              <div class="text-reply-post" id="replypostcontent">
+                <%= p.created_at %> &nbsp;
+                <a href="/teambuilding_choose/destroy/<%= p.id %>">[삭제하기]</a> 
+                <br/><br/>
+                <%= form_tag(teambuilding_choose_replyreply_path(post_id: p.id), method: "post", remote: true) do %>
+                  <input type="text" class="form-control" name="reply_reply" placeholder="답글달기!">
+                  <%= submit_tag("댓글을 단 사람에게 전송하기") %>
                 <% end %>
-                
-                	<div class="post-reply">
-                    	<div class="image-reply-post"></div>
-                    	<div class="name-reply-post">Igor vlademir</div>
-                    	<div class="text-reply-post">Awesome mockup, i like it very much ! It will help me for my website i was looking for since few days. Thank you a lot.</div>
-                	</div>
-                    
-                  <div class="post-reply">
-                    	<div class="image-reply-post"></div>
-                    	<div class="name-reply-post">Nathan Shaw</div>
-                    	<div class="text-reply-post">Well done ! I like the way you did it. Awesome ! </div>
-                	</div>
-                
-                    <% @team_post.each do |p| %>
-                  <div class="post-reply">
-                        <a class="name-reply-post" href="/mypage/#" id="replypostemail"><%= p.user.email %></a>
-                        <div class="time-reply-post" id="replyposttime"><%= p.created_at %></div>
-                        <div class="text-reply-post" id="replypostcontent"><%= p.team_post %> <a href="/teambuilding_choose/destroy/<%= p.id %>">[삭제하기]</a> 
-                
-                            <a href="#">[답글달기]</a>
-                            <%= form_tag("/teambuilding_choose/replyreply", method: "post", remote: true) do %>
-                              <input type="text" class="form-control" name="reply_reply" placeholder="답글달기!">
-                              <input type="hidden" value="<%= p.id %>" name="reply_post_id">
-                              <%= submit_tag("댓글을 단 사람에게 전송하기") %>
-                            <% end %>
-                         </div>
-    
-                         
-                         
-                            <% p.team_post_replies.each do |s| %>
-                                <div class="reply-reply-post"> <%= s.user.email %> </div>
-                                <div class="reply-reply-post"> <%= s.team_post_reply %> </div>
-                                <div class="reply-reply-post"> <%= s.created_at %> </div>
-                            <% end %>
-                        <hr>
-                        
-                  </div>
-                    <% end %>
-			</div>	
-		</div>
-   </div>      
-</div>
-
-<!-- JQuery -->
-<script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
-
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="/js/tether.min.js"></script>
-
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="/js/mdb.min.js"></script>
+              </div>
+              
+              <% p.team_post_replies.each do |s| %>
+                <div class="reply-reply-post">
+                  <%= s.team_post_reply %> <br/><br/>
+                  <%= s.user.email %> &nbsp; <%= s.created_at %> &nbsp;
+                  <a href="#">[삭제하기]</a>  
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+      	</div>
+			</div> <!-- work -->
+		</div> <!-- container object -->
+  </div> <!-- wrapper-container -->
+</div> <!-- container -->
 
 
-<script>
-$('#reply_submit').on("click", $("#button"), function(event){
-  event.preventDefault;
-  $.ajax({
-    
-    method: "POST",
-    url: "/teambuilding_choose/replypost",
-    data: { reply_post: $('#reply_post').val},
-    dataType: 'json',
-    
-    success: function(data){
-      console.log("dksjf");
-            $('#reply_post').val("");
-
-            $('#replypostemail').append(data.keye);
-            $('#replypostcontent').append(data.keyc);
-            $('#replyposttime').append(data.keyt);
-    },
-    error: function(data){
-      console.log('wow');
-
-    }
-  });
-});
-</script>
+<!--<div class="post-reply">-->
+<!--	<div class="image-reply-post"></div>-->
+<!--	<div class="name-reply-post">Igor vlademir</div>-->
+<!--	<div class="text-reply-post">Awesome mockup, i like it very much ! It will help me for my website i was looking for since few days. Thank you a lot.</div>-->
+<!--</div>-->
+  
+<!--<div class="post-reply">-->
+<!--	<div class="image-reply-post"></div>-->
+<!--	<div class="name-reply-post">Nathan Shaw</div>-->
+<!--	<div class="text-reply-post">Well done ! I like the way you did it. Awesome ! </div>-->
+<!--</div>-->
