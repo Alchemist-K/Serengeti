@@ -25,10 +25,10 @@
 
   </head>
   <% if params[:controller] == 'home' %>
-    <body id="index_page" style="margin-top:88px">
-  <% else %>
-    <body style="margin-top:88px">
-  <% end %>
+    <body id="index_page" style="margin-top:65px">
+    <% else %>
+      <body style="margin-top:65px">
+      <% end %>
 
       <!--Navbar-->
       <nav id="index_nav" class="navbar navbar-dark navbar-fixed-top scrolling-navbar">
@@ -52,6 +52,23 @@
               <li class="nav-item">
               <a class="nav-link <% if params[:controller] == 'mypage' %>active<% end %>" href="/mypage/index">My Page</a>
               </li>
+              <li class="nav-item right">
+              <% if current_user.name.nil?%>
+                <a class="nav-link nav_name"> NAME? </a>
+              <% else %>
+                <a class="nav-link nav_name" > <%= current_user.name%></a>
+              <% end %>
+              </li>
+              <li class="nav-item right">
+              <%= link_to '로그아웃', destroy_user_session_path, method: 'DELETE', class:"nav-link", style: "font-weight:bold; color:white;"  %>
+              </li>
+              <li class="nav-item right" style="margin-left:10rem;">
+              <%= link_to '회원정보 수정', edit_user_registration_path, class: "nav-link", style: "font-weight:bold; color:white;" %>
+              </li>
+            <% else %>
+              <li class="nav-item right">
+              <%= link_to '로그인하기', new_user_session_path, class: "nav-link", style: "float:right; font-weight:bold; color:white;"  %>
+              </li>
             <% end %>
           </ul>
 
@@ -61,14 +78,6 @@
             <!--</form>-->
 
         </div>
-
-        <% unless user_signed_in? %>
-          <%= link_to '로그인하기', new_user_session_path, class: "nav-link", style: "float:right; font-weight:bold; color:white;"  %>
-        <% else %>
-          <%= link_to '로그아웃', destroy_user_session_path, method: 'DELETE', style: "float:right; font-weight:bold; color:white;"  %>
-          <%= link_to '회원정보 수정', edit_user_registration_path, class: "nav-link", style: "float:right; margin-right: 1.5vw; font-weight:bold; color:white;" %>
-          <p class="nav-link" style="float:right; margin-bottom:0px; margin-right: 1.5vw; font-weight:bold; color:white;"> <%= current_user.email %></p>
-        <% end %>
 
         <!--/.Navbar-->       
         </nav>
@@ -88,18 +97,18 @@
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="/js/mdb.min.js"></script>
 
-      <footer>
-      <!--Copyright-->
-      <div class="footer-copyright">
-        <div class="container-fluid" style="padding:2.5rem;background-color:darkgrey;">
-          © 2015 Copyright: <a href="http://www.serengeti.com"> serengeti.com </a> <br>
-          Made By <strong>갓정건, 갓동욱, 갓현민, 갓현영, 갓동민, 갓승환, 갓경도 </strong> from SNU Likelion 4th <br>
-          picture by National Geography
+        <footer>
+        <!--Copyright-->
+        <div class="footer-copyright">
+          <div class="container-fluid" style="padding:2.5rem;background-color:darkgrey;">
+            © 2015 Copyright: <a href="http://www.serengeti.com"> serengeti.com </a> <br>
+            Made By <strong>갓정건, 갓동욱, 갓현민, 갓현영, 갓동민, 갓승환, 갓경도 </strong> from SNU Likelion 4th <br>
+            picture by National Geography
+          </div>
         </div>
-      </div>
-      <!--/.Copyright-->
+        <!--/.Copyright-->
 
-      </footer>
-      <!--/.Footer-->
-    </body>
+        </footer>
+        <!--/.Footer-->
+      </body>
     </html>
