@@ -8,6 +8,7 @@ class CreateTeams < ActiveRecord::Migration
       t.integer   :number       # 팀 멤버 수
       t.string    :picture      # 팀 그림
       t.integer   :leader       # 팀 리더
+      t.text      :tags         # 팀 분류 태그
       
       # 삭제 시, 실제로 삭제하는 것이 아닌 숨겨놓기 위한 기능
       t.boolean   :published, default: true
