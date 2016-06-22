@@ -5,22 +5,13 @@
   <div id="wrapper-container" style="margin-top: 120px;">
   
     <div class="container object">
-    
       <div class="work">
         <%= form_tag("/teambuilding_create/create_process", method: "POST", multipart: true) do%>
-        	<figure class="white">
+          <figure class="white_teambuilding">
           	<input type="button" id="file_upload_button"/>
           	<input type="file" name="picture" id="file_upload"/>
-            <div id="wrapper-part-info">
-              <div class="part-info-image">
-                <img src="/img/mockup-1.jpg" alt="" width="628" height="437"/>
-                <img src="/img/mockup-2.jpg" alt="" width="628" height="437"/>
-                <img src="/img/mockup-3.jpg" alt="" width="628" height="437"/>
-              </div>
-            </div>
-          </figure>	
-
-          <div class="wrapper-text-description side-info">
+          </figure>
+          <div class="wrapper-text-description side-info" sytle="margin-top:3rem;">
             
           	<input type="text" id="team_name" name="name"/>
           	<label for="team_name">Team Name</label>
@@ -71,7 +62,6 @@
 		</div>
   </div>      
 </div> <!-- container -->
-
 <script>
   $(document).ready(function(){
     $('#tags button').click(function(e) {

@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   
   
   get 'mypage/member' => 'mypage#member'
+  get 'mypage/myinfo' => "mypage#myinfo"
   get 'admin/index'
   
   # The priority is based upon order of creation: first created -> highest priority.
