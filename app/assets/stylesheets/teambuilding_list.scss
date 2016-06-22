@@ -2,8 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body,html{
-	padding:0;margin:0;
+.btn-team-create {
+	position: relative;
+	left: 50%;
+	height: 80px;
+	width: 250px;
 }
 
 #wrapper-container{
