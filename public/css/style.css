@@ -1,5 +1,11 @@
 /* TEMPLATE STYLES */
 
+/* Team Building Create */
+#file_upload_button,
+#file_upload {
+  width: 50vw;
+  height: 50vw;
+}
 
 /* Necessary for full page carousel*/
 
@@ -63,6 +69,11 @@ footer.page-footer {
 }
 .white {
   width: 100%!important
+}
+
+.white_teambuilding {
+  width: 50vw!important
+  height: 50vw
 }
 .carousel-item:nth-child(3) {
     background-image: url("http://mdbootstrap.com/images/regular/nature/img%20(3).jpg");
