@@ -57,6 +57,13 @@ class NoticeController < ApplicationController
     end
   end
   
+  #댓글 지우기
+  def reply_delete
+    one_delete = NoticeReply.find(params[:notice_reply_id])
+    one_delete.delete
+    @notice_reply = NoticeReply.where(notice_id: params[:notice_id])
+  end
+  
   def require_admin
     if user_signed_in? == false
       flash[:error] = "관리자 권한이 필요합니다."

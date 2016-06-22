@@ -1,4 +1,5 @@
 <div class="container", style="margin-top:100px">
+  <!--공지사항 카드 -->
   <div class="jumbotron">
     
       <!-- 공지 사항 -->
@@ -27,26 +28,32 @@
       </p>
       </div>
   
-    <!-- 댓글 표시 창-->
+    <!-- 댓글 표시 창 _replylist.html.erb에 적용할 경우 @notice.notice_replies =>notice_reply 으로 표현바꿔야 함-->
       <div id ="reply_place">
         <div  class="col-xs-12">
           <h2 class="heading">Comments <span class="label blue"><%= @notice.notice_replies.count %></span></h2>
           <hr>
         </div>
-        
-        
         <% @notice.notice_replies.each do |r| %>
           <hr>
           <div class="row">
             <div class="col-xs-10">
-                <h3><%= r.user.name %></h3>
+              <strong>
+                <%= r.id %>.
+                <%= r.user.name %>
+              </strong>
             </div>
             <div class="card-data col-xs-2">
               <i class="fa fa-clock-o"></i> <%= r.get_time %>
             </div>
                 
             <div class="col-xs-12">
-            <p><%= r.content %></p>
+              <%= r.content %>
+                <% if r.user.id == current_user.id || current_user.admin? %>
+                  <%= link_to(notice_reply_delete_path(notice_reply_id: r.id, notice_id: params[:post_id] ), method: "post", remote: true) do %>
+                    삭제
+                  <% end %>
+                <% end %>
             </div>
           </div>
         <% end %>
@@ -63,4 +70,3 @@
         
   </div>
 </div>
-
