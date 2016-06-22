@@ -34,7 +34,16 @@
               <h6 style="margin-top:10px;">Number of member</h6>
               <div class="text-view"><%= @each_team.number %></div>
             </div>
-
+            
+            <div class="wrapper-view" style="height:70px;">
+              <h6 style="margin-top:10px;">Tags</h6>
+              <% for i in 0..2 %>
+                <% unless @each_team.customTags[i].nil? %>
+                  <div class="text-view"><%= @each_team.customTags[i] %></div>
+                <% end %>
+              <% end %>
+            </div>
+            
             <div class="wrapper-morefrom">
               <div class="image-morefrom">
                 <a href="#"><div class="image-morefrom-1"><img src="/img/psd-1.jpg" alt="" width="430" height="330"/></div></a>

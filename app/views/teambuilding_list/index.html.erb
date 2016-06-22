@@ -47,6 +47,7 @@
   <div class="container" style="margin-top: 3rem;" id="arrivelist">
     <div class="row">
       <div class="col-md-6 col-xs-12" style="text-align:center; margin-bottom: 3rem;"><strong><h3 class="card-text">태그로 찾기</h3></strong><hr>
+        <%= link_to "건강", teambuilding_list_tag_search_path(input: "건강"), class: "btn btn-default", remote: true %>
         <button type="button" class="btn btn-default">건강</button>
         <button type="button" class="btn btn-default">금융</button>
         <button type="button" class="btn btn-default">교육 및 취업</button>
@@ -73,7 +74,7 @@
   </div>
 
   <!--<button class="btn-team-create btn btn-success" style="margin-left:-125px;" onclick="location.href='/teambuilding_create/create'">팀 만들기</button>-->
-  <div class="container">
+  <div id="list_box" class="container">
     <section class="work" style="margin-top: 20px;">
     <% @teams.each do |t| %>
       <div class="col-xs-12 col-md-3">
