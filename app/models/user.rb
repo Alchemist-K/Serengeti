@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :team_post_replies
   has_many :team_posts
+  has_many :notice_replies
   
   has_many :teambuilds
   has_many :teams, through: :teambuilds

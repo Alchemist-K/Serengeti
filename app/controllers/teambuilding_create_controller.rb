@@ -21,10 +21,24 @@ class TeambuildingCreateController < ApplicationController
                   picture: params[:picture],
                   leader: current_user.id
                 )
-    new_team.tags << params[:tag]
+    new_team.tags << params[:tag1]
+    new_team.tags << params[:tag2]
+    new_team.tags << params[:tag3]
+    
+    custom_tag = Array.new
+    custom_tag[0] = params[:custom_tag1]
+    custom_tag[1] = params[:custom_tag2]
+    custom_tag[2] = params[:custom_tag3]
+    
+    for i in 0..2 do
+      unless custom_tag[i].nil?
+        new_team.customTags << custom_tag[i]
+      end
+    end
+    
     new_team.save
     
-    redirect_to "/teambuilding_list/index"
+    redirect_to "/teambuilding_choose/#{new_team.id}"
   end
   
   def delete

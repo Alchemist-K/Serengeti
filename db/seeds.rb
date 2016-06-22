@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(email: "admin@snu.ac.kr", password:"12341234", password_confirmation:"12341234", admin: true, name: 'kkd')
+User.create(email: "admin@snu.ac.kr", password:"12341234", password_confirmation:"12341234", admin: true, name: '관리자')
 User.create(email: "user1@snu.ac.kr", password:"12341234", password_confirmation:"12341234", name: "임정건")
 User.create(email: "user2@snu.ac.kr", password:"12341234", password_confirmation:"12341234", name: '이재성')
 User.create(email: "user3@snu.ac.kr", password:"12341234", password_confirmation:"12341234")
@@ -27,3 +27,6 @@ Teambuild.create(user_id: 2, team_id: 1, status: 0)
 Teambuild.create(user_id: 3, team_id: 1, status: 0)
 Teambuild.create(user_id: 4, team_id: 1, status: 1)
 Teambuild.create(user_id: 5, team_id: 1, status: -1)
+
+Notice.create(content: "공지 예시", title: "세렝게티에 오신걸 환영합니다.")
+Notice.create(content: "공지 예시 예압", title: "세렝게티에 오신걸 환영합니다.22")

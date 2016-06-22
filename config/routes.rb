@@ -37,18 +37,21 @@ Rails.application.routes.draw do
 
   
   post 'notice/write'
-  
+
+  get 'teambuilding_list/tag_search'
  
-  
   get 'notice/write_input'
   get 'notice/read/:post_id' => 'notice#read'
   get 'notice/delete/:post_id' => 'notice#delete'
   get 'notice/update_view/:post_id' => 'notice#update_view'
   post 'notice/update/:post_id' => 'notice#update'
+  post 'notice/reply_write'
+  post 'notice/reply_delete'
 
   
   
   get 'mypage/member' => 'mypage#member'
+  get 'mypage/myinfo' => "mypage#myinfo"
   get 'admin/index'
   
   # The priority is based upon order of creation: first created -> highest priority.

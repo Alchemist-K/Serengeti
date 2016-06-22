@@ -1,4 +1,17 @@
 
+    <!-- name이 없을 때, 팀빌딩을 할 수 없으니 정보를 수정하라는 알람  -->  
+    <% if user_signed_in? %>
+      <% if current_user.name.nil? %>
+        <div class="card card-info text-xs-center" style="margin-bottom:0">
+            <div class="card-block">
+              <p class="white-text">팀빌딩을 위해 회원정보를 추가해주세요.
+              <a href="/mypage/myinfo">추가하기</a></p>
+            </div>
+        </div>
+      <% end %>
+    <% end %>
+
+
   <!--Carousel Wrapper-->
   <div id="carousel-example-1" class="carousel slide carousel-fade" data-ride="carousel" data-interval="false">
     <!--Indicators-->
@@ -8,10 +21,10 @@
       <li data-target="#carousel-example-1" data-slide-to="1"></li>
     </ol>
     <!--/.Indicators-->
-
+  
     <!--Slides-->
     <div class="carousel-inner" role="listbox">
-
+    
       <!--First slide-->
       <div class="carousel-item active">
         <!--Mask-->
@@ -25,9 +38,9 @@
               </li>
               <li>
               <% unless user_signed_in? %>
-                <a target="_blank" href="/sign_up" class="btn btn-primary btn-lg flex-item">함께하기</a>
+                <a href="/sign_up" class="btn btn-primary btn-lg flex-item">함께하기</a>
               <% else %>
-                <a target="_blank" href="/teambuilding_list/index" class="btn btn-primary btn-lg flex-item">함께하기</a>
+                <a href="/teambuilding_list/index" class="btn btn-primary btn-lg flex-item">함께하기</a>
               <% end %>
               </li>
             </ul>
@@ -50,7 +63,7 @@
               <p>오늘 세렝게티에 함께하는 팀</p>
               </li>
               <li>
-              <a target="_blank" href="/teambuilding_list/index" class="btn btn-primary btn-lg">팀에 참여하기</a>
+              <a href="/teambuilding_list/index" class="btn btn-primary btn-lg">팀에 참여하기</a>
               </li>
             </ul>
           </div>
@@ -72,7 +85,7 @@
               <p>Let's make the world work better</p>
               </li>
               <li>
-              <a target="_blank" href="http://mdbootstrap.com/forums/forum/support/" class="btn btn-default btn-lg">How to use Serengeti?</a>
+              <a href="http://mdbootstrap.com/forums/forum/support/" class="btn btn-default btn-lg">How to use Serengeti?</a>
               </li>
             </ul>
           </div>

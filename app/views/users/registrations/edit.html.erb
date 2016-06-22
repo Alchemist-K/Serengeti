@@ -1,59 +1,96 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<!--Main layout-->
+  <div class="container">
+    <div class="row"  style="margin-top:30px;">
+      <div class="col-md-8">
+        <!--Card-->
+        <div class="card">
+          <!--Card content-->
+          <div class="card-block">
+            <!--Title-->
+            <h3 class="card-title" style="text-weight:bold;"><strong><%= resource_name.to_s.humanize %>의 개인정보 수정</strong></h3>
+             <div class="form-group">
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                <%= devise_error_messages! %>
+            
+                <div class="field">
+                  <%= f.label :name  %>
+                  <%= f.text_field :name, autofocus: true, placeholder: "이름", value: current_user.name, class: "card-text" %>
+                </div><br>
+                <div class="field">
+                  <%= f.label :university  %>
+                  <%= f.text_field :university, autofocus: true, placeholder: "ex. 서울대학교", value: current_user.university %>
+                </div><br>
+                <div class="field">
+                  <%= f.label :major  %>
+                  <%= f.text_field :major, autofocus: true, placeholder: "ex. 동물생명공학", value: current_user.major %>
+                </div><br>
+                <div class="field">
+                  <label for="exampleInputName2">관심분야</label>
+                  <%= f.text_field :interest1, autofocus: true, placeholder: "ex. 강하늘", value: current_user.interest1 %>
+                  <%= f.text_field :interest2, autofocus: true, placeholder: "ex. 여행", value: current_user.interest2 %>
+                  <%= f.text_field :interest3, autofocus: true, placeholder: "ex. 멋쟁이 사자처럼", value: current_user.interest3%>
+                </div><br>
+                 <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <% end %>
+                <div class="field">
+                  <label for="exampleInputName2">새로운 비밀번호(비밀번호를 바꾸고 싶지 않다면 빈 칸으로 남겨주세요!)</label>
+                  <%= f.label :password %>
+                  <%= f.password_field :password, autocomplete: "off" %>
+                </div><br>
+                <div class="field">
+                  <label for="exampleInputName2">새로운 비밀번호 확인</label>
+                  <%= f.label :password_confirmation %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                </div><br>
+                <div class="field">
+                  <label for="exampleInputName2">현재 비밀번호(개인정보를 입력하려면 최종적으로 현재 비밀번호를 입력해야 합니다!)</label>
+                  <%= f.label :current_password %>
+                  <%= f.password_field :current_password, autocomplete: "off" %>
+                </div><br>
+                <div class="actions">
+                  <%= f.submit "수정하기" %>
+                </div>
+              <% end %>
+            </div>
+           </div>
+          <!--/.Card content-->
+        </div>
+        <!--/.Card-->
+      </div>
+      
+        <!--Sidebar-->
+                <div class="col-md-4">
+                    <div class="widget-wrapper">
+                        <h4><strong>MY PAGE</strong></h4>
+                        <div class="list-group">
+                            <a href="/mypage/index" class="list-group-item">As a Team Leader</a>
+                            <a href="/mypage/member" class="list-group-item">As a Team member</a>
+                            <a href="#" class="list-group-item active">나의 정보</a>
+                        </div>
+                    </div>
+                <br>
 
 
-<div class="form-group">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= devise_error_messages! %>
+                    <div class="widget-wrapper">
+                        <div class="card">
+                            <div class="card-block">
+                                <p><strong>여러분의 피드백과 의견을 말해주세요!</strong></p>
+                                <p>개선되었으면 하는 점, 추가했으면 하는 점 등을 <br>모두 말씀해주세요!
+                                   세렝게티는 항상 여러분의 <br>의견에 귀기울이고 있습니다.</p>
+                                <div class="md-form">
+                                    <i class="fa fa-commenting-o"></i>
+                                    <input type="text" id="form2" class="form-control" placeholder="">
+                                    <label for="form2"></label>
+                                </div>
+                                <button class="btn btn-primary">전송하기</button>
 
-    <div class="field">
-      <%= f.label :name  %><br />
-      <%= f.text_field :name, autofocus: true, placeholder: "이름", value: current_user.name %>
-    </div>
-    <div class="field">
-      <%= f.label :university  %><br />
-      <%= f.text_field :university, autofocus: true, placeholder: "ex.서울대학교", value: current_user.university %>
-    </div>
-  
-    
-    <div class="field">
-      <%= f.label :major  %><br />
-      <%= f.text_field :major, autofocus: true, placeholder: "ex.동물생명공학", value: current_user.major %>
-    </div>
+                            </div>
+                        </div>
+                    </div>
 
-    
-    <div class="field">
-      <label for="exampleInputName2">관심분야</label>
-      <%= f.text_field :interest1, autofocus: true, placeholder: "ex.강하늘", value: current_user.interest1 %>
-      <%= f.text_field :interest2, autofocus: true, placeholder: "ex.공연예술", value: current_user.interest2 %>
-      <%= f.text_field :interest3, autofocus: true, placeholder: "ex.멋쟁이 사자처럼", value: current_user.interest3%>
-    </div>
-  
-  
-  
-  
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
-  
-    <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "off" %>
-    </div>
-  
-    <div class="actions">
-      <%= f.submit "Update" %>
-    </div>
-  <% end %>
-</div>
+                </div>
+                <!--/.Sidebar-->
 
-<%= link_to "Back", :back %>
+    </div>
+  </div>

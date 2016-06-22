@@ -24,7 +24,16 @@
           	
           	<input type="text" name="number"/>
           	<label for="team_number">Number</label>
-              
+            
+            <input type="text" name="custom_tag1"/>
+          	<label for="team_number">Tag1</label>
+          	
+          	<input type="text" name="custom_tag2"/>
+          	<label for="team_number">Tag2</label>
+          	
+          	<input type="text" name="custom_tag3"/>
+          	<label for="team_number">Tag3</label>
+          	
             <div class="wrapper-morefrom">
               <div class="image-morefrom">
             	  <a href="#"><div class="image-morefrom-1"><img src="/img/psd-1.jpg" alt="" width="430" height="330"/></div></a>
@@ -33,22 +42,27 @@
                 <a href="#"><div class="image-morefrom-4"><img src="/img/psd-6.jpg" alt="" width="430" height="330"/></div></a>
               </div>
             </div>
-          <input type="hidden" id="tag-input" name="tag" value=""></input>  
-           <button type="submit" id="input-submit" class="btn btn-secondary" style="width:100%">Create</button>
+          
+          <input type="hidden" id="tag-input1" name="tag1" value=""></input>
+          <input type="hidden" id="tag-input2" name="tag2" value=""></input>
+          <input type="hidden" id="tag-input3" name="tag3" value=""></input>
+          
+          <button type="submit" id="input-submit" class="btn btn-secondary">Submit</button>
             
           </div> <!-- wrapper-text-description -->
           
-           <textarea type="text" id="input-content" name="content" class="md-textarea" col=40 placeholder="팀 아이디어에 대해 설명해 주세요."></textarea>
-           <div id="tags" class="row">
+          <textarea type="text" id="input-content" name="content" class="md-textarea" col=40 placeholder="팀 아이디어에 대해 설명해 주세요."></textarea>
+          
+          <div id="tags" class="row">
             <button type="button" id="tag1" class="btn btn-default">건강</button>
             <button type="button" id="tag2" class="btn btn-default">금융</button>
-            <button type="button" id="tag3" class="btn btn-default">교육 및 취업</button>
-            <button type="button" id="tag4" class="btn btn-default">라이프스타일 & 일상생활</button>
-            <button type="button" id="tag5" class="btn btn-default">미디어</button> <br>
-            <button type="button" id="tag6" class="btn btn-default">사회공헌</button>
-            <button type="button" id="tag7" class="btn btn-default">외국어</button>
-            <button type="button" id="tag8" class="btn btn-default">예술(음악, 디자인 등)</button>
-            <button type="button" id="tag9" class="btn btn-default">컨텐츠</button>
+            <button type="button" id="tag3" class="btn btn-default">교육</button>
+            <button type="button" id="tag4" class="btn btn-default">일상</button>
+            <button type="button" id="tag5" class="btn btn-default">사회공헌</button><br>
+            <button type="button" id="tag6" class="btn btn-default">문화</button>
+            <button type="button" id="tag7" class="btn btn-default">여행</button>
+            <button type="button" id="tag8" class="btn btn-default">유통</button>
+            <button type="button" id="tag9" class="btn btn-default">환경</button>
             <button type="button" id="tag10" class="btn btn-default">기타</button>
           </div>
         <% end %>
@@ -60,8 +74,30 @@
 <script>
   $(document).ready(function(){
     $('#tags button').click(function(e) {
-    var txt = $(e.target).text();
-    $('#tag-input').attr('value', txt);
+      var txt = $(e.target).text();
+
+      if( $(e.target).attr("class").split(" ")[3] == "btn-warning") {
+
+        for(var i=1; i<4; i++) {
+          if( $('#tag-input'+i).val() == txt ) {
+            $('#tag-input'+i).val("");
+            $(e.target).removeClass("btn-warning").addClass("btn-default");
+          }
+        }
+      } else {
+        if( $('#tag-input1').val() == "" ) {
+          $('#tag-input1').attr('value', txt);
+          $(e.target).removeClass("btn-default").addClass("btn-warning");
+        } else if( $('#tag-input2').val() == "" ) {
+          $('#tag-input2').attr('value', txt);
+          $(e.target).removeClass("btn-default").addClass("btn-warning");
+        } else if( $('#tag-input3').val() == "") {
+          $('#tag-input3').attr('value', txt);
+          $(e.target).removeClass("btn-default").addClass("btn-warning");
+        } else {
+          alert("태그는 최대 3개까지 선택 가능합니다.");
+        }
+      }
     });
   });
 </script>

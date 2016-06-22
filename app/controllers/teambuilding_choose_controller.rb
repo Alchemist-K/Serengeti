@@ -37,9 +37,8 @@ class TeambuildingChooseController < ApplicationController
       replyreply=TeamPostReply.new
       replyreply.team_post_reply=params[:reply_reply]
       replyreply.user_id=current_user.id
-      replyreply.team_post_id=params[:reply_post_id]
+      replyreply.team_post_id=params[:post_id]
       replyreply.save
       
-      redirect_to :back
     end
 end
