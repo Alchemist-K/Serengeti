@@ -49,7 +49,7 @@
           
            <textarea type="text" id="input-content" name="content" class="md-textarea" col=40 placeholder="팀 아이디어에 대해 설명해 주세요."></textarea>
            <div class="row">
-            <button type="button" id="tag1" class="btn btn-default" onclick="getSelect(this);">건강</button>
+            <button type="button" id="tag1" class="btn btn-default" onclick="getSelect();">건강</button>
             <button type="button" id="tag2" class="btn btn-default">금융</button>
             <button type="button" id="tag3" class="btn btn-default">교육 및 취업</button>
             <button type="button" id="tag4" class="btn btn-default">라이프스타일 & 일상생활</button>
@@ -67,14 +67,8 @@
   </div>      
 </div> <!-- container -->
 <script>
-  function getSelect(button){
-    var tag_val = button.text();
-    console.log(tag_val);
-    $('#tag-input').attr('value', tag_val);
-    console.log($(this)[0].tagName);
-  }
-  /*
-  $(document).on("click", $("#tag6"), function(){
-    console.log($(this).attr("id"));
-  });*/
+  $(document).on("click", ".btn", function(e) {
+    var a = $(e.target).attr("id");
+    console.log(a);
+  });
 </script>
