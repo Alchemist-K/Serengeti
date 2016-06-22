@@ -1,26 +1,27 @@
 <body>
   <div class="container">
-  <div class="row">
-    <div class="col-lg-6" style="margin-top:20px;">
-      <!--Card-->
-      <div class="card">
-        <!--Card image-->
-        <div class="view overlay hm-white-slight">
-          <img src="/img/participate.jpg" class="img-fluid" alt="">
+    <div class="row">
+      <div class="col-lg-6" style="margin-top:20px;">
+        <!--Card-->
+        <div class="card">
+          <!--Card image-->
+          <div class="view overlay hm-white-slight">
+            <img src="/img/participate.jpg" class="img-fluid" alt="">
+          </div>
+          <!--/.Card image-->
+          <!--Card content-->
+          <div class="card-block" style="text-align:center;">
+            <!--Title-->
+            <h3 class="card-title" style="text-weight:bold;"><strong>Team List</strong></h3>
+            <!--Text-->
+            <p class="card-text">전국의 멋사 학생들이 만든 팀을 살펴보세요!<br> 그리고 그들과 함께 세상을 바꿔나가세요!</p>
+            <a href="#" class="btn btn-success" id="gotolist" style="align:center;"><strong>팀 목록</strong></a>
+          </div>
+          <!--/.Card content-->
         </div>
-        <!--/.Card image-->
-        <!--Card content-->
-        <div class="card-block" style="text-align:center;">
-          <!--Title-->
-          <h3 class="card-title" style="text-weight:bold;"><strong>Team List</strong></h3>
-          <!--Text-->
-          <p class="card-text">전국의 멋사 학생들이 만든 팀을 살펴보세요!<br> 그리고 그들과 함께 세상을 바꿔나가세요!</p>
-          <a href="#" class="btn btn-success" id="gotolist" style="align:center;"><strong>팀 목록</strong></a>
-        </div>
-        <!--/.Card content-->
+        <!--/.Card-->
       </div>
       <!--/.Card-->
-    </div>
     <div class="col-lg-6" style="margin-top:20px;">
       <!--Card-->
       <div class="card">
@@ -37,71 +38,69 @@
           <p class="card-text">세상을 바꿀 나만의 아이디어를 팀으로 만들고,<br>전국에서 당신과 함께 꿈을 이뤄갈 사람들을 찾아보세요!</p>
           <a href="#" class="btn btn-primary" onclick="location.href='/teambuilding_create/create'"><strong>아이디어 올리기</strong></a>
         </div>
-        <!--/.Card content-->
+        <!--/.Card-->
       </div>
-      <!--/.Card-->
     </div>
   </div>
 </div>
 
 
 
-
-<div class="container-fluid" style="margin-top: 170px;" id="arrivelist">
-  <div class="col-lg-6" style="text-align:center;"><strong><h3 class="card-text">태그로 찾기</h3></strong><hr>
-    <button type="button" class="btn btn-default">건강</button>
-    <button type="button" class="btn btn-default">금융</button>
-    <button type="button" class="btn btn-default">교육 및 취업</button>
-    <button type="button" class="btn btn-default">라이프스타일 & 일상생활</button>
-    <button type="button" class="btn btn-default">미디어</button> <br>
-    <button type="button" class="btn btn-default">사회공헌</button>
-    <button type="button" class="btn btn-default">외국어</button>
-    <button type="button" class="btn btn-default">예술(음악, 디자인 등)</button>
-    <button type="button" class="btn btn-default">컨텐츠</button>
-    <button type="button" class="btn btn-default">기타</button>
-  </div>
-  <div class="col-lg-6" style="text-align:center;"><strong><h3 class="card-text">다른 방법으로 찾기</h3></strong><hr>
-    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      시간 or 조회수
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenu4">
-      <a class="dropdown-item" href="#">가장 최근에 만들어진 팀</a>
-      <a class="dropdown-item" href="#">가장 나중에 만들어진 팀</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">조회수 최다 팀</a>
+  <div class="container-fluid" style="margin-top: 170px;" id="arrivelist">
+    <div class="col-lg-6" style="text-align:center;"><strong><h3 class="card-text">태그로 찾기</h3></strong><hr>
+      <button type="button" class="btn btn-default">건강</button>
+      <button type="button" class="btn btn-default">금융</button>
+      <button type="button" class="btn btn-default">교육 및 취업</button>
+      <button type="button" class="btn btn-default">라이프스타일 & 일상생활</button>
+      <button type="button" class="btn btn-default">미디어</button> <br>
+      <button type="button" class="btn btn-default">사회공헌</button>
+      <button type="button" class="btn btn-default">외국어</button>
+      <button type="button" class="btn btn-default">예술(음악, 디자인 등)</button>
+      <button type="button" class="btn btn-default">컨텐츠</button>
+      <button type="button" class="btn btn-default">기타</button>
     </div>
-  </div>
+    <div class="col-lg-6" style="text-align:center;"><strong><h3 class="card-text">다른 방법으로 찾기</h3></strong><hr>
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        시간 or 조회수
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu4">
+        <a class="dropdown-item" href="#">가장 최근에 만들어진 팀</a>
+        <a class="dropdown-item" href="#">가장 나중에 만들어진 팀</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">조회수 최다 팀</a>
+      </div>
+    </div>
 
-  <!--<button class="btn-team-create btn btn-success" style="margin-left:-125px;" onclick="location.href='/teambuilding_create/create'">팀 만들기</button>-->
+    <!--<button class="btn-team-create btn btn-success" style="margin-left:-125px;" onclick="location.href='/teambuilding_create/create'">팀 만들기</button>-->
 
-  <section class="work" style="margin-top: 20px;">
-  <% @teams.each do |t| %>
-    <figure class="white">
-    <a href="/teambuilding_choose/<%= t.id %>">
-      <% if t.picture != nil %>
-        <img src=<%= image_path "teamlist/#{t.picture}" %> alt="" />
-      <% else %>
-        <img src=<%= image_path "teamlist/14.png" %> alt="" />
-      <% end %>
-      <dl>
-        <dt><%= t.abstract %></dt>
-        <dd><%= t.content %></dd>
-        <br>
-        <dd>팀장 : <%= User.find(t.leader).email %></dd>
-        <% t.members.each do |u| %>
-          <dd><%= u.email %></dd>
+    <section class="work" style="margin-top: 20px;">
+    <% @teams.each do |t| %>
+      <figure class="white">
+      <a href="/teambuilding_choose/<%= t.id %>">
+        <% if t.picture != nil %>
+          <img src=<%= image_path "teamlist/#{t.picture}" %> alt="" />
+        <% else %>
+          <img src=<%= image_path "teamlist/14.png" %> alt="" />
         <% end %>
-        <dd>팀원 : <%= t.members.count %>명 / <%= t.number %>명</dd>
-      </dl>
-    </a>
-    <div id="wrapper-part-info">
-      <div class="part-info-image"><img src="<%= image_path "teamlist/icon-psd.svg" %>" alt="" width="28" height="28"/></div>
-      <div id="part-info">Wordpress theme</div>
-    </div>
-    </figure>
-  <% end %>
-  </section>
-</div>
+        <dl>
+          <dt><%= t.abstract %></dt>
+          <dd><%= t.content %></dd>
+          <br>
+          <dd>팀장 : <%= User.find(t.leader).email %></dd>
+          <% t.members.each do |u| %>
+            <dd><%= u.email %></dd>
+          <% end %>
+          <dd>팀원 : <%= t.members.count %>명 / <%= t.number %>명</dd>
+        </dl>
+      </a>
+      <div id="wrapper-part-info">
+        <div class="part-info-image"><img src="<%= image_path "teamlist/icon-psd.svg" %>" alt="" width="28" height="28"/></div>
+        <div id="part-info">Wordpress theme</div>
+      </div>
+      </figure>
+    <% end %>
+    </section>
+  </div>
 </body>
 
 <script>

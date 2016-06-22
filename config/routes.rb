@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'teambuilding_choose/:id' => 'teambuilding_choose#index'
   
   post 'teambuilding_choose/write'
+  post 'teambuilding_choose/replypost/:id' => 'teambuilding_choose#replypost'
   post 'teambuilding_choose/replypost'
   post 'teambuilding_choose/replyreply'
   post 'teambuilding_create/apply/:id' => 'teambuilding_create#apply'
@@ -48,6 +49,7 @@ Rails.application.routes.draw do
   
   
   get 'mypage/member' => 'mypage#member'
+  get 'mypage/myinfo' => "mypage#myinfo"
   get 'admin/index'
   
   # The priority is based upon order of creation: first created -> highest priority.
