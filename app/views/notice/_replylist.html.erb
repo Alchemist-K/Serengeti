@@ -1,0 +1,27 @@
+  <div  class="col-xs-12">
+    <h2 class="heading">Comments <span class="label blue"><%= notice_reply.count %></span></h2>
+  </div>
+  
+  <% notice_reply.each do |r| %>
+    <hr>
+    <div class="row">
+      <div class="col-xs-10">
+          <strong>
+            <%= r.id %>.
+            <%= r.user.name %>
+          </strong>
+      </div>
+      <div class="card-data col-xs-2">
+        <i class="fa fa-clock-o"></i> <%= r.get_time %>
+      </div>
+          
+      <div class="col-xs-12">
+        <%= r.content %>
+        <% if r.user.id == current_user.id || current_user.admin? %>
+          <%= link_to(notice_reply_delete_path(notice_reply_id: r.id, notice_id: params[:notice_id]), method: "post", remote: true) do %>
+            삭제
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>

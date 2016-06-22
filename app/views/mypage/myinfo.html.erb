@@ -1,0 +1,68 @@
+    <main>
+        <!--Main layout-->
+        <div class="container">
+            <div class="row"  style="margin-top:30px;">
+                <div class="col-md-8">
+        <!--Card-->
+        <div class="card">
+          <!--Card content-->
+          <div class="card-block">
+                <!--Main column-->
+                  <% @myinfo.each do |p| %>                   
+                    <ul class="list-group">
+                      <li class="list-group-item list-group-item-info"><strong>이름 :  <%= p.name %></strong></li>
+                      <li class="list-group-item list-group-item-warning"><strong>이메일 : <%= p.email %></strong></li>
+                      <li class="list-group-item list-group-item-info"><strong>학교 :  <%= p.university %></strong></li>
+                      <li class="list-group-item list-group-item-warning"><strong>전공 : <%= p.major %></strong></li>
+                      <li class="list-group-item list-group-item-info"><strong>취미 : <%= p.favor %></strong></li>
+                      <li class="list-group-item list-group-item-warning"><strong>관심사1 : <%= p.interest1 %></strong></li>
+                      <li class="list-group-item list-group-item-info"><strong>관심사2 : <%= p.interest2 %></strong></li>
+                      <li class="list-group-item list-group-item-warning"><strong>관심사3 : <%= p.interest3 %></strong></li>
+                    </ul>
+                    <% end %>
+                    <!--/.Post-->
+                    <hr>
+                    <button class="btn btn-warning" onclick="location.href='/users/edit'">개인정보 수정하기</button>
+             </div>
+          <!--/.Card content-->
+        </div>
+        <!--/.Card-->
+                </div>
+
+
+                <!--Sidebar-->
+                <div class="col-md-4">
+                    <div class="widget-wrapper">
+                        <h4><strong>MY PAGE</strong></h4>
+                        <div class="list-group">
+                            <a href="/mypage/index" class="list-group-item">As a Team Leader</a>
+                            <a href="/mypage/member" class="list-group-item">As a Team member</a>
+                            <a href="#" class="list-group-item active">나의 정보</a>
+                        </div>
+                    </div>
+                <br>
+
+
+                    <div class="widget-wrapper">
+                        <div class="card">
+                            <div class="card-block">
+                                <p><strong>여러분의 피드백과 의견을 말해주세요!</strong></p>
+                                <p>개선되었으면 하는 점, 추가했으면 하는 점 등을 <br>모두 말씀해주세요!
+                                   세렝게티는 항상 여러분의 <br>의견에 귀기울이고 있습니다.</p>
+                                <div class="md-form">
+                                    <i class="fa fa-commenting-o"></i>
+                                    <input type="text" id="form2" class="form-control" placeholder="">
+                                    <label for="form2"></label>
+                                </div>
+                                <button class="btn btn-primary">전송하기</button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--/.Sidebar-->
+            </div>
+        </div>
+        <!--/.Main layout-->
+    </main>
