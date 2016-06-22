@@ -4,6 +4,7 @@
 /* Necessary for full page carousel*/
 
 html,
+#index_page,
 .view {
     height: 100%;
 }
@@ -60,14 +61,19 @@ footer.page-footer {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+.white {
+  width: 100%!important
+}
 .carousel-item:nth-child(3) {
     background-image: url("http://mdbootstrap.com/images/regular/nature/img%20(3).jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+.white {
+  width: 100%!important;
 
+}
 /*Caption*/
 
 .flex-center {
@@ -82,3 +88,4 @@ footer.page-footer {
         margin-bottom: 1.5rem;
     }
 }
+
