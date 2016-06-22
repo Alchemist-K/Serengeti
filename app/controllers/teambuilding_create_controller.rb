@@ -21,6 +21,7 @@ class TeambuildingCreateController < ApplicationController
                   picture: params[:picture],
                   leader: current_user.id
                 )
+    new_team.tags << params[:tag]
     new_team.save
     
     redirect_to "/teambuilding_list/index"
