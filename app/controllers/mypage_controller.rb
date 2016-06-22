@@ -26,4 +26,8 @@ class MypageController < ApplicationController
       @appliedteam = User.find(current_user.id).teams.all
       
     end
+    
+    def myinfo
+        @myinfo = User.where(email: current_user.email).all
+    end
 end
