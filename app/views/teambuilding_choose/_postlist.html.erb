@@ -2,8 +2,8 @@
   <div class="post-reply">
     <a class="name-reply-post" href="/mypage/#" id="replypostemail"><%= p.user.email %></a>
     <div class="time-reply-post" id="replyposttime"><%= p.team_post %></div>
-    <div class="text-reply-post" id="replypostcontent">
       <%= p.created_at %> &nbsp;
+    <div class="text-reply-post" id="replypostcontent">
       <a href="/teambuilding_choose/destroy/<%= p.id %>">[삭제하기]</a> 
       <br/><br/>
       <%= form_tag(teambuilding_choose_replyreply_path(post_id: p.id), method: "post", remote: true) do %>
@@ -11,7 +11,7 @@
         <%= submit_tag("댓글을 단 사람에게 전송하기") %>
       <% end %>
     </div>
-    
+    <div class="reply_id">
     <% p.team_post_replies.each do |s| %>
       <div class="reply-reply-post">
         <%= s.team_post_reply %> <br/><br/>
@@ -19,5 +19,6 @@
         <a href="#">[삭제하기]</a>  
       </div>
     <% end %>
+    </div>
   </div>
 <% end %>
