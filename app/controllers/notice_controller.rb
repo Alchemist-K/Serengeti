@@ -48,10 +48,10 @@ class NoticeController < ApplicationController
   
   #댓글 달기
   def reply_write
-    reply_new = NoticeReply.new(content: params[:content], notice_id: params[:notice_id], 
-                                user_id: params[:user_id])
+    reply_new = NoticeReply.new(content: params[:reply], notice_id: params[:notice_id], 
+                                user_id: current_user.id)
     if reply_new.save
-      redirect_to :back
+      @notice_reply = NoticeReply.where(notice_id: params[:notice_id])
     else
       alert("No!")
     end

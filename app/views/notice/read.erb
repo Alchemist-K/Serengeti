@@ -2,10 +2,20 @@
   <div class="jumbotron">
     
       <!-- 공지 사항 -->
-      <h1 class="h1-responsive"><%= @notice.title %></h1>
-      <p class="lead"><%= simple_format(@notice.content) %></p>
-      <hr class="m-y-2">
-      <p><%= @notice.created_at %></p>
+      <!-- title -->
+      <div class="col-xs-10">
+        <h2 class="h1-responsive"><%= @notice.title %></h2>
+      </div>
+      <!-- time -->
+      <div class="col-xs-2">
+         <i class="fa fa-clock-o"></i> <%= @notice.get_time %>
+      </div>
+      <div class="col-xs-12">
+        <p class="lead"><%= simple_format(@notice.content) %></p>
+        <hr class="m-y-2">
+      </div>
+  
+      <div class="col-xs-12">
       <p class="lead">
           <a href="/notice/index"class="btn btn-primary btn-sm" role="button">목록으로</a>
           <% if user_signed_in? %>
@@ -15,47 +25,42 @@
             <% end %>
           <% end %>  
       </p>
-      
-      <!-- 댓글 창-->
-      <span class="label label-info">댓글란</span><br>
-      <% @notice.notice_replies.each do |r| %>
-      <%= r.content %><br>
+      </div>
+  
+    <!-- 댓글 표시 창-->
+      <div id ="reply_place">
+        <div  class="col-xs-12">
+          <h2 class="heading">Comments <span class="label blue"><%= @notice.notice_replies.count %></span></h2>
+          <hr>
+        </div>
+        
+        
+        <% @notice.notice_replies.each do |r| %>
+          <hr>
+          <div class="row">
+            <div class="col-xs-10">
+                <h3><%= r.user.name %></h3>
+            </div>
+            <div class="card-data col-xs-2">
+              <i class="fa fa-clock-o"></i> <%= r.get_time %>
+            </div>
+                
+            <div class="col-xs-12">
+            <p><%= r.content %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    
+    
+    <!-- 댓글 입력창 -->
+    <% if user_signed_in? && !current_user.name.nil? %>
+      <%= form_tag(notice_reply_write_path(notice_id: params[:post_id]), method: "post", remote: true) do %>
+        <%= text_field_tag(:reply, nil, placeholder: "내용", class: "form-control") %>
+        <button type="submit" class="btn btn-primary btn-sm reply_write">댓글달기</button>
       <% end %>
-      <div id ="reply_place"></div>
-      
-      <input type="text" class="form-control" id="reply">
-      <button type="submit" class="btn btn-primary btn-sm reply_write" value="<%=@notice.id %>">댓글달기</button>
-      
+    <% end %>
+        
   </div>
 </div>
 
-
-
-
-<script>
-$(document).ready(function(){
-  $(".reply_write").click(function(){
-    notice_id = this.value
-    content = $("#reply").val()
-    user_id = <%= current_user.id %>
-    alert(notice_id)
-    alert(content)
-    alert(user_id)
-    
-    $.ajax({
-      method: "POST",
-      url: "/notice/reply_write",
-      data: {content: content, user_id: user_id, notice_id: notice_id},
-    
-      success:function(){
-        $("#reply_place").append(content+"<br>")
-        $("#reply").val('')
-        },
-  
-      error:function(){
-        alert("저장이 완료되지않음!")
-      }
-    });
-  });
-});
-</script>
