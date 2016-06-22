@@ -1,7 +1,9 @@
 <div class="container", style="margin-top:100px">
   <div class="jumbotron">
+    
+      <!-- 공지 사항 -->
       <h1 class="h1-responsive"><%= @notice.title %></h1>
-      <p class="lead"><%= @notice.content %></p>
+      <p class="lead"><%= simple_format(@notice.content) %></p>
       <hr class="m-y-2">
       <p><%= @notice.created_at %></p>
       <p class="lead">
@@ -13,5 +15,47 @@
             <% end %>
           <% end %>  
       </p>
+      
+      <!-- 댓글 창-->
+      <span class="label label-info">댓글란</span><br>
+      <% @notice.notice_replies.each do |r| %>
+      <%= r.content %><br>
+      <% end %>
+      <div id ="reply_place"></div>
+      
+      <input type="text" class="form-control" id="reply">
+      <button type="submit" class="btn btn-primary btn-sm reply_write" value="<%=@notice.id %>">댓글달기</button>
+      
   </div>
 </div>
+
+
+
+
+<script>
+$(document).ready(function(){
+  $(".reply_write").click(function(){
+    notice_id = this.value
+    content = $("#reply").val()
+    user_id = <%= current_user.id %>
+    alert(notice_id)
+    alert(content)
+    alert(user_id)
+    
+    $.ajax({
+      method: "POST",
+      url: "/notice/reply_write",
+      data: {content: content, user_id: user_id, notice_id: notice_id},
+    
+      success:function(){
+        $("#reply_place").append(content+"<br>")
+        $("#reply").val('')
+        },
+  
+      error:function(){
+        alert("저장이 완료되지않음!")
+      }
+    });
+  });
+});
+</script>
