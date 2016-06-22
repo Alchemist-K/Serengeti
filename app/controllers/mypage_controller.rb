@@ -24,11 +24,6 @@ class MypageController < ApplicationController
     def member
 
       @appliedteam = User.find(current_user.id).teams.all
-<<<<<<< HEAD
       
     end
-=======
-
-  end
->>>>>>> 10a65095c7f21620781574f693d6d0c148eac1b6
 end
