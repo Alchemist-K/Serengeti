@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
-    confirmations: 'uesrs/confirmations'
+    confirmations: 'users/confirmations'
   }
   get '/' => 'home#index'
   get 'notice/index'
@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   post 'notice/update/:post_id' => 'notice#update'
   post 'notice/reply_write'
   post 'notice/reply_delete'
+  post 'home/get_userinform'
 
   
   

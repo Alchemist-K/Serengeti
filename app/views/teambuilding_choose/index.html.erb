@@ -9,11 +9,11 @@
       <div class="work">
 
         <div class="row">
-          <figure class="white_teambuilding">
-            
-            <img src="<%= @each_team.img_name %>" style="height:300px; width:300px;"/>
-            
-          <div class="wrapper-text-description side-info">
+          <div class="col-xs-6">
+            <img id="file_upload" src="<%= @each_team.img_name %>"/>
+          </div> 
+            <div class="col-xs-6">
+          <div class="side-info">
 
             <div class="wrapper-view" style="height:70px;">
               <h6 class="team_detail_label">Team Name</h6>
@@ -27,14 +27,25 @@
 
             <div class="wrapper-view" style="height:70px;">
               <h6 class="team_detail_label">Team Leader</h6>
-              <div class="text-view"><%= User.find(@each_team.leader).name %></div>
+              <div class="text-view">
+                <strong>
+                  <% if user_signed_in? %>
+                    <%= link_to(home_get_userinform_path(user_id: @each_team.leader), method: "post", remote: true) do %>
+                      <div class="userbtn"><%= User.find(@each_team.leader).name %></div>
+                    <% end %>
+                  <% else %>
+                    <%= User.find(@each_team.leader).name %>
+                  <% end %>
+                </strong>
+              </div>
             </div>       
 
             <div class="wrapper-view" style="height:70px;">
               <h6 class="team_detail_label">Number of member</h6>
               <div class="text-view"><%= @each_team.number %></div>
             </div>
-            
+          </div> 
+          <div class="row">
             <div class="wrapper-view" style="height:70px;">
               <h6 class="team_detail_label">File Download</h6>
               <% if @each_team.origin_file_name != nil %>
@@ -52,15 +63,7 @@
                 <% end %>1
               <% end %>
             </div>
-            
-            <div class="wrapper-morefrom">
-              <div class="image-morefrom">
-                <a href="#"><div class="image-morefrom-1"><img src="/img/psd-1.jpg" alt="" width="430" height="330"/></div></a>
-                <a href="#"><div class="image-morefrom-2"><img src="/img/psd-2.jpg" alt="" width="430" height="330"/></div></a>
-                <a href="#"><div class="image-morefrom-3"><img src="/img/psd-3.jpg" alt="" width="430" height="330"/></div></a>
-                <a href="#"><div class="image-morefrom-4"><img src="/img/psd-6.jpg" alt="" width="430" height="330"/></div></a>
-              </div>
-            </div>
+          </div> 
 
             <% if @each_team.leader == current_user.id %>
               <button type="submit" class="btn btn-default input-submit" onclick="location.href='/teambuilding_create/update/<%= @each_team.id =%>'">수정</button>
@@ -94,7 +97,14 @@
         <div class="post_list">
           <% @team_post.each do |p| %>
             <div class="post-reply">
-              <a class="name-reply-post" href="/mypage/#" id="replypostemail"><%= p.user.name %></a>
+              <!-- 댓글작성자 -->
+                <% if user_signed_in? %>
+                  <%= link_to(home_get_userinform_path(user_id: p.user.id), method: "post", remote: true) do %>
+                    <div class="userbtn"><%= p.user.name %></div>
+                  <% end %>
+                <% else %>
+                  <%= p.user.name %>
+                <% end %>
               <div class="time-reply-post" id="replyposttime"><%= p.team_post %></div>
               <div class="text-reply-post" id="replypostcontent">
                 <%= p.get_time %> &nbsp;
@@ -110,7 +120,14 @@
               <% p.team_post_replies.each do |s| %>
                 <div class="reply-reply-post">
                   <%= s.team_post_reply %> <br/><br/>
-                  <%= s.user.name %> &nbsp; <%= s.get_time %> &nbsp;
+                  <% if user_signed_in? %>
+                  <%= link_to(home_get_userinform_path(user_id: p.user.id), method: "post", remote: true) do %>
+                    <div class="userbtn"><%= s.user.name %></div>
+                  <% end %>
+                  <% else %>
+                    <%= s.user.name %>
+                  <% end %> 
+                  &nbsp; <%= s.get_time %> &nbsp;
                   <a href="#">[삭제하기]</a>  
                 </div>
               <% end %>
@@ -122,3 +139,4 @@
     </div>
   </div>      
 </div> <!-- container -->
+

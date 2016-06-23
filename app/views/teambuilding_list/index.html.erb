@@ -68,7 +68,7 @@
       <!--<button class="btn-team-create btn btn-success" style="margin-left:-125px;" onclick="location.href='/teambuilding_create/create'">팀 만들기</button>-->
       <div id="list_box" class="container">
         <section class="work" style="margin-top: 20px;">
-        <% @teams.each do |t| %>
+        <% @page.each do |t| %>
           <div class="col-xs-12 col-md-3">
             <figure class="white">
             <a href="/teambuilding_choose/<%= t.id %>">
@@ -91,6 +91,10 @@
         </section>
       </div>
     </div>
+                  <nav class="text-xs-center">
+                  <%= will_paginate @page, renderer: BootstrapPagination::Rails  %>
+                  </nav>
+
   </body>
 
   <script>

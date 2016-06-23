@@ -1,7 +1,14 @@
 <% teams.team_post_replies.each do |s| %>
   <div class="reply-reply-post">
     <%= s.team_post_reply %> <br/><br/>
-    <%= s.user.name %> &nbsp; <%= s.get_time %> &nbsp;
+    <% if user_signed_in? %>
+      <%= link_to(home_get_userinform_path(user_id: s.user.id), method: "post", remote: true) do %>
+          <div class="userbtn"><%= r.user.name %></div>
+        <% end %>
+      <% else %>
+        <%= s.user.name %>
+      <% end %>
+    &nbsp; <%= s.get_time %> &nbsp;
     <a href="#">[삭제하기]</a>  
   </div>
 <% end %>
