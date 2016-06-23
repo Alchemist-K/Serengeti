@@ -79,6 +79,17 @@ footer.page-footer {
   width: 50vw;
   height: 50vw
 }
+.right {
+  float: right!important;
+}
+.nav_name {
+  font-weight:bold;
+  color: white!important;
+  background-color: crimson;
+}
+.team_detail_label {
+  color:#a1a1a1;
+}
 .carousel-item:nth-child(3) {
     background-image: url("http://mdbootstrap.com/images/regular/nature/img%20(3).jpg");
     background-repeat: no-repeat;

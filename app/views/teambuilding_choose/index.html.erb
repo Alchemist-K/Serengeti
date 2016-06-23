@@ -14,23 +14,43 @@
           <div class="wrapper-text-description side-info">
 
             <div class="wrapper-view" style="height:70px;">
-              <h6 style="margin-top:10px;">Team Name</h6>
+              <h6 class="team_detail_label">Team Name</h6>
               <div class="text-view"><%= @each_team.name %></div>
             </div>
 
             <div class="wrapper-view" style="height:70px;">
-              <h6 style="margin-top:10px;">Abstract</h6>
+              <h6 class="team_detail_label">Abstract</h6>
               <div class="text-view"><%= @each_team.abstract %></div>
             </div>
 
             <div class="wrapper-view" style="height:70px;">
-              <h6 style="margin-top:10px;">Team Leader</h6>
+              <h6 class="team_detail_label">Team Leader</h6>
               <div class="text-view"><%= User.find(@each_team.leader).email %></div>
             </div>       
 
             <div class="wrapper-view" style="height:70px;">
-              <h6 style="margin-top:10px;">Number of member</h6>
+              <h6 class="team_detail_label">Number of member</h6>
               <div class="text-view"><%= @each_team.number %></div>
+            </div>
+            
+            <div class="wrapper-view" style="height:70px;">
+              <h6 style="margin-top:10px;">Tags</h6>
+              <% for i in 0..2 %>
+                <% unless @each_team.customTags[i].nil? %>
+                  <div class="text-view"><%= @each_team.customTags[i] %></div>
+                <% end %>
+              <% end %>
+            </div>
+            
+            <div class="wrapper-morefrom">
+              <div class="image-morefrom">
+                <a href="#"><div class="image-morefrom-1"><img src="/img/psd-1.jpg" alt="" width="430" height="330"/></div></a>
+                <a href="#"><div class="image-morefrom-2"><img src="/img/psd-2.jpg" alt="" width="430" height="330"/></div></a>
+                <a href="#"><div class="image-morefrom-3"><img src="/img/psd-3.jpg" alt="" width="430" height="330"/></div></a>
+                <a href="#"><div class="image-morefrom-4"><img src="/img/psd-6.jpg" alt="" width="430" height="330"/></div></a>
+              </div>
+            </div>
+
             <% if @each_team.leader == current_user.id %>
               <button type="submit" class="btn btn-default input-submit" onclick="location.href='/teambuilding_create/update/<%= @each_team.id =%>'">수정</button>
               <button class="btn btn-danger-outline waves-effect btn-size input-submit" onclick="location.href='/teambuilding_create/delete/<%= @each_team.id %>'">삭제</button>
@@ -41,7 +61,7 @@
             <% end %>
           </div> <!-- wrapper-text-description -->
         </div>
-        <div class="row" style="margin-top: 5rem;">
+        <div class="row" >
           <div class="col-xs-12">
             <% if @each_team.content != nil %>
               <div class="team-content" class="md-textarea"><%= @each_team.content %></div>
@@ -51,7 +71,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="margin-top:15rem;>
           <div class="col-xs-12">
             <%= form_tag(teambuilding_choose_replypost_path(team_id: params[:id]), method: "post", remote: true) do %>
               <input type="text" class="form-control" id="reply_post" name="reply_post" placeholder="피드백, 질문하고싶은 점, 참여의사, 기타 다양한 의견들을 남겨주세요^^">
