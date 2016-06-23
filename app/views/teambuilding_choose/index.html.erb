@@ -11,7 +11,7 @@
         <div class="row">
           <figure class="white_teambuilding">
             
-            <img src="<%= @each_team.picture %>" style="height:300px; width:300px;"/>
+            <img src="<%= @each_team.img_name %>" style="height:300px; width:300px;"/>
             
           <div class="wrapper-text-description side-info">
 
@@ -36,11 +36,20 @@
             </div>
             
             <div class="wrapper-view" style="height:70px;">
+              <h6 class="team_detail_label">File Download</h6>
+              <% if @each_team.origin_file_name != nil %>
+                <a href="<%= @each_team.file_name %>" download="<%= @each_team.origin_file_name %>"><%= @each_team.origin_file_name %></a>
+              <% else %>
+              
+              <% end %>
+            </div>
+            
+            <div class="wrapper-view" style="height:70px;">
               <h6 style="margin-top:10px;">Tags</h6>
               <% for i in 0..2 %>
                 <% unless @each_team.customTags[i].nil? %>
                   <div class="text-view"><%= @each_team.customTags[i] %></div>
-                <% end %>
+                <% end %>1
               <% end %>
             </div>
             
@@ -73,7 +82,7 @@
           </div>
         </div>
 
-        <div class="row" style="margin-top:15rem;>
+        <div class="row" style="margin-top:15rem;">
           <div class="col-xs-12">
             <%= form_tag(teambuilding_choose_replypost_path(team_id: params[:id]), method: "post", remote: true) do %>
               <input type="text" class="form-control" id="reply_post" name="reply_post" placeholder="피드백, 질문하고싶은 점, 참여의사, 기타 다양한 의견들을 남겨주세요^^">
