@@ -37,7 +37,7 @@
           </div> 
           <div class="row">
             <div class="wrapper-view" style="height:70px;">
-              <h6 style="margin-top:10px;">Tags</h6>
+              <h6 style="team_detail_label">Tags</h6>
               <% for i in 0..2 %>
                 <% unless @each_team.customTags[i].nil? %>
                   <div class="text-view"><%= @each_team.customTags[i] %></div>
@@ -66,7 +66,7 @@
           </div>
         </div>
 
-        <div class="row" style="margin-top:15rem;>
+        <div class="row card_margin">
           <div class="col-xs-12">
             <%= form_tag(teambuilding_choose_replypost_path(team_id: params[:id]), method: "post", remote: true) do %>
               <input type="text" class="form-control" id="reply_post" name="reply_post" placeholder="피드백, 질문하고싶은 점, 참여의사, 기타 다양한 의견들을 남겨주세요^^">
