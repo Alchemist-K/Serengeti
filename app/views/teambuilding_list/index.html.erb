@@ -72,10 +72,10 @@
           <div class="col-xs-12 col-md-3">
             <figure class="white">
             <a href="/teambuilding_choose/<%= t.id %>">
-              <% if t.img_name != nil %>
-                <img style="margin:5%" src=<%= t.img_name %> alt="" />
+              <% if t.img_name != "" %>
+                <img style="margin:5%" src="<%= t.img_name %>" />
               <% else %>
-                <img style="margin:5%" src="<%= image_path("teamlist/14.png") %>" alt="" />
+                <img style="margin:5%" src="<%= image_path "teamlist/14.png" %>"/>
               <% end %>
               <dl>
                 <dt><%= t.abstract %></dt>
