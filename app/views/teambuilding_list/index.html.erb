@@ -43,16 +43,16 @@
       <div class="container"  id="arrivelist">
         <div class="row">
           <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;"><strong><h3 class="card-text">태그로 찾기</h3></strong><hr>
-            <%= link_to "건강", teambuilding_list_tag_search_path(input: "건강"), class: "btn btn-default", remote: true %>
-            <%= link_to "금융", teambuilding_list_tag_search_path(input: "금융"), class: "btn btn-default", remote: true %>
-            <%= link_to "교육", teambuilding_list_tag_search_path(input: "교육"), class: "btn btn-default", remote: true %>
-            <%= link_to "일상", teambuilding_list_tag_search_path(input: "일상"), class: "btn btn-default", remote: true %>
-            <%= link_to "사회공헌", teambuilding_list_tag_search_path(input: "사회공헌"), class: "btn btn-default", remote: true %><br>
-            <%= link_to "문화", teambuilding_list_tag_search_path(input: "문화"), class: "btn btn-default", remote: true %>
-            <%= link_to "여행", teambuilding_list_tag_search_path(input: "여행"), class: "btn btn-default", remote: true %>
-            <%= link_to "유통", teambuilding_list_tag_search_path(input: "유통"), class: "btn btn-default", remote: true %>
-            <%= link_to "환경", teambuilding_list_tag_search_path(input: "환경"), class: "btn btn-default", remote: true %>
-            <%= link_to "기타", teambuilding_list_tag_search_path(input: "기타"), class: "btn btn-default", remote: true %>
+            <%= link_to "건강", teambuilding_list_tag_search_path(input: "건강"), class: "btn btn-default btn-select", remote: true %>
+            <%= link_to "금융", teambuilding_list_tag_search_path(input: "금융"), class: "btn btn-default btn-select", remote: true %>
+            <%= link_to "교육", teambuilding_list_tag_search_path(input: "교육"), class: "btn btn-default btn-select", remote: true %>
+            <%= link_to "일상", teambuilding_list_tag_search_path(input: "일상"), class: "btn btn-default btn-select", remote: true %>
+            <%= link_to "사회공헌", teambuilding_list_tag_search_path(input: "사회공헌"), class: "btn btn-default btn-select", remote: true %><br>
+            <%= link_to "문화", teambuilding_list_tag_search_path(input: "문화"), class: "btn btn-default btn-select", remote: true %>
+            <%= link_to "여행", teambuilding_list_tag_search_path(input: "여행"), class: "btn btn-default btn-select", remote: true %>
+            <%= link_to "유통", teambuilding_list_tag_search_path(input: "유통"), class: "btn btn-default btn-select", remote: true %>
+            <%= link_to "환경", teambuilding_list_tag_search_path(input: "환경"), class: "btn btn-default btn-select", remote: true %>
+            <%= link_to "기타", teambuilding_list_tag_search_path(input: "기타"), class: "btn btn-default btn-select", remote: true %>
           </div>
           <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;"><strong><h3 class="card-text">다른 방법으로 찾기</h3></strong><hr>
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -109,4 +109,13 @@
     $('.dropdown-toggle').dropdown()
 
     });
+    
+    $(document).on("click", ".btn-select", function(e) {
+      var txt = $(e.target).text();
+      if( $("#tag_selected").val() == "" ) {
+        $("#tag_selected").val(txt);
+      } else {
+        $("#tag_selected").val(" " + text);
+      }
+    })
   </script>
