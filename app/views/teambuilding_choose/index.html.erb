@@ -10,7 +10,7 @@
 
         <div class="row">
           <div class="col-xs-6">
-            <img id="file_upload" src="<%= @each_team.picture %>"/>
+            <img id="file_upload" src="<%= @each_team.img_name %>"/>
           </div> 
             <div class="col-xs-6">
           <div class="side-info">
@@ -47,11 +47,20 @@
           </div> 
           <div class="row">
             <div class="wrapper-view" style="height:70px;">
+              <h6 class="team_detail_label">File Download</h6>
+              <% if @each_team.origin_file_name != nil %>
+                <a href="<%= @each_team.file_name %>" download="<%= @each_team.origin_file_name %>"><%= @each_team.origin_file_name %></a>
+              <% else %>
+              
+              <% end %>
+            </div>
+            
+            <div class="wrapper-view" style="height:70px;">
               <h6 style="margin-top:10px;">Tags</h6>
               <% for i in 0..2 %>
                 <% unless @each_team.customTags[i].nil? %>
                   <div class="text-view"><%= @each_team.customTags[i] %></div>
-                <% end %>
+                <% end %>1
               <% end %>
             </div>
           </div> 

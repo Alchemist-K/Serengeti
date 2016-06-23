@@ -3,7 +3,7 @@
     <%= s.team_post_reply %> <br/><br/>
     <% if user_signed_in? %>
       <%= link_to(home_get_userinform_path(user_id: s.user.id), method: "post", remote: true) do %>
-          <div class="userbtn"><%= r.user.name %></div>
+          <div class="userbtn"><%= s.user.name %></div>
         <% end %>
       <% else %>
         <%= s.user.name %>
