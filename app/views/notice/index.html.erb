@@ -23,7 +23,7 @@
       <% end %>
     </tbody>
   </table>
-  <%= will_paginate @notice %> 
+  <%= will_paginate @notice, renderer: BootstrapPagination::Rails  %> 
   <% if user_signed_in? %>
     <% if current_user.admin? %> 
     <a href="/notice/write_input", class="btn btn-primary btn-sm">공지쓰기</a>
