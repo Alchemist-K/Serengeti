@@ -9,11 +9,11 @@
       <div class="work">
 
         <div class="row">
-          <figure class="white_teambuilding">
-            
-            <img src="<%= @each_team.picture %>" style="height:300px; width:300px;"/>
-            
-          <div class="wrapper-text-description side-info">
+          <div class="col-xs-6">
+            <img id="file_upload" src="<%= @each_team.picture %>"/>
+          </div> 
+            <div class="col-xs-6">
+          <div class="side-info">
 
             <div class="wrapper-view" style="height:70px;">
               <h6 class="team_detail_label">Team Name</h6>
@@ -34,7 +34,8 @@
               <h6 class="team_detail_label">Number of member</h6>
               <div class="text-view"><%= @each_team.number %></div>
             </div>
-            
+          </div> 
+          <div class="row">
             <div class="wrapper-view" style="height:70px;">
               <h6 style="margin-top:10px;">Tags</h6>
               <% for i in 0..2 %>
@@ -43,15 +44,7 @@
                 <% end %>
               <% end %>
             </div>
-            
-            <div class="wrapper-morefrom">
-              <div class="image-morefrom">
-                <a href="#"><div class="image-morefrom-1"><img src="/img/psd-1.jpg" alt="" width="430" height="330"/></div></a>
-                <a href="#"><div class="image-morefrom-2"><img src="/img/psd-2.jpg" alt="" width="430" height="330"/></div></a>
-                <a href="#"><div class="image-morefrom-3"><img src="/img/psd-3.jpg" alt="" width="430" height="330"/></div></a>
-                <a href="#"><div class="image-morefrom-4"><img src="/img/psd-6.jpg" alt="" width="430" height="330"/></div></a>
-              </div>
-            </div>
+          </div> 
 
             <% if @each_team.leader == current_user.id %>
               <button type="submit" class="btn btn-default input-submit" onclick="location.href='/teambuilding_create/update/<%= @each_team.id =%>'">수정</button>

@@ -3,10 +3,9 @@
 /* Team Building Create */
 #file_upload_button,
 #file_upload {
-  width: 50vw;
-  height: 50vw;
+  width: 35vw;
+  height: 35vw;
 }
-
 /* Necessary for full page carousel*/
 
 html,
@@ -72,12 +71,12 @@ footer.page-footer {
 }
 
 .white_teambuilding {
-  width: 50vw!important;
-  height: 50vw
+  width: 35vw!important;
+  height: 35vw
 }
 .team_image {
-  width: 50vw;
-  height: 50vw
+  width: 35vw;
+  height: 35vw
 }
 .right {
   float: right!important;
