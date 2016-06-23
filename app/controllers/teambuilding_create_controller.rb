@@ -25,7 +25,7 @@ class TeambuildingCreateController < ApplicationController
     uploader = ImguploadUploader.new
     uploader.store!(picture)
     
-    new_team.picure = uploader.url
+    new_team.picture = uploader.url
                 
     new_team.tags << params[:tag1]
     new_team.tags << params[:tag2]
