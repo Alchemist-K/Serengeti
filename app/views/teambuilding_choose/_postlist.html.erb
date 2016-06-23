@@ -1,6 +1,12 @@
 <% teams.each do |p| %>
   <div class="post-reply">
-    <a class="name-reply-post" href="/mypage/#" id="replypostemail"><%= p.user.name %></a>
+    <% if user_signed_in? %>
+      <%= link_to(home_get_userinform_path(user_id: p.user.id), method: "post", remote: true) do %>
+          <div class="userbtn"><%= p.user.name %></div>
+        <% end %>
+      <% else %>
+        <%= p.user.name %>
+      <% end %>
     <div class="time-reply-post" id="replyposttime"><%= p.team_post %></div>
       <%= p.get_time %> &nbsp;
     <div class="text-reply-post" id="replypostcontent">
