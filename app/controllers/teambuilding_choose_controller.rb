@@ -40,5 +40,6 @@ class TeambuildingChooseController < ApplicationController
       replyreply.team_post_id=params[:post_id]
       replyreply.save
       
+      @team_post = TeamPost.find_by(id: replyreply.team_post_id)
     end
 end
