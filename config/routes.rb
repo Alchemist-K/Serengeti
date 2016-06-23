@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   post 'notice/update/:post_id' => 'notice#update'
   post 'notice/reply_write'
   post 'notice/reply_delete'
+  post 'home/get_userinform'
 
   
   
