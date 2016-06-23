@@ -1,5 +1,30 @@
 <div class="container">
-
+    <div class="row"  style="margin-top:30px;">
+        <!--Card-->
+        <div class="card">
+          <!--Card content-->
+          <div class="card-block">
+                <!--Main column-->
+                  <% @myinfo.each do |p| %>                   
+                    <ul class="list-group">
+                      <li class="list-group-item list-group-item-info"><strong>이름 :  <%= p.name %></strong></li>
+                      <li class="list-group-item list-group-item-warning"><strong>이메일 : <%= p.email %></strong></li>
+                      <li class="list-group-item list-group-item-info"><strong>학교 :  <%= p.university %></strong></li>
+                      <li class="list-group-item list-group-item-warning"><strong>전공 : <%= p.major %></strong></li>
+                      <li class="list-group-item list-group-item-info"><strong>취미 : <%= p.favor %></strong></li>
+                      <li class="list-group-item list-group-item-warning"><strong>관심사1 : <%= p.interest1 %></strong></li>
+                      <li class="list-group-item list-group-item-info"><strong>관심사2 : <%= p.interest2 %></strong></li>
+                      <li class="list-group-item list-group-item-warning"><strong>관심사3 : <%= p.interest3 %></strong></li>
+                    </ul>
+                    <% end %>
+                    <!--/.Post-->
+                    <hr>
+                    <button class="btn btn-warning" onclick="location.href='/users/edit'">개인정보 수정하기</button>
+             </div>
+          <!--/.Card content-->
+        </div>
+        <!--/.Card-->
+                </div>
   <h2>Sign up</h2>
   
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>

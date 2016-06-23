@@ -1,7 +1,7 @@
 <% teams.team_post_replies.each do |s| %>
   <div class="reply-reply-post">
     <%= s.team_post_reply %> <br/><br/>
-    <%= s.user.email %> &nbsp; <%= s.created_at %> &nbsp;
+    <%= s.user.name %> &nbsp; <%= s.get_time %> &nbsp;
     <a href="#">[삭제하기]</a>  
   </div>
 <% end %>

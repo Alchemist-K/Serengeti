@@ -1,8 +1,8 @@
 <% teams.each do |p| %>
   <div class="post-reply">
-    <a class="name-reply-post" href="/mypage/#" id="replypostemail"><%= p.user.email %></a>
+    <a class="name-reply-post" href="/mypage/#" id="replypostemail"><%= p.user.name %></a>
     <div class="time-reply-post" id="replyposttime"><%= p.team_post %></div>
-      <%= p.created_at %> &nbsp;
+      <%= p.get_time %> &nbsp;
     <div class="text-reply-post" id="replypostcontent">
       <a href="/teambuilding_choose/destroy/<%= p.id %>">[삭제하기]</a> 
       <br/><br/>
@@ -16,7 +16,7 @@
     <% p.team_post_replies.each do |s| %>
       <div class="reply-reply-post">
         <%= s.team_post_reply %> <br/><br/>
-        <%= s.user.email %> &nbsp; <%= s.created_at %> &nbsp;
+        <%= s.user.name %> &nbsp; <%= s.get_time %> &nbsp;
         <a href="#">[삭제하기]</a>  
       </div>
     <% end %>
