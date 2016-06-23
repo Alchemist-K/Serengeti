@@ -21,18 +21,14 @@ class TeambuildingCreateController < ApplicationController
                   picture: params[:picture],
                   leader: current_user.id
                 )
-    new_team.tags << params[:tag1]
-    new_team.tags << params[:tag2]
-    new_team.tags << params[:tag3]
+    for i in 1..3 do
+      new_team.tags << params["tag".concat(i.to_s).to_sym]
+    end
     
-    custom_tag = Array.new
-    custom_tag[0] = params[:custom_tag1]
-    custom_tag[1] = params[:custom_tag2]
-    custom_tag[2] = params[:custom_tag3]
-    
-    for i in 0..2 do
-      unless custom_tag[i].nil?
-        new_team.customTags << custom_tag[i]
+    for i in 1..3 do
+      custom_tag = params["custom_tag".concat(i.to_s).to_sym]
+      unless custom_tag.nil?
+        new_team.customTags << custom_tag 
       end
     end
     

@@ -54,6 +54,9 @@
           <textarea type="text" id="input-content" name="content" class="md-textarea" col=40 placeholder="팀 아이디어에 대해 설명해 주세요."></textarea>
           
           <div id="tags" class="row">
+            <% for i in 1..10 do %>
+              <button type="button" id="tag"<%= i %> class="btn btn-default"><%= Serengeti.get_all_tags[i-1] %></button>
+            <% end %>
             <button type="button" id="tag1" class="btn btn-default">건강</button>
             <button type="button" id="tag2" class="btn btn-default">금융</button>
             <button type="button" id="tag3" class="btn btn-default">교육</button>
