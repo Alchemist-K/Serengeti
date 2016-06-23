@@ -18,7 +18,6 @@ class TeambuildingCreateController < ApplicationController
                   abstract: params[:abstract],
                   content: params[:content],
                   number: params[:number],
-                  picture: params[:picture],
                   leader: current_user.id
                 )
     for i in 1..3 do
@@ -31,6 +30,14 @@ class TeambuildingCreateController < ApplicationController
         new_team.customTags << custom_tag 
       end
     end
+    
+    picture = params[:picture]
+    uploader = ImguploadUploader.new
+    uploader.store!(picture)
+    
+    new_team.picure = uploader.url
+    
+    
     
     new_team.save
     

@@ -36,16 +36,14 @@
             <!--Text-->
             <p class="card-text">세상을 바꿀 나만의 아이디어를 팀으로 만들고,<br>전국에서 당신과 함께 꿈을 이뤄갈 사람들을 찾아보세요!</p>
             <a href="#" class="btn btn-primary" onclick="location.href='/teambuilding_create/create'"><strong>아이디어 올리기</strong></a>
-
           </div>
         </div>
       </div>
 
-
-
       <div class="container"  id="arrivelist">
         <div class="row">
           <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;"><strong><h3 class="card-text">태그로 찾기</h3></strong><hr>
+<<<<<<< HEAD
             
             <%= link_to "건강", teambuilding_list_tag_search_path(input: "건강"), class: "btn btn-default", remote: true %>
             <%= link_to "금융", teambuilding_list_tag_search_path(input: "금융"), class: "btn btn-default", remote: true %>
@@ -63,19 +61,28 @@
               <%= submit_tag("search") %>
             <% end %>
           
+=======
+            <%= link_to "건강", teambuilding_list_tag_search_path(input: "건강"), class: "btn btn-default btn-select", remote: true %>
+            <%= link_to "금융", teambuilding_list_tag_search_path(input: "금융"), class: "btn btn-default btn-select", remote: true %>
+            <%= link_to "교육", teambuilding_list_tag_search_path(input: "교육"), class: "btn btn-default btn-select", remote: true %>
+            <%= link_to "일상", teambuilding_list_tag_search_path(input: "일상"), class: "btn btn-default btn-select", remote: true %>
+            <%= link_to "사회공헌", teambuilding_list_tag_search_path(input: "사회공헌"), class: "btn btn-default btn-select", remote: true %><br>
+            <%= link_to "문화", teambuilding_list_tag_search_path(input: "문화"), class: "btn btn-default btn-select", remote: true %>
+            <%= link_to "여행", teambuilding_list_tag_search_path(input: "여행"), class: "btn btn-default btn-select", remote: true %>
+            <%= link_to "유통", teambuilding_list_tag_search_path(input: "유통"), class: "btn btn-default btn-select", remote: true %>
+            <%= link_to "환경", teambuilding_list_tag_search_path(input: "환경"), class: "btn btn-default btn-select", remote: true %>
+            <%= link_to "기타", teambuilding_list_tag_search_path(input: "기타"), class: "btn btn-default btn-select", remote: true %>
+>>>>>>> 208932c306529052c0bee692154c0ba05f90c0b6
           </div>
         
           
           <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;"><strong><h3 class="card-text">다른 방법으로 찾기</h3></strong><hr>
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              시간 or 조회수
+            <button style="width:50%" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              시간별 분류
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu4">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
               <a class="dropdown-item" href="#">가장 최근에 만들어진 팀</a>
               <a class="dropdown-item" href="#">가장 나중에 만들어진 팀</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">조회수 최다 팀</a>
-            </div>
           </div>
         </div>
       </div>
@@ -88,25 +95,18 @@
             <figure class="white">
             <a href="/teambuilding_choose/<%= t.id %>">
               <% if t.picture != nil %>
-                <img src=<%= image_path "teamlist/#{t.picture}" %> alt="" />
+                <img style="margin:5%;"src=<%= image_path "teamlist/#{t.picture}" %> alt="" />
               <% else %>
-                <img src=<%= image_path "teamlist/14.png" %> alt="" />
+                <img style="margin:5%" src=<%= image_path "teamlist/14.png" %> alt="" />
               <% end %>
               <dl>
                 <dt><%= t.abstract %></dt>
                 <dd><%= t.content %></dd>
                 <br>
-                <dd>팀장 : <%= User.find(t.leader).email %></dd>
-                <% t.members.each do |u| %>
-                  <dd><%= u.email %></dd>
-                <% end %>
+                <dd>팀장 : <%= User.find(t.leader).name %></dd>
                 <dd>팀원 : <%= t.members.count %>명 / <%= t.number %>명</dd>
               </dl>
             </a>
-            <div id="wrapper-part-info">
-              <div class="part-info-image"><img src="<%= image_path "teamlist/icon-psd.svg" %>" alt="" width="28" height="28"/></div>
-              <div id="part-info">Wordpress theme</div>
-            </div>
             </figure>
           </div>
         <% end %>
@@ -131,4 +131,13 @@
     $('.dropdown-toggle').dropdown()
 
     });
+    
+    $(document).on("click", ".btn-select", function(e) {
+      var txt = $(e.target).text();
+      if( $("#tag_selected").val() == "" ) {
+        $("#tag_selected").val(txt);
+      } else {
+        $("#tag_selected").val(" " + text);
+      }
+    })
   </script>

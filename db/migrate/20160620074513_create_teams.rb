@@ -10,6 +10,7 @@ class CreateTeams < ActiveRecord::Migration
       t.integer   :leader       # 팀 리더
       t.text      :tags         # 팀 분류 기준
       t.text      :customTags   # 팀 진짜 태그
+      t.string    :file_name, default: ""  # 이미지 업로드
       
       # 삭제 시, 실제로 삭제하는 것이 아닌 숨겨놓기 위한 기능
       t.boolean   :published, default: true

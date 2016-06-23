@@ -4,25 +4,18 @@
       <figure class="white">
       <a href="/teambuilding_choose/<%= t.id %>">
         <% if t.picture != nil %>
-          <img src=<%= image_path "teamlist/#{t.picture}" %> alt="" />
+          <img style="margin:5%;"src=<%= image_path "teamlist/#{t.picture}" %> alt="" />
         <% else %>
-          <img src=<%= image_path "teamlist/14.png" %> alt="" />
+          <img style="margin:5%;"src=<%= image_path "teamlist/14.png" %> alt="" />
         <% end %>
         <dl>
           <dt><%= t.abstract %></dt>
           <dd><%= t.content %></dd>
           <br>
-          <dd>팀장 : <%= User.find(t.leader).email %></dd>
-          <% t.members.each do |u| %>
-            <dd><%= u.email %></dd>
-          <% end %>
+          <dd>팀장 : <%= User.find(t.leader).name %></dd>
           <dd>팀원 : <%= t.members.count %>명 / <%= t.number %>명</dd>
         </dl>
       </a>
-      <div id="wrapper-part-info">
-        <div class="part-info-image"><img src="<%= image_path "teamlist/icon-psd.svg" %>" alt="" width="28" height="28"/></div>
-        <div id="part-info">Wordpress theme</div>
-      </div>
       </figure>
     </div>
   <% end %>

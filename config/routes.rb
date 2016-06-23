@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    confirmations: 'uesrs/confirmations'
   }
   get '/' => 'home#index'
   get 'notice/index'
@@ -53,6 +54,9 @@ Rails.application.routes.draw do
   get 'mypage/member' => 'mypage#member'
   get 'mypage/myinfo' => "mypage#myinfo"
   get 'admin/index'
+
+
+  get 'home/confirm_please'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

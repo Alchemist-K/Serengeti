@@ -38,4 +38,18 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  # 메일건 관련 초기화
+  config.action_mailer.default_url_options = {
+    host: 'serengetiemail-alchemist-k.c9users.io' #host page adress
+  }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+    authentication: :plain,
+    address: "smtp.mailgun.org",
+    port: 2525,
+    domain: "sandbox166ec72845984d65bfd149eca8920452.mailgun.org",
+    user_name: "postmaster@sandbox166ec72845984d65bfd149eca8920452.mailgun.org",
+    password: "80f0dab811c8ca3195a5bf82fc86818a"
+  }
 end
