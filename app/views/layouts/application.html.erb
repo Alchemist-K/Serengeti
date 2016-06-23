@@ -66,7 +66,10 @@
               <%= link_to '회원정보 수정', edit_user_registration_path, class: "nav-link", style: "font-weight:bold; color:white;" %>
               </li>
             <% else %>
-              <li class="nav-item right">
+              <li class="nav-item right" >
+              <%= link_to '회원가입', new_user_registration_path, class: "nav-link", style: "float:right; font-weight:bold; color:white;"  %>
+              </li>
+              <li class="nav-item right"style="margin-left:35vw;">
               <%= link_to '로그인하기', new_user_session_path, class: "nav-link", style: "float:right; font-weight:bold; color:white;"  %>
               </li>
             <% end %>
