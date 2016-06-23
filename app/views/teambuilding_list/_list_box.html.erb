@@ -12,7 +12,7 @@
           <dt><%= t.abstract %></dt>
           <dd><%= t.content %></dd>
           <br>
-          <dd>팀장 : <%= User.find(t.leader).email %></dd>
+          <dd>팀장 : <%= User.find(t.leader).name %></dd>
           <dd>팀원 : <%= t.members.count %>명 / <%= t.number %>명</dd>
         </dl>
       </a>

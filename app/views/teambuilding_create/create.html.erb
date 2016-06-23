@@ -1,103 +1,109 @@
 <div class="container">
 
-<!-- PORTFOLIO -->
+  <!-- PORTFOLIO -->
 
   <div id="wrapper-container" style="margin-top: 120px;">
-  
+
     <div class="container object">
       <div class="work">
         <%= form_tag("/teambuilding_create/create_process", method: "POST", multipart: true) do%>
           <figure class="white_teambuilding">
-          	<input type="button" id="file_upload_button"/>
-          	<input type="file" name="picture" id="file_upload"/>
+          <input type="button" id="file_upload_button"/>
+          <input type="file" name="picture" id="file_upload"/>
           </figure>
           <div class="wrapper-text-description side-info" sytle="margin-top:3rem;">
-            
-          	<input type="text" id="team_name" name="name"/>
-          	<label for="team_name">Team Name</label>
-          	
-          	<input type="text" name="abstract"/>
-          	<label for="abstract">Abstract</label>
-          	
-          	<input type="text" name="leader" value="<%= current_user.email %>" readonly/>
-          	<label for="team_number">Team Leader</label>
-          	
-          	<input type="text" name="number"/>
-          	<label for="team_number">Number</label>
-            
-            <input type="text" name="custom_tag1"/>
-          	<label for="team_number">Tag1</label>
-          	
-          	<input type="text" name="custom_tag2"/>
-          	<label for="team_number">Tag2</label>
-          	
-          	<input type="text" name="custom_tag3"/>
-          	<label for="team_number">Tag3</label>
-          	
-            <div class="wrapper-morefrom">
-              <div class="image-morefrom">
-            	  <a href="#"><div class="image-morefrom-1"><img src="/img/psd-1.jpg" alt="" width="430" height="330"/></div></a>
-                <a href="#"><div class="image-morefrom-2"><img src="/img/psd-2.jpg" alt="" width="430" height="330"/></div></a>
-                <a href="#"><div class="image-morefrom-3"><img src="/img/psd-3.jpg" alt="" width="430" height="330"/></div></a>
-                <a href="#"><div class="image-morefrom-4"><img src="/img/psd-6.jpg" alt="" width="430" height="330"/></div></a>
-              </div>
-            </div>
-          
-          <input type="hidden" id="tag-input1" name="tag1" value=""></input>
-          <input type="hidden" id="tag-input2" name="tag2" value=""></input>
-          <input type="hidden" id="tag-input3" name="tag3" value=""></input>
-          
-          <button type="submit" id="input-submit" class="btn btn-secondary">Submit</button>
-            
+
+            <input class="team_info" type="text" id="team_name" name="name"/>
+            <label for="team_name">Team Name</label>
+
+            <input class="team_info" type="text" name="abstract"/>
+            <label for="abstract">Abstract</label>
+
+            <input class="team_info" type="text" name="leader" value="<%= current_user.name %>" readonly/>
+            <label for="team_number">Team Leader</label>
+
+            <input class="team_info" type="text" name="number"/>
+            <label for="team_number">The Number of Members</label>
+
           </div> <!-- wrapper-text-description -->
-          
-          <textarea type="text" id="input-content" name="content" class="md-textarea" col=40 placeholder="팀 아이디어에 대해 설명해 주세요."></textarea>
-          
-          <div id="tags" class="row">
-            <button type="button" id="tag1" class="btn btn-default">건강</button>
-            <button type="button" id="tag2" class="btn btn-default">금융</button>
-            <button type="button" id="tag3" class="btn btn-default">교육</button>
-            <button type="button" id="tag4" class="btn btn-default">일상</button>
-            <button type="button" id="tag5" class="btn btn-default">사회공헌</button><br>
-            <button type="button" id="tag6" class="btn btn-default">문화</button>
-            <button type="button" id="tag7" class="btn btn-default">여행</button>
-            <button type="button" id="tag8" class="btn btn-default">유통</button>
-            <button type="button" id="tag9" class="btn btn-default">환경</button>
-            <button type="button" id="tag10" class="btn btn-default">기타</button>
+          <div class="row team_info">
+            <div class="col-xs-12">
+              <textarea type="text" id="input-content" name="content" class="md-textarea" col=40 placeholder="팀 아이디어에 대해 설명해 주세요."></textarea>
+            </div>
+          </div>
+          <div id="tags" class="row team_info">
+            <div class="col-xs-3">
+              <a class="btn btn-info"style="width:100%"> Select Tag </a>
+            </div>
+            <div class="col-xs-9">
+              <button type="button" id="tag1" class="btn btn-default">건강</button>
+              <button type="button" id="tag2" class="btn btn-default">금융</button>
+              <button type="button" id="tag3" class="btn btn-default">교육</button>
+              <button type="button" id="tag4" class="btn btn-default">일상</button>
+              <button type="button" id="tag5" class="btn btn-default">사회공헌</button>
+              <button type="button" id="tag6" class="btn btn-default">문화</button>
+              <button type="button" id="tag7" class="btn btn-default">여행</button>
+              <button type="button" id="tag8" class="btn btn-default">유통</button>
+              <button type="button" id="tag9" class="btn btn-default">환경</button>
+              <button type="button" id="tag10" class="btn btn-default">기타</button>
+            </div>
+          </div>
+          <div class="row team_info">
+            <div class="col-xs-3">
+              <a class="btn btn-info" style="width:100%"> Put Your Tag </a>
+            </div>
+            <div class="col-xs-3">
+              <input type="text" name="custom_tag1"/>
+              <label for="team_number">Tag1</label>
+            </div>
+            <div class="col-xs-3">
+              <input type="text" name="custom_tag2"/>
+              <label for="team_number">Tag2</label>
+            </div>
+            <div class="col-xs-3">
+              <input type="text" name="custom_tag3"/>
+              <label for="team_number">Tag3</label>
+            </div>
+            <input type="hidden" id="tag-input1" name="tag1" value=""></input>
+            <input type="hidden" id="tag-input2" name="tag2" value=""></input>
+            <input type="hidden" id="tag-input3" name="tag3" value=""></input>
+          </div>
+          <div class="row card_margin" style="margin-bottom:5rem;">
+            <button type="submit" id="input-submit" class="btn btn-secondary" style="width:100%">Team Create</button>
           </div>
         <% end %>
-        
-			</div> <!-- work -->
-		</div>
+
+      </div> <!-- work -->
+    </div>
   </div>      
 </div> <!-- container -->
 <script>
   $(document).ready(function(){
-    $('#tags button').click(function(e) {
-      var txt = $(e.target).text();
+  $('#tags button').click(function(e) {
+  var txt = $(e.target).text();
 
-      if( $(e.target).attr("class").split(" ")[3] == "btn-warning") {
+  if( $(e.target).attr("class").split(" ")[3] == "btn-warning") {
 
-        for(var i=1; i<4; i++) {
-          if( $('#tag-input'+i).val() == txt ) {
-            $('#tag-input'+i).val("");
-            $(e.target).removeClass("btn-warning").addClass("btn-default");
-          }
-        }
-      } else {
-        if( $('#tag-input1').val() == "" ) {
-          $('#tag-input1').attr('value', txt);
-          $(e.target).removeClass("btn-default").addClass("btn-warning");
-        } else if( $('#tag-input2').val() == "" ) {
-          $('#tag-input2').attr('value', txt);
-          $(e.target).removeClass("btn-default").addClass("btn-warning");
-        } else if( $('#tag-input3').val() == "") {
-          $('#tag-input3').attr('value', txt);
-          $(e.target).removeClass("btn-default").addClass("btn-warning");
-        } else {
-          alert("태그는 최대 3개까지 선택 가능합니다.");
-        }
-      }
-    });
+  for(var i=1; i<4; i++) {
+  if( $('#tag-input'+i).val() == txt ) {
+  $('#tag-input'+i).val("");
+  $(e.target).removeClass("btn-warning").addClass("btn-default");
+  }
+  }
+  } else {
+  if( $('#tag-input1').val() == "" ) {
+  $('#tag-input1').attr('value', txt);
+  $(e.target).removeClass("btn-default").addClass("btn-warning");
+  } else if( $('#tag-input2').val() == "" ) {
+  $('#tag-input2').attr('value', txt);
+  $(e.target).removeClass("btn-default").addClass("btn-warning");
+  } else if( $('#tag-input3').val() == "") {
+  $('#tag-input3').attr('value', txt);
+  $(e.target).removeClass("btn-default").addClass("btn-warning");
+  } else {
+  alert("태그는 최대 3개까지 선택 가능합니다.");
+  }
+  }
+  });
   });
 </script>

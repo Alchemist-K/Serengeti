@@ -6,12 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(email: "admin@snu.ac.kr", password:"12341234", password_confirmation:"12341234", admin: true, name: '관리자')
-User.create(email: "user1@snu.ac.kr", password:"12341234", password_confirmation:"12341234", name: "임정건")
-User.create(email: "user2@snu.ac.kr", password:"12341234", password_confirmation:"12341234", name: '이재성')
-User.create(email: "user3@snu.ac.kr", password:"12341234", password_confirmation:"12341234")
-User.create(email: "user4@snu.ac.kr", password:"12341234", password_confirmation:"12341234")
-User.create(email: "user5@snu.ac.kr", password:"12341234", password_confirmation:"12341234")
+User.create(email: "admin@snu.ac.kr", password:"12341234", password_confirmation:"12341234", admin: true, name: '관리자', confirmed_at: "2016-06-23 05:07:09", confirmation_sent_at: "2016-06-23 05:07:09")
+User.create(email: "user1@snu.ac.kr", password:"12341234", password_confirmation:"12341234", name: "임정건", confirmed_at: "2016-06-23 05:07:09", confirmation_sent_at: "2016-06-23 05:07:09")
+User.create(email: "user2@snu.ac.kr", password:"12341234", password_confirmation:"12341234", name: '이재성', confirmed_at: "2016-06-23 05:07:09", confirmation_sent_at: "2016-06-23 05:07:09")
+User.create(email: "user3@snu.ac.kr", password:"12341234", password_confirmation:"12341234", confirmed_at: "2016-06-23 05:07:09", confirmation_sent_at: "2016-06-23 05:07:09")
+User.create(email: "user4@snu.ac.kr", password:"12341234", password_confirmation:"12341234", confirmed_at: "2016-06-23 05:07:09", confirmation_sent_at: "2016-06-23 05:07:09")
+User.create(email: "user5@snu.ac.kr", password:"12341234", password_confirmation:"12341234", confirmed_at: "2016-06-23 05:07:09", confirmation_sent_at: "2016-06-23 05:07:09")
 
 Team.create(name: 'team1', abstract: '멋진 팀입니다.', content: '정말정말 멋진1 팀입니다.', number: 5, picture: '1.png', leader: 1)
 Team.create(name: 'team2', abstract: '예쁜 팀입니다.', content: '정말정말 멋진2 팀입니다.', number: 4, picture: '2.png', leader: 2)

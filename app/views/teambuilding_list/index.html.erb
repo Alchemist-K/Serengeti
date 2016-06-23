@@ -55,10 +55,10 @@
             <%= link_to "기타", teambuilding_list_tag_search_path(input: "기타"), class: "btn btn-default btn-select", remote: true %>
           </div>
           <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;"><strong><h3 class="card-text">다른 방법으로 찾기</h3></strong><hr>
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button style="width:50%" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               시간별 분류
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu4">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
               <a class="dropdown-item" href="#">가장 최근에 만들어진 팀</a>
               <a class="dropdown-item" href="#">가장 나중에 만들어진 팀</a>
           </div>
@@ -81,7 +81,7 @@
                 <dt><%= t.abstract %></dt>
                 <dd><%= t.content %></dd>
                 <br>
-                <dd>팀장 : <%= User.find(t.leader).email %></dd>
+                <dd>팀장 : <%= User.find(t.leader).name %></dd>
                 <dd>팀원 : <%= t.members.count %>명 / <%= t.number %>명</dd>
               </dl>
             </a>

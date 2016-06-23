@@ -2,6 +2,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
+
+  #회원가입 후 인증 되어있지 않음을 알려줄 때,
+  def after_inactive_sign_up_path_for(resource)
+    '/home/confirm_please'
+  end
+  
   # GET /resource/sign_up
   # def new
   #   super
