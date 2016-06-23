@@ -102,7 +102,9 @@ body,html{
 	height:auto;
 	margin-top:85px;	
 }
-
+.wrapper-view {
+  margin-bottom:3rem;
+}
 .wrapper-view,.wrapper-file,.wrapper-weight,.wrapper-desc,.wrapper-download{
 	float:left;
 	width:100%;
@@ -128,6 +130,9 @@ body,html{
 
 .icon-view img,.icon-file img,.icon-weight img,.icon-desc img,.icon-download img{height:100%;width:100%;}
 
+.text-view {
+  color:black!important;
+}
 .text-view,.text-file,.text-weight,.text-desc,.text-download{
 	float:left;
 	text-align:left;
