@@ -41,15 +41,15 @@ Rails.application.configure do
   
   # 메일건 관련 초기화
   config.action_mailer.default_url_options = {
-    host: 'sere-sdu6342.c9users.io' #host page adress
+    host: 'serengetiemail-alchemist-k.c9users.io' #host page adress
   }
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
     authentication: :plain,
     address: "smtp.mailgun.org",
     port: 2525,
-    domain: "sandbox551728c9dc5442899deb86c5dacf4f07.mailgun.org",
-    user_name: "postmaster@sandbox551728c9dc5442899deb86c5dacf4f07.mailgun.org",
-    password: "7328fab4feeb162ce682043d2404f2a4"
+    domain: "sandbox166ec72845984d65bfd149eca8920452.mailgun.org",
+    user_name: "postmaster@sandbox166ec72845984d65bfd149eca8920452.mailgun.org",
+    password: "80f0dab811c8ca3195a5bf82fc86818a"
   }
 end
