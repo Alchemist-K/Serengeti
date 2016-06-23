@@ -1,6 +1,10 @@
 // Place all the styles related to the teambuilding_create controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.team_info {
+  margin-top:3rem;
+}
+
 #file_upload {
   position: absolute;
   top: 0;
@@ -38,7 +42,6 @@
 #input-content {
   position: relative;
   height: 100px;
-  width: 630px;
   margin-bottom: 40px;
 }
 
