@@ -68,14 +68,14 @@
       <!--<button class="btn-team-create btn btn-success" style="margin-left:-125px;" onclick="location.href='/teambuilding_create/create'">팀 만들기</button>-->
       <div id="list_box" class="container">
         <section class="work" style="margin-top: 20px;">
-        <% @teams.each do |t| %>
+        <% @page.each do |t| %>
           <div class="col-xs-12 col-md-3">
             <figure class="white">
             <a href="/teambuilding_choose/<%= t.id %>">
-              <% if t.picture != nil %>
-                <img style="margin:5%;"src=<%= image_path "teamlist/#{t.picture}" %> alt="" />
+              <% if t.img_name != "" %>
+                <img style="margin:5%" src="<%= t.img_name %>" />
               <% else %>
-                <img style="margin:5%" src=<%= image_path "teamlist/14.png" %> alt="" />
+                <img style="margin:5%" src="<%= image_path "teamlist/14.png" %>"/>
               <% end %>
               <dl>
                 <dt><%= t.abstract %></dt>
@@ -91,6 +91,10 @@
         </section>
       </div>
     </div>
+                  <nav class="text-xs-center">
+                  <%= will_paginate @page, renderer: BootstrapPagination::Rails  %>
+                  </nav>
+
   </body>
 
   <script>

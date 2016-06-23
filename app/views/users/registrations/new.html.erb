@@ -1,58 +1,62 @@
 <div class="container">
     <div class="row"  style="margin-top:30px;">
+      <div class="col-md-8 col-md-offset-2">
         <!--Card-->
         <div class="card">
-          <!--Card content-->
-          <div class="card-block">
+
                 <!--Main column-->
-                  <% @myinfo.each do |p| %>                   
                     <ul class="list-group">
-                      <li class="list-group-item list-group-item-info"><strong>이름 :  <%= p.name %></strong></li>
-                      <li class="list-group-item list-group-item-warning"><strong>이메일 : <%= p.email %></strong></li>
-                      <li class="list-group-item list-group-item-info"><strong>학교 :  <%= p.university %></strong></li>
-                      <li class="list-group-item list-group-item-warning"><strong>전공 : <%= p.major %></strong></li>
-                      <li class="list-group-item list-group-item-info"><strong>취미 : <%= p.favor %></strong></li>
-                      <li class="list-group-item list-group-item-warning"><strong>관심사1 : <%= p.interest1 %></strong></li>
-                      <li class="list-group-item list-group-item-info"><strong>관심사2 : <%= p.interest2 %></strong></li>
-                      <li class="list-group-item list-group-item-warning"><strong>관심사3 : <%= p.interest3 %></strong></li>
+                      <li class="list-group-item list-group-item-info">
+                        <strong>
+                          <h3><strong>SERENGETI 회원가입</strong></h2>
+                          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                            <%= devise_error_messages! %>
+                        </strong>
+                      </li>
+                        <li class="list-group-item list-group-item-warning">
+                          <strong>
+                            <div class="field">
+                              <%= f.label :email %><br>
+                              <%= f.email_field :email, autofocus: true %>
+                            </div>
+                          </strong>
+                        </li>
+                        <li class="list-group-item list-group-item-warning">
+                          <strong>
+                            <div class="field">
+                              <%= f.label :password %>
+                              <% if @minimum_password_length %>
+                                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                              <% end %><br>
+                              <%= f.password_field :password, autocomplete: "off" %>
+                            </div>
+                          </strong>
+                        </li>
+                        <li class="list-group-item list-group-item-warning">
+                          <strong>
+                            <div class="field">
+                              <%= f.label :password_confirmation %><br>
+                              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                            </div>
+                          </strong>
+                        </li>
+                        <li class="list-group-item list-group-item-danger" style="text-align:center;">
+                          <strong>
+                             회원가입을 신청하면 입력한 이메일로 가입승인요청이 전송되며, 승인을 하면 가입이 완료됩니다.<br>
+                             Team Building을 이용하시려면 My Page의 개인정보수정에서 이름과 다른 정보를 입력하시면 됩니다!
+                          </strong>
+                        </li>
+
+                      <%#= render "users/shared/links" %>
+
                     </ul>
+                        <button type="submit" class="btn btn-success" name="commit" style="float:right;">
+                          <strong>회원가입하기</strong>
+                        </button>  
                     <% end %>
                     <!--/.Post-->
-                    <hr>
-                    <button class="btn btn-warning" onclick="location.href='/users/edit'">개인정보 수정하기</button>
              </div>
-          <!--/.Card content-->
-        </div>
-        <!--/.Card-->
-                </div>
-  <h2>Sign up</h2>
-  
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-  
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-  
-    <div class="actions">
-      <%= f.submit "Sign up" %>
-    </div>
-  <% end %>
-  
-  <%= render "users/shared/links" %>
-
+        <!--/.Card-->            
+          </div>
+      </div>
 </div>
