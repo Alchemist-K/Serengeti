@@ -43,16 +43,9 @@
               <span class="create-tag-label label label-info"> Select Tag </span>
             </div>
             <div class="col-xs-10">
-              <button type="button" id="tag1" class="btn btn-default">건강</button>
-              <button type="button" id="tag2" class="btn btn-default">금융</button>
-              <button type="button" id="tag3" class="btn btn-default">교육</button>
-              <button type="button" id="tag4" class="btn btn-default">일상</button>
-              <button type="button" id="tag5" class="btn btn-default">사회공헌</button>
-              <button type="button" id="tag6" class="btn btn-default">문화</button>
-              <button type="button" id="tag7" class="btn btn-default">여행</button>
-              <button type="button" id="tag8" class="btn btn-default">유통</button>
-              <button type="button" id="tag9" class="btn btn-default">환경</button>
-              <button type="button" id="tag10" class="btn btn-default">기타</button>
+              <% for i in 1..10 do %>
+                <button type="button" id="tag<%= i %>" class="btn btn-default"><%= Serengeti.get_all_tags.at(i-1) %></button>
+              <% end %>
             </div>
           </div>
           <div class="row team_info">
