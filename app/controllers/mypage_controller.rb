@@ -1,4 +1,6 @@
 class MypageController < ApplicationController
+    before_action :authenticate_user!
+    
     def index
         @myTeam = findMyTeam.all.paginate(:page => params[:page], per_page:3)
     end

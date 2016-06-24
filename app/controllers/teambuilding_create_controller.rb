@@ -31,10 +31,15 @@ class TeambuildingCreateController < ApplicationController
     new_team.number = params[:number]
     new_team.leader = current_user.id
     
-    if picture != nil || file != nil
+    if picture != nil 
       new_team.img_name = uploader.url
       new_team.file_name = upfile.url 
-      origin_file_name = file.original_filename
+    else
+      
+    end
+    
+    if file != nil
+      new_team.origin_file_name = file.original_filename
     else
       
     end
