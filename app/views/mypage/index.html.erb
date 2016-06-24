@@ -1,130 +1,129 @@
-    <main>
-        <!--Main layout-->
-        <div class="container" sytle="min-height:80vh;">
-            <div class="row" style="margin-top:30px;">
+<main>
+    <!--Main layout-->
+    <div class="container" sytle="min-height:80vh;">
+        <div class="row" style="margin-top:30px;">
 
-                <!--Main column-->
-                <div class="col-md-8">
+            <!--Main column-->
+            <div class="col-md-8">
 
-                          <!--Main column-->
-                            <% if @myTeam.size == 0 %>
-                        <!--Card-->
-                        <div class="card">
-                          <!--Card content-->
-                          <div class="card-block">
-                            <p>가입신청이 없습니다.</p>
-                          </div>
-                        </div>
-                            <% else %>
-                                  <% @myTeam.each do |t| %>
-                                     <a href="/teambuilding_choose/index"><h3><%= t.name %></h3></a>
-                                        <% if Teambuild.findWaitingTeambuild(t.id).size == 0 %>
-                                            <!--/.Card-->
-                                            <div class="card">
-                                            <!--Card content-->
-                                                <div class="card-block">
-                                                    <div class="row">
-                                                    <div class="col-md-5 col-sm-4">
-                                                      <p>이 팀에 대한 가입신청이 없습니다.</p>
-                                                    </div>
-                                                    <div class="col-md-5 col-sm-4" style="text-align:center;">
-                                                      <p><%= t.abstract %></p>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                              <!--/.Card content-->
-                                            </div>
-                                            <!--/.Card-->
-                                        <% else %>
-                                          <% Teambuild.findWaitingTeambuild(t.id).each do |r| %>
-                                          <!--/.Card-->
-                                            <div class="card">
-                                                <!--Card content-->
-                                                <div class="card-block">
-                                            <!--Post-->
-                                            <div class="post-wrapper">
-                                                <!--Post data-->
+                      <!--Main column-->
+                        <% if @myTeam.size == 0 %>
+                    <!--Card-->
+                    <div class="card">
+                      <!--Card content-->
+                      <div class="card-block">
+                        <p>가입신청이 없습니다.</p>
+                      </div>
+                    </div>
+                        <% else %>
+                              <% @myTeam.each do |t| %>
+                                 <a href="/teambuilding_choose/index"><h3><%= t.name %></h3></a>
+                                    <% if Teambuild.findWaitingTeambuild(t.id).size == 0 %>
+                                        <!--/.Card-->
+                                        <div class="card">
+                                        <!--Card content-->
+                                            <div class="card-block">
                                                 <div class="row">
+                                                <div class="col-md-5 col-sm-4">
+                                                  <p>이 팀에 대한 가입신청이 없습니다.</p>
+                                                </div>
                                                 <div class="col-md-5 col-sm-4" style="text-align:center;">
-                                                    <strong>
-                                                    <%= link_to(home_get_userinform_path(user_id: r.user_id), method: "post", remote: true) do %>
-                                                        <div class="userbtn"><%= User.find(r.user_id).name %></div>
-                                                    <% end %>
-                                                    </strong>
-                                                <p>Written at <%= r.created_at %></p>
-                                                
-                                                <!--"Read more" button-->
-                                              <%= form_tag("/mypage/index/accept/#{r.id}", method: "GET") do %>
-                                              <button class="btn btn-primary" type="submit">함께해요~</button>
-                                              <% end %>
-                                              <%= form_tag("/mypage/index/deny/#{r.id}", method: "GET") do %>
-                                              <button class="btn btn-danger" type="submit">미안해요~</button>
-                                              <% end %>
-                                               </div>
-                                               <div class="col-md-5 col-sm-4" style="text-align:center;">
-                                                <p><%= Team.find(r.user_id).abstract %></p>
-                                               </div>
-                                              </div>
-                                              <br>
+                                                  <p><%= t.abstract %></p>
+                                                </div>
+                                                </div>
                                             </div>
-                                               </div>
-                                              <!--/.Card content-->
-                                            </div>
-                                            <!--/.Card-->
+                                          <!--/.Card content-->
+                                        </div>
+                                        <!--/.Card-->
+                                    <% else %>
+                                      <% Teambuild.findWaitingTeambuild(t.id).each do |r| %>
+                                      <!--/.Card-->
+                                        <div class="card">
+                                            <!--Card content-->
+                                            <div class="card-block">
+                                        <!--Post-->
+                                        <div class="post-wrapper">
+                                            <!--Post data-->
+                                            <div class="row">
+                                            <div class="col-md-5 col-sm-4" style="text-align:center;">
+                                                <strong>
+                                                <%= link_to(home_get_userinform_path(user_id: r.user_id), method: "post", remote: true) do %>
+                                                    <div class="userbtn"><%= User.find(r.user_id).name %></div>
+                                                <% end %>
+                                                </strong>
+                                            <p>Written at <%= r.created_at %></p>
+                                            
+                                            <!--"Read more" button-->
+                                          <%= form_tag("/mypage/index/accept/#{r.id}", method: "GET") do %>
+                                          <button class="btn btn-primary" type="submit">함께해요~</button>
                                           <% end %>
-                                        <% end %>
-                                        <hr>
+                                          <%= form_tag("/mypage/index/deny/#{r.id}", method: "GET") do %>
+                                          <button class="btn btn-danger" type="submit">미안해요~</button>
+                                          <% end %>
+                                           </div>
+                                           <div class="col-md-5 col-sm-4" style="text-align:center;">
+                                            <p><%= Team.find(r.user_id).abstract %></p>
+                                           </div>
+                                          </div>
+                                          <br>
+                                        </div>
+                                           </div>
+                                          <!--/.Card content-->
+                                        </div>
+                                        <!--/.Card-->
                                       <% end %>
                                     <% end %>
-                            <!--/.Post-->
-                    <!--/.Post-->
-                </div>
-                    
-                <!--Sidebar-->
-                <div class="col-md-4">
-                    <div class="widget-wrapper">
-                        <h4><strong>MY PAGE</strong></h4>
-                        <div class="list-group">
-                            <a href="#" class="list-group-item active">As a Team Leader</a>
-                            <a href="/mypage/member" class="list-group-item">As a Team member</a>
-                            <a href="/mypage/myinfo" class="list-group-item">나의 정보</a>
-                        </div>
+                                    <hr>
+                                  <% end %>
+                                <% end %>
+                        <!--/.Post-->
+                <!--/.Post-->
+            </div>
+                
+            <!--Sidebar-->
+            <div class="col-md-4">
+                <div class="widget-wrapper">
+                    <h4><strong>MY PAGE</strong></h4>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item active">As a Team Leader</a>
+                        <a href="/mypage/member" class="list-group-item">As a Team member</a>
+                        <a href="/mypage/myinfo" class="list-group-item">나의 정보</a>
                     </div>
+                </div>
                 <br>
 
+                <div class="widget-wrapper">
+                    <div class="card">
+                        <div class="card-block">
+                            <p><strong>여러분의 피드백과 의견을 말해주세요!</strong></p>
+                            <p>개선되었으면 하는 점, 추가했으면 하는 점 등을 <br>모두 말씀해주세요!
+                               세렝게티는 항상 여러분의 <br>의견에 귀기울이고 있습니다.</p>
+                               
+                                <%= form_tag("/mypage/feedback", method: "POST") do%>
+                                    <div class="md-form">
+                                        <i class="fa fa-commenting-o"></i>
+                                        <textarea class="form-control" name="feedback" rows="5" id="comment"></textarea>
+                                    </div>
+                                    <button class="btn btn-primary" type="submit">전송하기</button>
+                                <% end %>
 
-                    <div class="widget-wrapper">
-                        <div class="card">
-                            <div class="card-block">
-                                <p><strong>여러분의 피드백과 의견을 말해주세요!</strong></p>
-                                <p>개선되었으면 하는 점, 추가했으면 하는 점 등을 <br>모두 말씀해주세요!
-                                   세렝게티는 항상 여러분의 <br>의견에 귀기울이고 있습니다.</p>
-                                   
-                                    <%= form_tag("/mypage/feedback", method: "POST") do%>
-                                        <div class="md-form">
-                                            <i class="fa fa-commenting-o"></i>
-                                            <textarea class="form-control" name="feedback" rows="5" id="comment"></textarea>
-                                        </div>
-                                        <button class="btn btn-primary" type="submit">전송하기</button>
-                                    <% end %>
-
-                            </div>
                         </div>
                     </div>
                 </div>
-                <!--/.Sidebar-->
-                
-                    <!--Pagination-->
-                    <nav class="text-xs-center">
-                    <%= will_paginate @myTeam, renderer: BootstrapPagination::Rails  %>
-                    </nav>
-                    <!--/.Pagination-->
+            </div>
+            <!--/.Sidebar-->
+            
+                <!--Pagination-->
+                <nav class="text-xs-center">
+                <%= will_paginate @myTeam, renderer: BootstrapPagination::Rails  %>
+                </nav>
+                <!--/.Pagination-->
 
-                    <hr>
-
-                </div>
-
+                <hr>
 
             </div>
-        <!--/.Main layout-->
-    </main>
+
+
+        </div>
+    <!--/.Main layout-->
+</main>
