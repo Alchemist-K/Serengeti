@@ -76,4 +76,17 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+  config.action_mailer.default_url_options = {
+    host: 'serengeti.team' #host page adress
+  }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+    authentication: :plain,
+    address: "smtp.mailgun.org",
+    port: 2525,
+    domain: "serengeti.team",
+    user_name: "postmaster@serengeti.team",
+    password: "9626bb6d9b61ea6dfbbaf334ecf33b25"
+  }
 end
