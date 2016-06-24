@@ -15,7 +15,12 @@
                     <div class="post-wrapper">
                         <!--Post data-->
                       <a href="teambuilding_choose/index"><h2><%= p.name %> </h2></a>
-                        <h6>Team Leader : <a href="#"><%= User.find(p.leader).name %></a>, 만들어진 시간 : <%= p.created_at %></h6>
+                        <strong>
+                        <%= link_to(home_get_userinform_path(user_id: p.leader), method: "post", remote: true) do %>
+                            <div class="userbtn"><%= User.find(p.leader).name %>,</div>
+                        <% end %>
+                        </strong>
+                          만들어진 시간 : <%= p.created_at %></h6>
                         <br>
                         <!--Post excerpt-->
                         <p><%= p.abstract %></p>
