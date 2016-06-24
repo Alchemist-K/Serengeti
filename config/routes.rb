@@ -40,7 +40,9 @@ Rails.application.routes.draw do
   post 'notice/write'
 
   get 'teambuilding_list/tag_search'
- 
+  post 'teambuilding_list/tag_search'
+  post 'teambuilding_list/search' 
+
   get 'notice/write_input'
   get 'notice/read/:post_id' => 'notice#read'
   get 'notice/delete/:post_id' => 'notice#delete'

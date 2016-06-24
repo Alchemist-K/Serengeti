@@ -30,22 +30,6 @@
 
           </div> <!-- wrapper-text-description -->
           
-          <textarea type="text" id="input-content" name="content" class="md-textarea" col=40 placeholder="팀 아이디어에 대해 설명해 주세요."></textarea>
-          
-          <div id="tags" class="row">
-            <% for i in 1..10 do %>
-              <button type="button" id="tag"<%= i %> class="btn btn-default"><%= Serengeti.get_all_tags[i-1] %></button>
-            <% end %>
-            <button type="button" id="tag1" class="btn btn-default">건강</button>
-            <button type="button" id="tag2" class="btn btn-default">금융</button>
-            <button type="button" id="tag3" class="btn btn-default">교육</button>
-            <button type="button" id="tag4" class="btn btn-default">일상</button>
-            <button type="button" id="tag5" class="btn btn-default">사회공헌</button><br>
-            <button type="button" id="tag6" class="btn btn-default">문화</button>
-            <button type="button" id="tag7" class="btn btn-default">여행</button>
-            <button type="button" id="tag8" class="btn btn-default">유통</button>
-            <button type="button" id="tag9" class="btn btn-default">환경</button>
-            <button type="button" id="tag10" class="btn btn-default">기타</button>
           <div class="row team_info">
             <div class="col-xs-12">
               <textarea type="text" id="input-content" name="content" class="md-textarea" col=40 placeholder="팀 아이디어에 대해 설명해 주세요."></textarea>
@@ -56,16 +40,9 @@
               <a class="btn btn-info"style="width:100%"> Select Tag </a>
             </div>
             <div class="col-xs-9">
-              <button type="button" id="tag1" class="btn btn-default">건강</button>
-              <button type="button" id="tag2" class="btn btn-default">금융</button>
-              <button type="button" id="tag3" class="btn btn-default">교육</button>
-              <button type="button" id="tag4" class="btn btn-default">일상</button>
-              <button type="button" id="tag5" class="btn btn-default">사회공헌</button>
-              <button type="button" id="tag6" class="btn btn-default">문화</button>
-              <button type="button" id="tag7" class="btn btn-default">여행</button>
-              <button type="button" id="tag8" class="btn btn-default">유통</button>
-              <button type="button" id="tag9" class="btn btn-default">환경</button>
-              <button type="button" id="tag10" class="btn btn-default">기타</button>
+              <% for i in 1..10 do %>
+                <button type="button" id="tag<%= i %>" class="btn btn-default"><%= Serengeti.get_all_tags.at(i-1) %></button>
+              <% end %>
             </div>
           </div>
           <div class="row team_info">

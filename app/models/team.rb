@@ -6,6 +6,11 @@ class Team < ActiveRecord::Base
   serialize :tags, Array
   serialize :customTags, Array
   
+  searchable do
+    #text :name, default_boost: 2
+    text :content
+  end
+  
   def self.default_scope
     where published: true
   end
