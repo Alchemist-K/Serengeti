@@ -34,7 +34,7 @@ class TeambuildingCreateController < ApplicationController
                   file_name: upfile.url, 
                   origin_file_name: file.original_filename
                 )
-<<<<<<< HEAD
+                
     for i in 1..3 do
       new_team.tags << params["tag".concat(i.to_s).to_sym]
     end
@@ -45,21 +45,6 @@ class TeambuildingCreateController < ApplicationController
         new_team.customTags << custom_tag 
       end
     end
-    
-    picture = params[:picture]
-    uploader = ImguploadUploader.new
-    uploader.store!(picture)
-    
-    new_team.picture = uploader.url
-                
-=======
-
->>>>>>> d6221442ecc3f9328d630ecde141d27f6e5733c9
-    new_team.tags << params[:tag1]
-    new_team.tags << params[:tag2]
-    new_team.tags << params[:tag3]
-    
-    
     
     new_team.save
     

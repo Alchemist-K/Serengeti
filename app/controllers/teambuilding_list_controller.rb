@@ -3,15 +3,12 @@ class TeambuildingListController < ApplicationController
   
   def index
     @teams = Team.all.reverse
-<<<<<<< HEAD
-    @button_tags = Serengeti.get_all_tags
-=======
     # perform a paginated query:
     @page = Team.all.paginate(:page => params[:page], per_page: 12)
     
     # or, use an explicit "per page" limit:
     
->>>>>>> d6221442ecc3f9328d630ecde141d27f6e5733c9
+    @button_tags = Serengeti.get_all_tags
   end
   
   def search
