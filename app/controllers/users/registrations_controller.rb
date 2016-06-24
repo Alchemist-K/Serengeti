@@ -54,6 +54,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     add_attrs = [:name, :university, :favor, :email, :password, :password_confirmation, :remeber_me, :major,
     :interest1, :interest2, :interest3]
     devise_parameter_sanitizer.permit(:account_update, keys: add_attrs)
+    
+    if current_user.name != nil && current_user.university != nil && current_user.favor != nil && current_user.phone_number != nil
+      user_auth = User.find(current.user.id)
+      user_auth.authorize = true
+      user_auth.save
+    end      
   end
 
   #The path used after sign up.
