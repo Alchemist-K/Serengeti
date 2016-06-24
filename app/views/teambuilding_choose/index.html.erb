@@ -10,7 +10,11 @@
       <div class="work">
         <div class="row">
           <div class="col-xs-6">
-            <img id="team_img" src="<%= @each_team.img_name %>"/>
+            <% if @each_team.img_name == "" %>
+              <img id="team_img" src="<%= asset_path("teamlist/14.png") %>"/>
+            <% else %>
+              <img id="team_img" src="<%= @each_team.img_name %>"/>
+            <% end %>
           </div> 
           <div class="col-xs-6">
             <div class="side-info">
