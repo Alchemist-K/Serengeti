@@ -42,10 +42,10 @@
               <strong>
                 <% if user_signed_in? %>
                   <%= link_to(home_get_userinform_path(user_id: r.user.id), method: "post", remote: true) do %>
-                    <div class="userbtn"><%= r.user.name %></div>
+                    <div class="userbtn"><i class="fa fa-comment"></i> <%= r.user.name %></div>
                   <% end %>
                 <% else %>
-                  <%= r.user.name %>
+                  <i class="fa fa-comment"></i> <%= r.user.name %>
                 <% end %>
               </strong>
             </div>

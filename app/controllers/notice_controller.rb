@@ -5,7 +5,6 @@ class NoticeController < ApplicationController
   #공지사항 목록
   def index
     @notice = Notice.all.paginate(:page => params[:page], per_page: 1)
-    @i = Notice.all.count #글 번호 매기기
   end
   
   #공지사항 올리기
