@@ -65,7 +65,7 @@
         <%#= form_tag("/teambuilding_choose/replypost/#{params[:id]}", method: "post", remote: true) do %>
         <%= form_tag(teambuilding_choose_replypost_path(team_id: params[:id]), method: "post", remote: true) do %>
           <input type="text" class="form-control" id="reply_post" name="reply_post" placeholder="피드백, 질문하고싶은 점, 참여의사, 기타 다양한 의견들을 남겨주세요^^">
-          <%= submit_tag("팀 리더에게 전송하기", id:"reply_submit", class:"btn btn-primary-outline waves-effect btn-size") %>
+          <%= submit_tag("아이디어 제안자에게 전송하기", id:"reply_submit", class:"btn btn-primary-outline waves-effect btn-size") %>
         <% end %>
       
       </div>

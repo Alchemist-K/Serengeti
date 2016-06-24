@@ -1,6 +1,13 @@
 // Place all the styles related to the teambuilding_create controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.create-tag-label {
+  height: 3rem;
+  padding: 1rem!important;
+  width: 100%;
+  font-size: 1rem!important;
+}
+
 .team_info {
   margin-top:3rem;
 }
@@ -8,8 +15,6 @@
 #file_upload {
   position: absolute;
   top: 0;
-  height: 480px;
-  width: 640px;
   opacity: 0;
   z-index: 1;
 }
@@ -20,8 +25,6 @@
   background-repeat: no-repeat;
   background-size: 80% 90%;
   background-color: white;
-  height: 480px;
-  width: 640px;
   z-index: 0;
 }
 

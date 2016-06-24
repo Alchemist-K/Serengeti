@@ -1,8 +1,36 @@
 <% teams.team_post_replies.each do |s| %>
-  <div class="reply-reply-post">
-    <%= s.team_post_reply %> <br/><br/>
-    <%= s.user.name %> &nbsp; <%= s.get_time %> &nbsp;
-    <a href="#">[삭제하기]</a>  
+<div class ="row">
+  <div class="col-xs-1"></div>
+  <div class="col-xs-11">
+    <strong>
+      <% if user_signed_in? %>
+        <%= link_to(home_get_userinform_path(user_id: s.user.id), method: "post", remote: true) do %>
+          <span class="userbtn"><i class="fa fa-comments"></i> <%= s.user.name %></span>
+        <% end %>
+      <% else %>
+        <span><i class="fa fa-comments"></i> <%= s.user.name %></span>
+      <% end %> 
+    </strong>
+    <i class="fa fa-clock-o"></i> <%= s.get_time %>
   </div>
-<% end %>
+</div>
+<div class="row">
+  <div class="col-xs-1"></div>
+  <div class="col-xs-11">
+    <%= s.team_post_reply %>
+    <% if user_signed_in? %>
+      <% if s.user.id == current_user.id || current_user.admin? %>
+        <a href="#">[삭제]</a>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
+<div class="row">
+  <div class="col-xs-1"></div>
+  <div class="col-xs-11">
+    <hr>  
+  </div>
+</div>
+
+<% end %>

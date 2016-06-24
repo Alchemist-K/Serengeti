@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  root 'home#index'
+  mount Ckeditor::Engine => '/ckeditor'
   get 'admin/index'
-
+  resources :teams
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
@@ -50,6 +52,7 @@ Rails.application.routes.draw do
   post 'notice/update/:post_id' => 'notice#update'
   post 'notice/reply_write'
   post 'notice/reply_delete'
+  post 'home/get_userinform'
 
   
   

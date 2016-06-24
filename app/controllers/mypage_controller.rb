@@ -1,6 +1,6 @@
 class MypageController < ApplicationController
     def index
-        @myTeam = findMyTeam
+        @myTeam = findMyTeam.all.paginate(:page => params[:page], per_page:3)
     end
     
     def findMyTeam

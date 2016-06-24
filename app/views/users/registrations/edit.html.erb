@@ -25,6 +25,10 @@
                   <%= f.text_field :major, autofocus: true, placeholder: "ex. 동물생명공학", value: current_user.major %>
                 </div><br>
                 <div class="field">
+                  <label for="exampleInputName2">한 줄 소개</label>
+                  <%= f.text_field :favor, autofocus: true, placeholder: "자신을 잘 나타낼 수 있는 한 줄을 적어주세요!", value: current_user.major %>
+                </div><br>
+                <div class="field">
                   <label for="exampleInputName2">관심분야</label>
                   <%= f.text_field :interest1, autofocus: true, placeholder: "ex. 강하늘", value: current_user.interest1 %>
                   <%= f.text_field :interest2, autofocus: true, placeholder: "ex. 여행", value: current_user.interest2 %>
@@ -40,7 +44,7 @@
                 </div><br>
                 <div class="field">
                   <label for="exampleInputName2">새로운 비밀번호 확인</label>
-                  <%= f.label :password_confirmation %><br />
+                  <%= f.label :password_confirmation %><br>
                   <%= f.password_field :password_confirmation, autocomplete: "off" %>
                 </div><br>
                 <div class="field">
@@ -66,7 +70,7 @@
                         <div class="list-group">
                             <a href="/mypage/index" class="list-group-item">As a Team Leader</a>
                             <a href="/mypage/member" class="list-group-item">As a Team member</a>
-                            <a href="#" class="list-group-item active">나의 정보</a>
+                            <a href="/mypage/myinfo" class="list-group-item active">나의 정보</a>
                         </div>
                     </div>
                 <br>

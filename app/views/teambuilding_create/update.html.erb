@@ -7,23 +7,27 @@
     <div class="container object">
       <div class="work">
         <%= form_tag("/teambuilding_create/update_process/#{@update_team.id}", method: "POST", multipart: true) do%>
-          <figure class="white_teambuilding">
-          <input type="button" id="file_upload_button"/>
-          <input type="file" name="picture" id="file_upload"/>
-          </figure>
-          <div class="wrapper-text-description side-info" sytle="margin-top:3rem;">
+          <div class="row"> 
+            <div class="col-xs-6">
+              <input type="button" id="file_upload_button"/>
+              <input type="file" name="picture" id="file_upload"/>
+            </div>
+            <div class="col-xs-6">
+              <div class="side-info" sytle="margin-top:3rem;">
 
-            <input class="team_info" type="text" id="team_name" name="name" value="<%= @update_team.name %>"/>
-            <label for="team_name">Team Name</label>
+                <input class="team_info" type="text" id="team_name" name="name" value="<%= @update_team.name %>"/>
+                <label for="team_name">Team Name</label>
 
-            <input class="team_info" type="text" name="abstract" value="<%=@update_team.abstract%>"/>
-            <label for="abstract">Abstract</label>
+                <input class="team_info" type="text" name="abstract" value="<%=@update_team.abstract%>"/>
+                <label for="abstract">Abstract</label>
 
-            <input class="team_info" type="text" name="leader" value="<%= User.find(@update_team.leader).name %>" readonly/>
-            <label for="team_number">Team Leader</label>
+                <input class="team_info" type="text" name="leader" value="<%= User.find(@update_team.leader).name %>" readonly/>
+                <label for="team_number">Team Leader</label>
 
-            <input class="team_info" type="text" name="number" value="<%= @update_team.number%>"/>
-            <label for="team_number">The Number of Members</label>
+                <input class="team_info" type="text" name="number" value="<%= @update_team.number%>"/>
+                <label for="team_number">The Number of Members</label>
+              </div>
+            </div>
 
           </div> <!-- wrapper-text-description -->
           <div class="row team_info">
@@ -68,9 +72,11 @@
             <input type="hidden" id="tag-input2" name="tag2" value=""></input>
             <input type="hidden" id="tag-input3" name="tag3" value=""></input>
           </div>
-          <div class="row card_margin" style="margin-bottom:5rem;">
-            <button type="submit" id="input-submit" class="btn btn-secondary" style="width:100%">Team Create</button>
-          </div>
+            <div class="row card_margin" style="margin-bottom:5rem;">
+              <div class="col-xs-offset-4 col-xs-4">
+                <button type="submit" id="input-submit" class="btn btn-secondary" style="width:100%; height:7vw; font-size:3vw;"><i class="fa fa-fighter-jet" aria-hidden="true"></i>&nbsp;<b>UPDATE</b></button>
+              </div>
+            </div>
         <% end %>
 
       </div> <!-- work -->

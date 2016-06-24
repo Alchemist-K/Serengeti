@@ -1,3 +1,4 @@
+
 <div class="container">
 
   <!-- PORTFOLIO -->
@@ -7,47 +8,68 @@
     <div class="container object">
       <div class="work">
         <%= form_tag("/teambuilding_create/create_process", method: "POST", multipart: true) do%>
-          <figure class="white_teambuilding">
-          <input type="button" id="file_upload_button"/>
-          <input type="file" name="picture" id="file_upload"/>
-          </figure>
-          <div class="wrapper-text-description side-info" sytle="margin-top:3rem;">
+          <div class="row">
+            <div class="col-xs-6">
+              <input type="button" id="file_upload_button"/>
+              <input type="file" name="picture" id="file_upload"/>
+            </div>
+            <div class="col-xs-6">
+              <div class="side-info" sytle="margin-top:3rem;">
 
-            <input class="team_info" type="text" id="team_name" name="name"/>
-            <label for="team_name">Team Name</label>
+                <input class="team_info" type="text" id="team_name" name="name"/>
+                <label for="team_name">Team Name</label>
 
-            <input class="team_info" type="text" name="abstract"/>
-            <label for="abstract">Abstract</label>
+                <input class="team_info" type="text" name="abstract"/>
+                <label for="abstract">Abstract</label>
 
-            <input class="team_info" type="text" name="leader" value="<%= current_user.name %>" readonly/>
-            <label for="team_number">Team Leader</label>
+                <input class="team_info" type="text" name="leader" value="<%= current_user.name %>" readonly/>
+                <label for="team_number">Team Leader</label>
 
-            <input class="team_info" type="text" name="number"/>
-            <label for="team_number">The Number of Members</label>
-            
-            <label for="team_uploadfile">File upload(아이디어를 가장 잘 나타낼 수 있는 파일을 올려주세요!)</label>
-            <input type="file" name="uploadfile">
+                <input class="team_info" type="text" name="number"/>
+                <label for="team_number">The Number of Members</label>
 
+<<<<<<< HEAD
           </div> <!-- wrapper-text-description -->
           
+=======
+                <input class="team_info" type="file" name="uploadfile">
+                <label for="team_uploadfile">File upload(아이디어를 가장 잘 나타낼 수 있는 파일을 올려주세요!)</label>
+              </div>
+            </div> <!-- wrapper-text-description -->
+          </div>
+>>>>>>> d6221442ecc3f9328d630ecde141d27f6e5733c9
           <div class="row team_info">
             <div class="col-xs-12">
               <textarea type="text" id="input-content" name="content" class="md-textarea" col=40 placeholder="팀 아이디어에 대해 설명해 주세요."></textarea>
             </div>
           </div>
           <div id="tags" class="row team_info">
-            <div class="col-xs-3">
-              <a class="btn btn-info"style="width:100%"> Select Tag </a>
+            <div class="col-xs-2">
+              <span class="create-tag-label label label-info"> Select Tag </span>
             </div>
+<<<<<<< HEAD
             <div class="col-xs-9">
               <% for i in 1..10 do %>
                 <button type="button" id="tag<%= i %>" class="btn btn-default"><%= Serengeti.get_all_tags.at(i-1) %></button>
               <% end %>
+=======
+            <div class="col-xs-10">
+              <button type="button" id="tag1" class="btn btn-default">건강</button>
+              <button type="button" id="tag2" class="btn btn-default">금융</button>
+              <button type="button" id="tag3" class="btn btn-default">교육</button>
+              <button type="button" id="tag4" class="btn btn-default">일상</button>
+              <button type="button" id="tag5" class="btn btn-default">사회공헌</button>
+              <button type="button" id="tag6" class="btn btn-default">문화</button>
+              <button type="button" id="tag7" class="btn btn-default">여행</button>
+              <button type="button" id="tag8" class="btn btn-default">유통</button>
+              <button type="button" id="tag9" class="btn btn-default">환경</button>
+              <button type="button" id="tag10" class="btn btn-default">기타</button>
+>>>>>>> d6221442ecc3f9328d630ecde141d27f6e5733c9
             </div>
           </div>
           <div class="row team_info">
-            <div class="col-xs-3">
-              <a class="btn btn-info" style="width:100%"> Put Your Tag </a>
+            <div class="col-xs-2">
+              <span class="create-tag-label label label-info"> Put Your Tag </span>
             </div>
             <div class="col-xs-3">
               <input type="text" name="custom_tag1"/>
@@ -66,7 +88,9 @@
             <input type="hidden" id="tag-input3" name="tag3" value=""></input>
           </div>
           <div class="row card_margin" style="margin-bottom:5rem;">
-            <button type="submit" id="input-submit" class="btn btn-secondary" style="width:100%">Team Create</button>
+            <div class="col-xs-offset-4 col-xs-4">
+              <button type="submit" id="input-submit" class="btn btn-secondary" style="width:100%; height:7vw; font-size:3vw;"><i class="fa fa-fighter-jet" aria-hidden="true"></i>&nbsp;<b>CREATE</b></button>
+            </div>
           </div>
         <% end %>
 
@@ -75,6 +99,7 @@
   </div>      
 </div> <!-- container -->
 <script>
+
   $(document).ready(function(){
   $('#tags button').click(function(e) {
   var txt = $(e.target).text();

@@ -13,13 +13,28 @@ class TeambuildingCreateController < ApplicationController
   end
   
   def create_process
+    
+    # 이미지 업로드
+    picture = params[:picture]
+    uploader = ImguploadUploader.new
+    uploader.store!(picture)
+    
+    # 파일 업로드
+    file = params[:uploadfile]
+    upfile = FileuploadUploader.new
+    upfile.store!(file)
+    
     new_team = Team.new(
                   name: params[:name],
                   abstract: params[:abstract],
                   content: params[:content],
                   number: params[:number],
-                  leader: current_user.id
+                  leader: current_user.id,
+                  img_name: uploader.url,
+                  file_name: upfile.url, 
+                  origin_file_name: file.original_filename
                 )
+<<<<<<< HEAD
     for i in 1..3 do
       new_team.tags << params["tag".concat(i.to_s).to_sym]
     end
@@ -37,6 +52,9 @@ class TeambuildingCreateController < ApplicationController
     
     new_team.picture = uploader.url
                 
+=======
+
+>>>>>>> d6221442ecc3f9328d630ecde141d27f6e5733c9
     new_team.tags << params[:tag1]
     new_team.tags << params[:tag2]
     new_team.tags << params[:tag3]
