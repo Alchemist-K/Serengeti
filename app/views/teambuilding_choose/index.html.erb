@@ -10,7 +10,7 @@
       <div class="work">
         <div class="row">
           <div class="col-xs-6">
-            <img id="file_upload" src="<%= @each_team.img_name %>"/>
+            <img id="team_img" src="<%= @each_team.img_name %>"/>
           </div> 
             <div class="col-xs-6">
           <div class="side-info">
@@ -56,7 +56,7 @@
             </div>
             
             <div class="wrapper-view" style="height:70px;">
-              <h6 style="margin-top:10px;">Tags</h6>
+              <h6 style="team_detail_label">Tags</h6>
               <% for i in 0..2 %>
                 <% unless @each_team.customTags[i].nil? %>
                   <div class="text-view"><%= @each_team.customTags[i] %></div>
@@ -84,12 +84,10 @@
             <% end %>
           </div>
         </div>
-
         <!-- 댓글 출력 창-->
         <div id ="post_list">
           <div class="row">
             <h2 class="heading">Comments <span class="label blue"><%= @team_post.count %></span></h2>
-          </div>
           <hr>
           <% @team_post.each do |p| %>
             <div class="row">

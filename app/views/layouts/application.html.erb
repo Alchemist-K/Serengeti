@@ -43,93 +43,101 @@
           <li class="nav-item <% if params[:controller] == 'notice' %>active<% end %>">
           <a class="nav-link" href="/notice/index">Notice</a>
           </li>
-          <li class="nav-item <% if (params[:controller] == 'teambuilding_choose') or (params[:controller] == 'teambuilding_list') or 
-              (params[:controller] == 'teambuilding_create') %>active<% end %>">
-            <a class="nav-link" href="/teambuilding_list/index">Team Building</a>
+          <li class="nav-item <% if (params[:controller] == 'teambuilding_choose') or (params[:controller] == 'teambuilding_list') or (params[:controller] == 'teambuilding_create') %>active<% end %>">
+          <a class="nav-link" href="/teambuilding_list/index">Team Building</a>
+          </li>
+
+          <% if user_signed_in? %>
+            <li class="nav-item">
+            <a class="nav-link <% if params[:controller] == 'mypage' %>active<% end %>" href="/mypage/index">My Page</a>
             </li>
-
-            <% if user_signed_in? %>
-              <li class="nav-item">
-              <a class="nav-link <% if params[:controller] == 'mypage' %>active<% end %>" href="/mypage/index">My Page</a>
-              </li>
-              <li class="nav-item right">
-              <% if current_user.name.nil?%>
-                <a class="nav-link nav_name"> NAME? </a>
-              <% else %>
-                <a class="nav-link nav_name" > <%= current_user.name%></a>
-              <% end %>
-              </li>
-              <li class="nav-item right">
-              <%= link_to '로그아웃', destroy_user_session_path, method: 'DELETE', class:"nav-link", style: "font-weight:bold; color:white;"  %>
-              </li>
-              <li class="nav-item right" style="margin-left:15vw;">
-              <%= link_to '회원정보 수정', edit_user_registration_path, class: "nav-link", style: "font-weight:bold; color:white;" %>
-              </li>
+            <li class="nav-item right">
+            <% if current_user.name.nil?%>
+              <a class="nav-link nav_name"> NAME? </a>
             <% else %>
-              <li class="nav-item right">
-              <%= link_to '로그인하기', new_user_session_path, class: "nav-link", style: "float:right; font-weight:bold; color:white;"  %>
-              </li>
+              <a class="nav-link nav_name" > <%= current_user.name%></a>
             <% end %>
-          </ul>
+            </li>
+            <li class="nav-item right">
+            <%= link_to '로그아웃', destroy_user_session_path, method: 'DELETE', class:"nav-link", style: "font-weight:bold; color:white;"  %>
+            </li>
+            <li class="nav-item right" style="margin-left:15vw;">
+            <%= link_to '회원정보 수정', edit_user_registration_path, class: "nav-link", style: "font-weight:bold; color:white;" %>
+            </li>
+          <% else %>
+            <li class="nav-item right" >
+            <%= link_to '회원가입', new_user_registration_path, class: "nav-link", style: "float:right; font-weight:bold; color:white;"  %>
+            </li>
+            <li class="nav-item right"style="margin-left:35vw;">
+            <%= link_to '로그인하기', new_user_session_path, class: "nav-link", style: "float:right; font-weight:bold; color:white;"  %>
+            </li>
+          <% end %>
+        </ul>
+        <!--Search form-->
+        <!--<form class="form-inline">-->
+          <!--    <input class="form-control" type="text" placeholder="Team Search">-->
+          <!--</form>-->
+      </div>
+      <!--/.Navbar-->       
+      </nav>
 
-          <!--Search form-->
-          <!--<form class="form-inline">-->
-            <!--    <input class="form-control" type="text" placeholder="Team Search">-->
-            <!--</form>-->
+      <%= yield %>
 
-        </div>
+      <!-- SCRIPTS -->
 
-        <!--/.Navbar-->       
-        </nav>
-        <%= yield %>
+      <!-- JQuery -->
+      <script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
 
-        <!-- SCRIPTS -->
+      <!-- Bootstrap tooltips -->
+      <script type="text/javascript" src="/js/tether.min.js"></script>
 
-        <!-- JQuery -->
-        <script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
+      <!-- Bootstrap core JavaScript -->
+      <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 
-        <!-- Bootstrap tooltips -->
-        <script type="text/javascript" src="/js/tether.min.js"></script>
+      <!-- MDB core JavaScript -->
+      <script type="text/javascript" src="/js/mdb.min.js"></script>
 
-        <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+      <footer style="width:100%;padding:2.5rem;background-color:#373A3C;color:white;">
+      <!--Copyright-->
+      © 2015 Copyright: <a href="http://www.serengeti.com"> serengeti.com </a> <br>
+      Made By <strong>갓정건, 갓동욱, 갓현민, 갓현영, 갓동민, 갓승환, 갓경도 </strong> from SNU Likelion 4th <br>
+      picture by National Geography
+      <!--/.Copyright-->
+      </footer>
+      <!--/.Footer-->
 
-        <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="/js/mdb.min.js"></script>
+      <!-- 회원정보 modal!-->
+      <div id="myModal" class="modal">
 
-        <footer>
-        <!--Copyright-->
-          <div class="footer-copyright">
-            <div class="container-fluid" style="padding:2.5rem;background-color:#373A3C;color:white;">
-              © 2015 Copyright: <a href="http://www.serengeti.com"> serengeti.com </a> <br>
-              Made By <strong>갓정건, 갓동욱, 갓현민, 갓현영, 갓동민, 갓승환, 갓경도 </strong> from SNU Likelion 4th <br>
-              picture by National Geography
-            </div>
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times</span>
+            <h2>회원정보</h2>
           </div>
-        <!--/.Copyright-->
-
-        </footer>
-        <!--/.Footer-->
-        
-        <!-- 회원정보 modal!-->
-        <div id="myModal" class="modal">
-        
-          <!-- Modal content -->
-          <div class="modal-content">
-            <div class="modal-header">
-              <span class="close">&times</span>
-              <h2>회원정보</h2>
-            </div>
-            <div class="userinform">
-              <h1>나는....</h1>
-            </div>
-            <div class="modal-footer">
-              <h3 class="brandlogo">SERENGETI</h3>
-            </div>
+          <div class="userinform">
+            <h1>나는....</h1>
           </div>
-        
+          <div class="modal-footer">
+            <h3 class="brandlogo">SERENGETI</h3>
+          </div>
         </div>
+      </div>
 
+
+      <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the <span> element that closes the modal
+          var span = document.getElementsByClassName("close")[0];
+
+          $(document).on("click", ".userbtn", function(){
+          modal.style.display = "block";
+          });
+
+
+<<<<<<< HEAD
     <!-- 회원정보 클릭/열람 모달 -->
     <script>
       // Get the modal
@@ -156,3 +164,19 @@
     </script>
   </body>
 </html>
+=======
+          // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+            modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+            if (event.target == modal) {
+            modal.style.display = "none";
+            }
+            }
+        </script>
+        </body>
+      </html>
+>>>>>>> c2df6b13d97b8b3895f487f7645828162e30c82a

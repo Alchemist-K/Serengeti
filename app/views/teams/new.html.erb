@@ -1,0 +1,7 @@
+
+<%= javascript_include_tag Ckeditor.cdn_url%>
+  <%= form_for @team  do |form|%>
+    <%= form.cktext_area :name, :ckeditor => {:language => 'en,ko'}%>
+    <%= form.cktext_area :abstract, :value => 'Default value', :id => 'sometext'%>
+    <%= cktext_area :content, :cols => 40, :ckeditor => {:uiColor => '#AADC6E', :toolbar => 'mini'}%>
+  <% end %>

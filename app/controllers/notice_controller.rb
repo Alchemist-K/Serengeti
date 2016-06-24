@@ -4,7 +4,7 @@ class NoticeController < ApplicationController
 
   #공지사항 목록
   def index
-    @notice = Notice.all.paginate(:page => params[:page], per_page: 1)
+    @notice = Notice.all.paginate(:page => params[:page], per_page: 5)
   end
   
   #공지사항 올리기
