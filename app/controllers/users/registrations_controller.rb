@@ -59,6 +59,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user_auth = User.find(current.user.id)
       user_auth.authorize = true
       user_auth.save
+    else
+      user_auth = User.find(current.user.id)
+      user_auth.authorize = false
+      user_auth.save
     end      
   end
 
