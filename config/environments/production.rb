@@ -77,19 +77,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   
-  config.action_mailer.default_url_options = {
-    host: 'serengeti.team' #host page adress
-  }
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-    authentication: :plain,
-    address: "smtp.mailgun.org",
-    port: 2525,
-    domain: "sandboxff9eaf39dc1c4f9793c25372f2884306.mailgun.org",
-    user_name: "postmaster@sandboxff9eaf39dc1c4f9793c25372f2884306.mailgun.org",
-    password: "c51cea4d9ba05751602d23db051e8f57"
-  }
-  
   # config.action_mailer.default_url_options = {
   #   host: 'serengeti.team' #host page adress
   # }
@@ -98,8 +85,21 @@ Rails.application.configure do
   #   authentication: :plain,
   #   address: "smtp.mailgun.org",
   #   port: 2525,
-  #   domain: "serengeti.team",
-  #   user_name: "postmaster@serengeti.team",
-  #   password: "9626bb6d9b61ea6dfbbaf334ecf33b25"
+  #   domain: "sandboxff9eaf39dc1c4f9793c25372f2884306.mailgun.org",
+  #   user_name: "postmaster@sandboxff9eaf39dc1c4f9793c25372f2884306.mailgun.org",
+  #   password: "c51cea4d9ba05751602d23db051e8f57"
   # }
+  
+  config.action_mailer.default_url_options = {
+    host: 'serengeti.team' #host page adress
+  }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+    authentication: :plain,
+    address: "smtp.mailgun.org",
+    port: 2525,
+    domain: "serengeti.team",
+    user_name: "postmaster@serengeti.team",
+    password: "9626bb6d9b61ea6dfbbaf334ecf33b25"
+  }
 end
