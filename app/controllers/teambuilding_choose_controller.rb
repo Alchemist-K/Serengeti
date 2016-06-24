@@ -1,4 +1,6 @@
 class TeambuildingChooseController < ApplicationController
+  before_action :require_login, only: [:replypost, :replyreply]
+  
   # 첫 화면(팀을 고른 이후에 나타나게 되는 화면)
   def index
     team_id = params[:id].to_i
@@ -27,9 +29,13 @@ class TeambuildingChooseController < ApplicationController
     
   # 댓글을 수정하는 기능
     def destroy
-      @one_post = TeamPost.find(params[:post_id])
-      @one_post.destroy
-      redirect_to :back
+      if current_user.id == TeamPost.find(params[:post_id]).user.id || current_user.admin?
+        @one_post = TeamPost.find(params[:post_id])
+        @one_post.destroy
+        redirect_to :back
+      else
+        redirect_to
+      end
     end
     
   # 대댓글(댓글의 댓글) 기능
@@ -39,7 +45,13 @@ class TeambuildingChooseController < ApplicationController
       replyreply.user_id=current_user.id
       replyreply.team_post_id=params[:post_id]
       replyreply.save
-      
+      @postid = params[:post_id]
       @team_post = TeamPost.find_by(id: replyreply.team_post_id)
     end
+    
+  def require_login
+    unless user_signed_in?
+      redirect_to :back    
+    end
+  end
 end

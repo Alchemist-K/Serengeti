@@ -15,7 +15,7 @@
  */
 
 #index_nav {
-  background-color: currentColor;
+  background-color: #373A3C;
 }
 
 .modal {
@@ -96,4 +96,12 @@
 @keyframes fadeIn {
     from {opacity: 0}
     to {opacity: 1}
+}
+
+
+.rebtn {
+    border-radius: 0;
+    border: 0;
+    color: #fff;
+    margin: 0px;
 }

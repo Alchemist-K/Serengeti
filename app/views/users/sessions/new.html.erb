@@ -9,13 +9,21 @@
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <li class="list-group-item list-group-item-info">
               <h3><strong>SERENGETI로 입장하기</strong></h3>
+<<<<<<< HEAD
               <strong><%= devise_error_messages! %></strong>
+=======
+                <strong><%= devise_error_messages! %></strong>
+>>>>>>> aa0e1f4323a263eeaffb0375d78b2df4a2ae51a5
             </li>
             
             <li class="list-group-item list-group-item-warning">
               <strong>
                 <div class="field">
+<<<<<<< HEAD
                   <%= f.label :email %><br/>
+=======
+                  <%= f.label :email %><br />
+>>>>>>> aa0e1f4323a263eeaffb0375d78b2df4a2ae51a5
                   <%= f.email_field :email, autofocus: true %>
                 </div>
               </strong>
@@ -24,12 +32,19 @@
             <li class="list-group-item list-group-item-warning">
               <strong>
                 <div class="field">
+<<<<<<< HEAD
                   <%= f.label :password %><br/>
+=======
+                  <%= f.label :password %><br />
+>>>>>>> aa0e1f4323a263eeaffb0375d78b2df4a2ae51a5
                   <%= f.password_field :password, autocomplete: "off" %>
                 </div>
               </strong>
             </li>
+<<<<<<< HEAD
             
+=======
+>>>>>>> aa0e1f4323a263eeaffb0375d78b2df4a2ae51a5
             <li class="list-group-item list-group-item-warning">
               <strong>
                 <% if devise_mapping.rememberable? -%>
@@ -41,13 +56,26 @@
               </strong>
             </li>
             <%#= render "users/shared/links" %>
+<<<<<<< HEAD
             <button type="submit" name="commit" class="btn btn-success" style="float:right;">로그인</button>
+=======
+            <div class="actions">
+            <%= f.submit "로그인" %>
+          </div>
+>>>>>>> aa0e1f4323a263eeaffb0375d78b2df4a2ae51a5
           <% end %>
         </ul>
         <!--/.Post-->
       </div>
+<<<<<<< HEAD
       <!--/.Card-->
       
     </div> <!-- col -->
   </div> <!-- row -->
 </div> <!-- container -->
+=======
+      <!--/.Card-->            
+    </div>
+  </div>
+</div>
+>>>>>>> aa0e1f4323a263eeaffb0375d78b2df4a2ae51a5
