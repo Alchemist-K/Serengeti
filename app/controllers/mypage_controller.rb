@@ -32,4 +32,15 @@ class MypageController < ApplicationController
     def myinfo
         @myinfo = User.where(email: current_user.email).all
     end
+    
+    def feedback
+        
+        f = Feedback.new
+		f.username = current_user.name
+		f.feedback = params[:feedback]
+		f.save
+		
+        redirect_to :back
+    
+    end
 end

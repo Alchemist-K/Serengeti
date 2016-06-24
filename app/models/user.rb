@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
   
   has_many :teambuilds
   has_many :teams, through: :teambuilds
+  
+  has_many :feedbacks
 end

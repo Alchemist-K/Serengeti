@@ -99,12 +99,14 @@
                                 <p><strong>여러분의 피드백과 의견을 말해주세요!</strong></p>
                                 <p>개선되었으면 하는 점, 추가했으면 하는 점 등을 <br>모두 말씀해주세요!
                                    세렝게티는 항상 여러분의 <br>의견에 귀기울이고 있습니다.</p>
-                                <div class="md-form">
-                                    <i class="fa fa-commenting-o"></i>
-                                    <input type="text" id="form2" class="form-control" placeholder="">
-                                    <label for="form2"></label>
-                                </div>
-                                <button class="btn btn-primary">전송하기</button>
+                                   
+                                    <%= form_tag("/mypage/feedback", method: "POST") do%>
+                                        <div class="md-form">
+                                            <i class="fa fa-commenting-o"></i>
+                                            <textarea class="form-control" name="feedback" rows="5" id="comment"></textarea>
+                                        </div>
+                                        <button class="btn btn-primary" type="submit">전송하기</button>
+                                    <% end %>
 
                             </div>
                         </div>
