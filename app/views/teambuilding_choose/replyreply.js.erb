@@ -1,3 +1,5 @@
-$(".reply_id").html(
+$(".rereply"+ <%= @postid %>).html(
   "<%= escape_javascript(render partial: 'teambuilding_choose/replylist', locals: { teams: @team_post }) %>"
 );
+
+$("#rereply"+<%= @postid %>).val("");

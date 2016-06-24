@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'home#index'
   mount Ckeditor::Engine => '/ckeditor'
   get 'admin/index'
   resources :teams
