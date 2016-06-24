@@ -61,65 +61,65 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
               <a class="dropdown-item" href="#">가장 최근에 만들어진 팀</a>
               <a class="dropdown-item" href="#">가장 나중에 만들어진 팀</a>
+            </div>
           </div>
         </div>
+
+        <!--<button class="btn-team-create btn btn-success" style="margin-left:-125px;" onclick="location.href='/teambuilding_create/create'">팀 만들기</button>-->
+        <div id="list_box" class="container">
+          <section class="work" style="margin-top: 20px;">
+          <% @page.each do |t| %>
+            <div class="col-xs-12 col-md-3">
+              <figure class="white">
+              <a href="/teambuilding_choose/<%= t.id %>">
+                <% if t.img_name != "" %>
+                  <img style="margin:5%" src="<%= t.img_name %>" />
+                <% else %>
+                  <img style="margin:5%" src="<%= image_path "teamlist/14.png" %>"/>
+                <% end %>
+                <dl>
+                  <dt><%= t.abstract %></dt>
+                  <dd><%= t.content %></dd>
+                  <br>
+                  <dd>팀장 : <%= User.find(t.leader).name %></dd>
+                  <dd>팀원 : <%= t.members.count %>명 / <%= t.number %>명</dd>
+                </dl>
+              </a>
+              </figure>
+            </div>
+          <% end %>
+          </section>
+        </div>
       </div>
+      <nav class="text-xs-center">
+      <%= will_paginate @page, renderer: BootstrapPagination::Rails  %>
+      </nav>
 
-      <!--<button class="btn-team-create btn btn-success" style="margin-left:-125px;" onclick="location.href='/teambuilding_create/create'">팀 만들기</button>-->
-      <div id="list_box" class="container">
-        <section class="work" style="margin-top: 20px;">
-        <% @page.each do |t| %>
-          <div class="col-xs-12 col-md-3">
-            <figure class="white">
-            <a href="/teambuilding_choose/<%= t.id %>">
-              <% if t.img_name != "" %>
-                <img style="margin:5%" src="<%= t.img_name %>" />
-              <% else %>
-                <img style="margin:5%" src="<%= image_path "teamlist/14.png" %>"/>
-              <% end %>
-              <dl>
-                <dt><%= t.abstract %></dt>
-                <dd><%= t.content %></dd>
-                <br>
-                <dd>팀장 : <%= User.find(t.leader).name %></dd>
-                <dd>팀원 : <%= t.members.count %>명 / <%= t.number %>명</dd>
-              </dl>
-            </a>
-            </figure>
-          </div>
-        <% end %>
-        </section>
-      </div>
-    </div>
-                  <nav class="text-xs-center">
-                  <%= will_paginate @page, renderer: BootstrapPagination::Rails  %>
-                  </nav>
+    </body>
 
-  </body>
-
-  <script>
-    $(document).ready(function(){
-    $('#gotolist').on('click',function (event) {
-    event.preventDefault();
-    var position = $("#arrivelist").offset();
-    $('html, body').animate({scrollTop : position.top}, 1500);
-    });
+    <script>
+      $(document).ready(function(){
+      $('#gotolist').on('click',function (event) {
+      event.preventDefault();
+      var position = $("#arrivelist").offset();
+      $('html, body').animate({scrollTop : position.top}, 1500);
+      });
 
 
-    $('#myDropdown').on('show.bs.dropdown', function () {
-    // do something…
-    })
+      $('#myDropdown').on('show.bs.dropdown', function () {
+      // do something…
+      })
 
-    $('.dropdown-toggle').dropdown()
+      $('.dropdown-toggle').dropdown()
 
-    });
-    
-    $(document).on("click", ".btn-select", function(e) {
+      });
+
+      $(document).on("click", ".btn-select", function(e) {
       var txt = $(e.target).text();
       if( $("#tag_selected").val() == "" ) {
-        $("#tag_selected").val(txt);
+      $("#tag_selected").val(txt);
       } else {
-        $("#tag_selected").val(" " + text);
+      $("#tag_selected").val(" " + text);
       }
-    })
-  </script>
+      })
+    </script>

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'will_paginate-bootstrap'
 gem 'will_paginate', '~> 3.1.0'
 gem "mini_magick"
