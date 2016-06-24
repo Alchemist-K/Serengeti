@@ -25,6 +25,10 @@
                   <%= f.text_field :major, autofocus: true, placeholder: "ex. 동물생명공학", value: current_user.major %>
                 </div><br>
                 <div class="field">
+                  <label for="exampleInputName2">한 줄 소개</label>
+                  <%= f.text_field :favor, autofocus: true, placeholder: "자신을 잘 나타낼 수 있는 한 줄을 적어주세요!", value: current_user.major %>
+                </div><br>
+                <div class="field">
                   <label for="exampleInputName2">관심분야</label>
                   <%= f.text_field :interest1, autofocus: true, placeholder: "ex. 강하늘", value: current_user.interest1 %>
                   <%= f.text_field :interest2, autofocus: true, placeholder: "ex. 여행", value: current_user.interest2 %>
