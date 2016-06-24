@@ -1,53 +1,53 @@
 <div class="container">
   <div class="row"  style="margin-top:30px;">
     <div class="col-md-8 col-md-offset-2">
+      
       <!--Card-->
       <div class="card">
-
         <!--Main column-->
         <ul class="list-group">
-          <li class="list-group-item list-group-item-info">
-          <strong>
-            <h3><strong>SERENGETI로 입장하기</strong></h2>
-            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <%= devise_error_messages! %>
-            </strong>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <li class="list-group-item list-group-item-info">
+              <h3><strong>SERENGETI로 입장하기</strong></h3>
+              <strong><%= devise_error_messages! %></strong>
             </li>
+            
             <li class="list-group-item list-group-item-warning">
-            <strong>
-              <div class="field">
-                <%= f.label :email %><br />
-                <%= f.email_field :email, autofocus: true %>
-              </div>
-            </strong>
-            </li>
-            <li class="list-group-item list-group-item-warning">
-            <strong>
-              <div class="field">
-                <%= f.label :password %><br />
-                <%= f.password_field :password, autocomplete: "off" %>
-              </div>
-            </strong>
-            </li>
-            <li class="list-group-item list-group-item-warning">
-            <strong>
-              <% if devise_mapping.rememberable? -%>
+              <strong>
                 <div class="field">
-                  <%= f.check_box :remember_me %>
-                  <%= f.label :remember_me %>
+                  <%= f.label :email %><br/>
+                  <%= f.email_field :email, autofocus: true %>
                 </div>
-              <% end -%>
-            </strong>
+              </strong>
+            </li>
+            
+            <li class="list-group-item list-group-item-warning">
+              <strong>
+                <div class="field">
+                  <%= f.label :password %><br/>
+                  <%= f.password_field :password, autocomplete: "off" %>
+                </div>
+              </strong>
+            </li>
+            
+            <li class="list-group-item list-group-item-warning">
+              <strong>
+                <% if devise_mapping.rememberable? -%>
+                  <div class="field">
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me %>
+                  </div>
+                <% end -%>
+              </strong>
             </li>
             <%#= render "users/shared/links" %>
             <button type="submit" name="commit" class="btn btn-success" style="float:right;">로그인</button>
-            <%#= f.submit "로그인" %>
           <% end %>
         </ul>
         <!--/.Post-->
       </div>
-      <!--/.Card-->            
-
-    </div>
-  </div>
-</div>
+      <!--/.Card-->
+      
+    </div> <!-- col -->
+  </div> <!-- row -->
+</div> <!-- container -->
