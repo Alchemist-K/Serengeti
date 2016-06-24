@@ -1,136 +1,138 @@
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-xs-12 card_margin" >
-        <!--Card-->
-        <div class="card">
-          <!--Card image-->
-          <div class="view overlay hm-white-slight">
-            <img src="/img/participate.jpg" class="img-fluid" alt="">
-          </div>
-          <!--/.Card image-->
-          <!--Card content-->
-          <div class="card-block" style="text-align:center;">
-            <!--Title-->
-            <h3 class="card-title" style="text-weight:bold;"><strong>Team List</strong></h3>
-            <!--Text-->
-            <p class="card-text">전국의 멋사 학생들이 만든 팀을 살펴보세요!<br> 그리고 그들과 함께 세상을 바꿔나가세요!</p>
-            <a href="#" class="btn btn-success" id="gotolist" style="align:center;"><strong>팀 목록</strong></a>
-          </div>
-          <!--/.Card content-->
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-6 col-xs-12 card_margin" >
+      <!--Card-->
+      <div class="card">
+        <!--Card image-->
+        <div class="view overlay hm-white-slight">
+          <img src="/img/participate.jpg" class="img-fluid" alt="">
         </div>
-        <!--/.Card-->
+        <!--/.Card image-->
+        <!--Card content-->
+        <div class="card-block" style="text-align:center;">
+          <!--Title-->
+          <h3 class="card-title" style="text-weight:bold;"><strong>Team List</strong></h3>
+          <!--Text-->
+          <p class="card-text">전국의 멋사 학생들이 만든 팀을 살펴보세요!<br> 그리고 그들과 함께 세상을 바꿔나가세요!</p>
+          <a href="#" class="btn btn-success" id="gotolist" style="align:center;"><strong>팀 목록</strong></a>
+        </div>
+        <!--/.Card content-->
       </div>
-      <div class="col-md-6 col-xs-12 card_margin">
-        <!--Card-->
-        <div class="card">
-          <!--Card image-->
-          <div class="view overlay hm-white-slight">
-            <img src="/img/puzzle.jpg" class="img-fluid" alt="">
+      <!--/.Card-->
+    </div> <!-- /.col-md-6 col-xs-12 card_margin -->
+    
+    <div class="col-md-6 col-xs-12 card_margin">
+      <!--Card-->
+      <div class="card">
+        <!--Card image-->
+        <div class="view overlay hm-white-slight">
+          <img src="/img/puzzle.jpg" class="img-fluid" alt="">
+        </div>
+        <!--/.Card image-->
+        <!--Card content-->
+        <div class="card-block" style="text-align:center;">
+          <!--Title-->
+          <h3 class="card-title" style="text-weight:bold;"><strong>Team Create</strong></h3>
+          <!--Text-->
+          <p class="card-text">세상을 바꿀 나만의 아이디어를 팀으로 만들고,<br>전국에서 당신과 함께 꿈을 이뤄갈 사람들을 찾아보세요!</p>
+          <a href="#" class="btn btn-primary" onclick="location.href='/teambuilding_create/create'"><strong>아이디어 올리기</strong></a>
+        </div>
+      </div> <!--/.Card-->
+    </div> <!-- /.col-md-6 col-xs-12 card_margin -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;"><strong><h3 class="card-text" id="arrivelist">태그로 찾기</h3></strong><hr>
+          <% for i in 0..9 do %>
+            <%= link_to @button_tags[i], teambuilding_list_tag_search_path(input: @button_tags[i], is_custom: false), class: "btn btn-default", remote: true %>
+          <% end %> 
+        </div>
+        
+        <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;"><strong><h3 class="card-text">다른 방법으로 찾기</h3></strong><hr>
+          <button style="width:50%" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            시간별 분류
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
+            <a class="dropdown-item" href=" ">가장 최근에 만들어진 팀</a>
+            <a class="dropdown-item" href=" ">가장 나중에 만들어진 팀</a>
           </div>
-          <!--/.Card image-->
-          <!--Card content-->
-          <div class="card-block" style="text-align:center;">
-            <!--Title-->
-            <h3 class="card-title" style="text-weight:bold;"><strong>Team Create</strong></h3>
-            <!--Text-->
-            <p class="card-text">세상을 바꿀 나만의 아이디어를 팀으로 만들고,<br>전국에서 당신과 함께 꿈을 이뤄갈 사람들을 찾아보세요!</p>
-            <a href="#" class="btn btn-primary" onclick="location.href='/teambuilding_create/create'"><strong>아이디어 올리기</strong></a>
-          </div>
+        </div>
+      </div> <!-- row -->
+      
+      <div class="row">
+        <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;">
+          <strong><h3 class="card-text">다른 태그로 찾기</h3></strong><hr>
+          <%= form_tag(teambuilding_list_tag_search_path, method: "post", remote: true) do %>
+            <input type="text" class="form-control" name="input" placeholder="">
+            <%= submit_tag "찾기", style: "width:50%", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+        
+        <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;">
+          <strong><h3 class="card-text">내용으로 찾기</h3></strong><hr>
+          <%= form_tag(teambuilding_list_search_path, method: "post", remote: true) do %>
+            <input type="text" class="form-control" name="search_key" placeholder="">
+            <%= submit_tag "찾기", style: "width:50%", class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
+    </div> <!--end of container -->
 
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;"><strong><h3 class="card-text" id="arrivelist">태그로 찾기</h3></strong><hr>
-            <% for i in 0..9 do %>
-              <%= link_to @button_tags[i], teambuilding_list_tag_search_path(input: @button_tags[i], is_custom: false), class: "btn btn-default", remote: true %>
-            <% end %> 
-          </div>
-          
-          <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;"><strong><h3 class="card-text">다른 방법으로 찾기</h3></strong><hr>
-            <button style="width:50%" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              시간별 분류
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
-              <a class="dropdown-item" href=" ">가장 최근에 만들어진 팀</a>
-              <a class="dropdown-item" href=" ">가장 나중에 만들어진 팀</a>
-            </div>
-          </div>
-        </div>
-          <div class="row">
-            <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;">
-              <strong><h3 class="card-text">다른 태그로 찾기</h3></strong><hr>
-              <%= form_tag(teambuilding_list_tag_search_path, method: "post", remote: true) do %>
-                <input type="text" class="form-control" name="input" placeholder="">
-                <%= submit_tag "찾기", style: "width:50%", class: "btn btn-primary" %>
-              <% end %>
-            </div>
-            
-            <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;">
-              <strong><h3 class="card-text">내용으로 찾기</h3></strong><hr>
-              <%= form_tag(teambuilding_list_search_path, method: "post", remote: true) do %>
-                <input type="text" class="form-control" name="search_key" placeholder="">
-                <%= submit_tag "찾기", style: "width:50%", class: "btn btn-primary" %>
-              <% end %>
-          </div>
-        </div>
-      </div> <!--end of container -->
-
-        <!--<button class="btn-team-create btn btn-success" style="margin-left:-125px;" onclick="location.href='/teambuilding_create/create'">팀 만들기</button>-->
-        <div id="list_box" class="container">
-          <section class="work" style="margin-top: 20px;">
+      <!--<button class="btn-team-create btn btn-success" style="margin-left:-125px;" onclick="location.href='/teambuilding_create/create'">팀 만들기</button>-->
+      <div id="list_box" class="container">
+        <section class="work" style="margin-top: 20px;">
           <% @page.each do |t| %>
             <div class="col-xs-12 col-md-3">
               <figure class="white">
-              <a href="/teambuilding_choose/<%= t.id %>">
-                <% if t.img_name != "" %>
-                  <img style="margin:5%" src="<%= t.img_name %>" />
-                <% else %>
-                  <img style="margin:5%" src="<%= image_path "teamlist/14.png" %>"/>
-                <% end %>
-                <dl>
-                  <dt><%= t.abstract %></dt>
-                  <dd><%= t.content %></dd>
-                  <br>
-                  <dd>팀장 : <%= User.find(t.leader).name %></dd>
-                  <dd>팀원 : <%= t.members.count %>명 / <%= t.number %>명</dd>
-                </dl>
-              </a>
+                <a href="/teambuilding_choose/<%= t.id %>">
+                  <% if t.img_name != "" %>
+                    <img style="margin:5%" src="<%= t.img_name %>" />
+                  <% else %>
+                    <img style="margin:5%" src="<%= image_path "teamlist/14.png" %>"/>
+                  <% end %>
+                  <dl>
+                    <dt><%= t.abstract %></dt>
+                    <dd><%= t.content %></dd>
+                    <br>
+                    <dd>팀장 : <%= User.find(t.leader).name %></dd>
+                    <dd>팀원 : <%= t.members.count %>명 / <%= t.number %>명</dd>
+                  </dl>
+                </a>
               </figure>
             </div>
           <% end %>
-          </section>
-        </div>
-      </div>
-      <nav class="text-xs-center">
-      <%= will_paginate @page, renderer: BootstrapPagination::Rails  %>
-      </nav>
+        </section>
+      </div> <!--end of container -->
 
-    </body>
+    <nav class="text-xs-center">
+      <%= will_paginate @page, renderer: BootstrapPagination::Rails %>
+    </nav>
 
-  <script>
-    $(document).ready(function(){
-    $('#gotolist').on('click',function (event) {
+  </div> <!--end of row -->
+</div> <!--end of container -->
+
+<script>
+$(document).ready(function(){
+  $('#gotolist').on('click',function (event) {
     event.preventDefault();
     var position = $("#arrivelist").offset().top-90;
     $('html, body').animate({scrollTop : position}, 1500);
-    });
+  });
 
-      $('#myDropdown').on('show.bs.dropdown', function () {
-      // do something…
-      })
+  $('#myDropdown').on('show.bs.dropdown', function () {
+  // do something…
+  });
 
-      $('.dropdown-toggle').dropdown()
+  $('.dropdown-toggle').dropdown();
+});
 
-      });
-
-      $(document).on("click", ".btn-select", function(e) {
-      var txt = $(e.target).text();
-      if( $("#tag_selected").val() == "" ) {
-      $("#tag_selected").val(txt);
-      } else {
-      $("#tag_selected").val(" " + text);
-      }
-      })
-    </script>
+$(document).on("click", ".btn-select", function(e) {
+  var txt = $(e.target).text();
+  if( $("#tag_selected").val() == "" ) {
+    $("#tag_selected").val(txt);
+  } else {
+    $("#tag_selected").val(" " + text);
+  }
+});
+</script>

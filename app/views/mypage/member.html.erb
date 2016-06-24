@@ -6,9 +6,9 @@
                 <!--Main column-->
                 <div class="col-md-8">
 
-                 <% @appliedteam.each do |p| %>
+                <% @appliedteam.each do |p| %>
                 <!--Card-->
-                <div class="card">
+                <div class="card"  onclick="location.href='/teambuilding_choose/<%= p.id %>'">
                   <!--Card content-->
                   <div class="card-block">
                     <!--Post-->
