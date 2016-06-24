@@ -1,4 +1,4 @@
-<body>
+
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-xs-12 card_margin" >
@@ -40,9 +40,9 @@
         </div>
       </div>
 
-      <div class="container"  id="arrivelist">
+      <div class="container">
         <div class="row">
-          <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;"><strong><h3 class="card-text">태그로 찾기</h3></strong><hr>
+          <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;"><strong><h3 class="card-text" id="arrivelist">태그로 찾기</h3></strong><hr>
             <%= link_to "건강", teambuilding_list_tag_search_path(input: "건강"), class: "btn btn-default btn-select", remote: true %>
             <%= link_to "금융", teambuilding_list_tag_search_path(input: "금융"), class: "btn btn-default btn-select", remote: true %>
             <%= link_to "교육", teambuilding_list_tag_search_path(input: "교육"), class: "btn btn-default btn-select", remote: true %>
@@ -97,14 +97,13 @@
 
     </body>
 
-    <script>
-      $(document).ready(function(){
-      $('#gotolist').on('click',function (event) {
-      event.preventDefault();
-      var position = $("#arrivelist").offset();
-      $('html, body').animate({scrollTop : position.top}, 1500);
-      });
-
+  <script>
+    $(document).ready(function(){
+    $('#gotolist').on('click',function (event) {
+    event.preventDefault();
+    var position = $("#arrivelist").offset().top-90;
+    $('html, body').animate({scrollTop : position}, 1500);
+    });
 
       $('#myDropdown').on('show.bs.dropdown', function () {
       // do something…
