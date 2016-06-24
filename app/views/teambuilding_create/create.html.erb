@@ -16,16 +16,16 @@
             <div class="col-xs-6">
               <div class="side-info" sytle="margin-top:3rem;">
 
-                <input class="team_info" type="text" id="team_name" name="name"/>
+                <input class="team_info" type="text" id="team_name" name="name" required/>
                 <label for="team_name">Team Name</label>
 
-                <input class="team_info" type="text" name="abstract"/>
+                <input class="team_info" type="text" name="abstract" required/>
                 <label for="abstract">Abstract</label>
 
                 <input class="team_info" type="text" name="leader" value="<%= current_user.name %>" readonly/>
                 <label for="team_number">Team Leader</label>
 
-                <input class="team_info" type="text" name="number"/>
+                <input class="team_info" type="number" name="number" required/>
                 <label for="team_number">The Number of Members</label>
 
                 <input class="team_info" type="file" name="uploadfile">

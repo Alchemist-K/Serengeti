@@ -24,17 +24,21 @@ class TeambuildingCreateController < ApplicationController
     upfile = FileuploadUploader.new
     upfile.store!(file)
     
-    new_team = Team.new(
-                  name: params[:name],
-                  abstract: params[:abstract],
-                  content: params[:content],
-                  number: params[:number],
-                  leader: current_user.id,
-                  img_name: uploader.url,
-                  file_name: upfile.url, 
-                  origin_file_name: file.original_filename
-                )
-                
+    new_team = Team.new
+    new_team.name = params[:name]
+    new_team.abstract = params[:abstract]
+    new_team.content = params[:content]
+    new_team.number = params[:number]
+    new_team.leader = current_user.id
+    
+    if picture != nil || file != nil
+      new_team.img_name = uploader.url
+      new_team.file_name = upfile.url 
+      origin_file_name = file.original_filename
+    else
+      
+    end
+
     for i in 1..3 do
       new_team.tags << params["tag".concat(i.to_s).to_sym]
     end
