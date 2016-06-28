@@ -4,7 +4,7 @@ class ImguploadUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
@@ -24,17 +24,19 @@ class ImguploadUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
+   process resize_to_fit: [441, 330]
   # Process files as they are uploaded:
-  # process :scale => [200, 300]
+   #process scale: [441, 330]
   #
-  # def scale(width, height)
-  # #   do something
-  # end
+   #def scale(width, height)
+   #process :resize_to_fit => [441,330]
+   #end
+  #process resize_to_fit: [441, 330]
 
-  # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :resize_to_fit => [50, 50]
-  # end
+  ## Create different versions of your uploaded files:
+  #version :thumb do
+    #process :resize_to_fit => [441, 330]
+  #end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

@@ -1,6 +1,83 @@
 <%= javascript_include_tag Ckeditor.cdn_url%>
-  <%= form_for @team  do |form|%>
-    <%= form.cktext_area :name, :ckeditor => {:language => 'en,ko'}%>
-    <%= form.cktext_area :abstract, :value => 'Default value', :id => 'sometext'%>
-    <%= cktext_area :content, :cols => 40, :ckeditor => {:uiColor => '#AADC6E', :toolbar => 'mini'}%>
-  <% end %>
+<div class="container">
+  <div id="wrapper-container" style="margin-top: 120px;"> <!-- Container -->
+    <div class="container object"> <!-- Object -->
+      <div class="work"> <!-- work -->
+        <%= form_for @team do |form|%>
+          
+          <div class="row"> <!--Basic Info -->
+            <div class="col-xs-6"> <!-- Thumbnail Info -->
+              <input type="button" id="file_upload_button"/>
+              <input type="file" name="picture" id="file_upload"/>
+            </div> <!-- Thumbnail Info -->
+            <div class="col-xs-6"> <!-- Side Info -->
+              <div class="side-info" sytle="margin-top:3rem;">
+
+                <input class="team_info" type="text" id="team_name" name="name" required/>
+                <label for="team_name">Team Name</label>
+
+                <input class="team_info" type="text" name="abstract" required/>
+                <label for="abstract">Abstract</label>
+
+                <input class="team_info" type="text" name="leader" value="<%= current_user.name %>" readonly/>
+                <label for="team_number">Team Leader</label>
+
+                <input class="team_info" type="number" name="number" required/>
+                <label for="team_number">The Number of Members</label>
+
+                <input class="team_info" type="file" name="uploadfile">
+                <label for="team_uploadfile">File upload(아이디어를 가장 잘 나타낼 수 있는 파일을 올려주세요!)</label>
+              </div>
+            </div> <!--Side Info -->
+          </div> <!-- Basic Info -->
+          <%#= form.text_area :name, :ckeditor => {:language => 'en,ko'}%>
+          <%#= form.text_area :abstract, placeholder: '한 줄로 소개해주세요 :)'%>
+
+          <div class="row team_info"> <!-- Content -->
+            <div class="col-xs-12">
+              <%= form.cktext_area :content, :cols => 40, :ckeditor => {:uiColor => '#AADC6E', :toolbar => 'mini'}%>
+            </div>
+          </div><!-- Content -->
+
+          <div id="tags" class="row team_info"> <!-- Select Tags -->
+            <div class="col-xs-2">
+              <span class="create-tag-label label label-info"> Select Tag </span>
+            </div>
+            <div class="col-xs-10">
+              <% for i in 1..10 do %>
+                <button type="button" id="tag<%= i %>" class="btn btn-default"><%= Serengeti.get_all_tags.at(i-1) %></button>
+              <% end %>
+            </div>
+          </div> <!-- Select Tags -->
+
+          <div class="row team_info"> <!-- Custom Tags -->
+            <div class="col-xs-2">
+              <span class="create-tag-label label label-info"> Put Your Tag </span>
+            </div>
+            <div class="col-xs-3">
+              <input type="text" name="custom_tag1"/>
+              <label for="team_number">Tag1</label>
+            </div>
+            <div class="col-xs-3">
+              <input type="text" name="custom_tag2"/>
+              <label for="team_number">Tag2</label>
+            </div>
+            <div class="col-xs-3">
+              <input type="text" name="custom_tag3"/>
+              <label for="team_number">Tag3</label>
+            </div>
+            <input type="hidden" id="tag-input1" name="tag1" value=""></input>
+            <input type="hidden" id="tag-input2" name="tag2" value=""></input>
+            <input type="hidden" id="tag-input3" name="tag3" value=""></input>
+          </div> <!-- Custom Tags -->
+
+          <div class="row card_margin" style="margin-bottom:5rem;"> <!-- Submit Buttons -->
+            <div class="col-xs-offset-4 col-xs-4">
+              <button type="submit" id="input-submit" class="btn btn-secondary" style="width:100%; height:7vw; font-size:3vw;"><i class="fa fa-fighter-jet" aria-hidden="true"></i>&nbsp;<b>CREATE</b></button>
+            </div>
+          </div> <!-- Submit Buttons -->
+        <% end %>
+      </div> <!--Work-->
+    </div> <!--Object -->
+  </div> <!-- Container -->
+</div>
