@@ -5,9 +5,9 @@
         <div class="row">
           <div class="col-xs-6">
             <% if @each_team.img_name == "" %>
-              <img id="team_img" src="<%= asset_path("teamlist/14.png") %>"/>
+              <img id="team_img" src="<%= asset_path("teamlist/14.png") %>" style="max-width:500px;"/>
             <% else %>
-              <img id="team_img" src="<%= @each_team.img_name %>"/>
+              <img id="team_img" src="<%= @each_team.img_name %>" style="max-width:500px;"/>
             <% end %>
           </div> 
           <div class="col-xs-6">
