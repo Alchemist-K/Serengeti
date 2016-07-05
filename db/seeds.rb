@@ -7,5 +7,3 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create(email: "admin@snu.ac.kr", password:"12341234", password_confirmation:"12341234", admin: true, name: 'admin', confirmed_at: "2016-06-23 05:07:09")
-
-Team.create(name: "team1", abstract: "wowwow", content: "ohoh", number: "3", leader: "admin@snu.ac.kr")

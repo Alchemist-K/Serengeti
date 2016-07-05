@@ -59,25 +59,27 @@
           </div>
         </div>
       </div> <!-- row -->
-      
-      <div class="row">
-        <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;">
-          <strong><h3 class="card-text">다른 태그로 찾기</h3></strong><hr>
-          <%= form_tag(teambuilding_list_tag_search_path, method: "post", remote: true) do %>
-            <input type="text" class="form-control" name="input" placeholder="">
-            <%= submit_tag "찾기", style: "width:50%", class: "btn btn-primary" %>
-          <% end %>
-        </div>
+
+<!--나중에 꼭 살려둘 Sunspot 기능!!-->
+    <!--  <div class="row">-->
+    <!--    <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;">-->
+    <!--      <strong><h3 class="card-text">다른 태그로 찾기</h3></strong><hr>-->
+    <!--      <%#= form_tag(teambuilding_list_tag_search_path, method: "post", remote: true) do %>-->
+    <!--        <input type="text" class="form-control" name="input" placeholder="">-->
+    <!--        <%#= submit_tag "찾기", style: "width:50%", class: "btn btn-primary" %>-->
+    <!--      <%# end %>-->
+    <!--    </div>-->
         
-        <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;">
-          <strong><h3 class="card-text">내용으로 찾기</h3></strong><hr>
-          <%= form_tag(teambuilding_list_search_path, method: "post", remote: true) do %>
-            <input type="text" class="form-control" name="search_key" placeholder="">
-            <%= submit_tag "찾기", style: "width:50%", class: "btn btn-primary" %>
-          <% end %>
-        </div>
-      </div>
-    </div> <!--end of container -->
+    <!--    <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;">-->
+    <!--      <strong><h3 class="card-text">내용으로 찾기</h3></strong><hr>-->
+    <!--      <%#= form_tag(teambuilding_list_search_path, method: "post", remote: true) do %>-->
+    <!--        <input type="text" class="form-control" name="search_key" placeholder="">-->
+    <!--        <%#= submit_tag "찾기", style: "width:50%", class: "btn btn-primary" %>-->
+    <!--      <%# end %>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</div> end of container -->
+
 
       <!--<button class="btn-team-create btn btn-success" style="margin-left:-125px;" onclick="location.href='/teambuilding_create/create'">팀 만들기</button>-->
       <div id="list_box" class="container">
