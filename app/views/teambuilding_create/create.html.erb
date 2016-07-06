@@ -3,81 +3,117 @@
 
   <!-- PORTFOLIO -->
 
-  <div id="wrapper-container" style="margin-top: 120px;">
+  <div id="wrapper-container" style="margin-top: 40px;">
 
     <div class="container object">
-      <div class="work">
-        <%= form_tag("/teambuilding_create/create_process", method: "POST", multipart: true) do%>
-          <div class="row">
-            <div class="col-xs-6">
-              <input type="button" id="file_upload_button"/>
-              <input type="file" name="picture" id="file_upload"/>
-            </div>
-            <div class="col-xs-6">
-              <div class="side-info" sytle="margin-top:3rem;">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="work">
+              <%= form_tag("/teambuilding_create/create_process", method: "POST", multipart: true, class: "form-inline") do%>
+                <div class="row">
+                  <div class="col-md-6">
+                    <input type="button" id="file_upload_button"/>
+                    <input type="file" name="picture" id="file_upload"/>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="md-form" style="margin-top:3rem;">
+                          <i class="fa fa-sticky-note-o prefix"></i>
+                          <input type="text" id="team_name" name="name" class="form-control validate" style="z-index:2;" required/>
+                          <label for="form81" style="z-index:1;">팀 이름을 적어주세요!</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="md-form">
+                          <i class="fa fa-hand-o-right prefix"></i>
+                          <input type="text" id="team_name" name="abstract" class="form-control validate" required/>
+                          <label for="form81">간단한 팀 소개를 적어주세요!</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="md-form">
+                          <i class="fa fa-smile-o prefix"></i>
+                          <input type="text" id="team_name" name="leader" value="아이디어 제안자 : <%= current_user.name %>" class="form-control" readonly/>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="md-form">
+                          <i class="fa fa-users prefix"></i>
+                          <input type="number" id="team_name" name="number" class="form-control validate" required/>
+                          <label for="form81">함께하고싶은 팀원 수</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="md-form">
+                          <i class="fa fa-save prefix"></i>
+                          <label for="team_uploadfile">File upload(아이디어를 가장 잘 나타낼 수 있는 파일을 올려주세요!)</label>
+                        </div>
+                          <input class="team_info" type="file" name="uploadfile">
+                    </div>
+                      <!-- <input class="team_info" type="text" id="team_name" name="name" required/>
+                      <label for="team_name">Team Name</label> -->
 
-                <input class="team_info" type="text" id="team_name" name="name" required/>
-                <label for="team_name">Team Name</label>
+                      <!-- <input class="team_info" type="text" name="abstract" required/>
+                      <label for="abstract">Abstract</label> -->
 
-                <input class="team_info" type="text" name="abstract" required/>
-                <label for="abstract">Abstract</label>
+                      <!-- <input class="team_info" type="text" name="leader" value="<%= current_user.name %>" readonly/>
+                      <label for="team_number">Team Leader</label> -->
+      <!--
+                      <input class="team_info" type="number" name="number" required/>
+                      <label for="team_number">The Number of Members</label> -->
+                    </div>
 
-                <input class="team_info" type="text" name="leader" value="<%= current_user.name %>" readonly/>
-                <label for="team_number">Team Leader</label>
-
-                <input class="team_info" type="number" name="number" required/>
-                <label for="team_number">The Number of Members</label>
-
-                <input class="team_info" type="file" name="uploadfile">
-                <label for="team_uploadfile">File upload(아이디어를 가장 잘 나타낼 수 있는 파일을 올려주세요!)</label>
+                <div class="team_info">
+                  <div class="col-xs-12">
+                    <textarea type="text" id="input-content" name="content" class="md-textarea" col=40 placeholder="팀 아이디어에 대해 설명해 주세요."></textarea>
+                  </div>
+                </div>
+                <div id="tags" class="team_info">
+                  <div class="col-xs-3">
+                    <span class="create-tag-label label label-info"> Select Tag </span>
+                  </div>
+                  <div class="col-xs-9">
+                    <% for i in 1..10 do %>
+                      <button type="button" id="tag<%= i %>" class="btn btn-default"><%= Serengeti.get_all_tags.at(i-1) %></button>
+                    <% end %>
+                  </div>
+                </div>
+              </div> <!-- wrapper-text-description -->
+              <div class="row team_info">
+                <div class="col-xs-3">
+                  <span class="create-tag-label label label-info">해시태그를 직접 입력해주세요!</span><br>
+                </div>
+                <div class="col-xs-3">
+                  <input type="text" name="custom_tag1"/>
+                  <label for="team_number">Tag1</label>
+                </div>
+                <div class="col-xs-3">
+                  <input type="text" name="custom_tag2"/>
+                  <label for="team_number">Tag2</label>
+                </div>
+                <div class="col-xs-3">
+                  <input type="text" name="custom_tag3"/>
+                  <label for="team_number">Tag3</label>
+                </div>
+                <input type="hidden" id="tag-input1" name="tag1" value=""></input>
+                <input type="hidden" id="tag-input2" name="tag2" value=""></input>
+                <input type="hidden" id="tag-input3" name="tag3" value=""></input>
+                <div class="col-xs-3">
+                  <h6 style="text-align:center;"><strong>(태그검색기능도 곧 탑재됩니다!)</strong></h6>
+                </div>
               </div>
-            </div> <!-- wrapper-text-description -->
-          </div>
-          <div class="row team_info">
-            <div class="col-xs-12">
-              <textarea type="text" id="input-content" name="content" class="md-textarea" col=40 placeholder="팀 아이디어에 대해 설명해 주세요."></textarea>
-            </div>
-          </div>
-          <div id="tags" class="row team_info">
-            <div class="col-xs-2">
-              <span class="create-tag-label label label-info"> Select Tag </span>
-            </div>
-            <div class="col-xs-10">
-              <% for i in 1..10 do %>
-                <button type="button" id="tag<%= i %>" class="btn btn-default"><%= Serengeti.get_all_tags.at(i-1) %></button>
+              <div class="row card_margin" style="margin-bottom:5rem;">
+                <div class="col-xs-offset-4 col-xs-4">
+                  <button type="submit" id="input-submit" class="btn btn-secondary" style="width:100%; height:7vw; font-size:3vw;"><i class="fa fa-fighter-jet" aria-hidden="true"></i>&nbsp;<b>CREATE</b></button>
+                </div>
+              </div>
               <% end %>
-            </div>
+            </div><!-- work -->
           </div>
-          <div class="row team_info">
-            <div class="col-xs-2">
-              <span class="create-tag-label label label-info"> Put Your Tag </span>
-            </div>
-            <div class="col-xs-3">
-              <input type="text" name="custom_tag1"/>
-              <label for="team_number">Tag1</label>
-            </div>
-            <div class="col-xs-3">
-              <input type="text" name="custom_tag2"/>
-              <label for="team_number">Tag2</label>
-            </div>
-            <div class="col-xs-3">
-              <input type="text" name="custom_tag3"/>
-              <label for="team_number">Tag3</label>
-            </div>
-            <input type="hidden" id="tag-input1" name="tag1" value=""></input>
-            <input type="hidden" id="tag-input2" name="tag2" value=""></input>
-            <input type="hidden" id="tag-input3" name="tag3" value=""></input>
-          </div>
-          <div class="row card_margin" style="margin-bottom:5rem;">
-            <div class="col-xs-offset-4 col-xs-4">
-              <button type="submit" id="input-submit" class="btn btn-secondary" style="width:100%; height:7vw; font-size:3vw;"><i class="fa fa-fighter-jet" aria-hidden="true"></i>&nbsp;<b>CREATE</b></button>
-            </div>
-          </div>
-        <% end %>
-
-      </div> <!-- work -->
+        </div>
+      </div>
     </div>
-  </div>      
+  </div>
 </div> <!-- container -->
 <script>
 
