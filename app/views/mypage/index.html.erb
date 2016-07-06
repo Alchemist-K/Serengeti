@@ -42,7 +42,7 @@
                     <div class="post-wrapper">
                       <!--Post data-->
                       <div class="row">
-                        <div class="col-md-5 col-sm-4" style="text-align:center;">
+                        <div class="col-md-4 col-sm-4" style="text-align:center;">
                           <strong>
                             <%= link_to(home_get_userinform_path(user_id: r.user_id), method: "post", remote: true) do %>
                               <div class="userbtn"><%= User.find(r.user_id).name %></div>
@@ -57,9 +57,14 @@
                             <button class="btn btn-danger" type="submit">미안해요~</button>
                           <% end %>
                         </div> <!-- end col -->
-                   
-                        <div class="col-md-5 col-sm-4" style="text-align:center;">
+
+                        <div class="col-md-4 col-sm-4" style="text-align:center;">
                           <p><%= Team.find(t.id).abstract %></p>
+                        </div>
+                        <div class="col-md-4 col-sm-4" style="text-align:center;">
+                          <%= link_to(home_get_userinform_path(user_id: r.user_id), method: "post", remote: true) do %>
+                            <div class="userbtn"><%= User.find(r.user_id).name %></div>
+                          <% end %>
                         </div>
                       </div> <!-- end row -->
                       <br>
@@ -73,9 +78,9 @@
             <hr>
           <% end %> <!-- MyTeam ~ do -->
         <% end %> <!-- if ~ else ~ end -->
-      
+
       </div> <!-- end Main-column -->
-              
+
       <!--Sidebar-->
       <div class="col-md-4">
         <div class="widget-wrapper">
@@ -87,7 +92,7 @@
           </div>
         </div>
         <br>
-  
+
         <div class="widget-wrapper">
           <div class="card">
             <div class="card-block">
@@ -106,7 +111,7 @@
         </div>
       </div>
       <!--/.Sidebar-->
-          
+
       <!--Pagination-->
       <nav class="text-xs-center">
       <%= will_paginate @myTeam, renderer: BootstrapPagination::Rails  %>
