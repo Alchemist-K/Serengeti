@@ -1,5 +1,6 @@
 class MypageController < ApplicationController
     before_action :authenticate_user!
+    before_action :ispermitted, except: [:myinfo]
     
     def index
         @myTeam = findMyTeam.all.paginate(:page => params[:page], per_page:3)
@@ -31,6 +32,7 @@ class MypageController < ApplicationController
     
     def myinfo
         @myinfo = User.where(email: current_user.email).all
+        @authorize = ispermitted
     end
     
     def feedback
