@@ -1,4 +1,5 @@
 <% teams.team_post_replies.each do |s| %>
+
 <div class ="row">
   <div class="col-xs-1"></div>
   <div class="col-xs-11">
@@ -20,7 +21,7 @@
     <%= s.team_post_reply %>
     <% if user_signed_in? %>
       <% if s.user.id == current_user.id || current_user.admin? %>
-        <a href="#">[삭제]</a>
+        <%= link_to "[삭제]", teambuilding_choose_destroyreply_path(id: s.id, post_id: s.team_post.id), method: "post"%>
       <% end %>
     <% end %>
   </div>

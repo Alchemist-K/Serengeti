@@ -34,7 +34,7 @@ class TeambuildingChooseController < ApplicationController
         @one_post.destroy
         redirect_to :back
       else
-        redirect_to
+        redirect_to :back
       end
     end
     
@@ -47,6 +47,19 @@ class TeambuildingChooseController < ApplicationController
       replyreply.save
       @postid = params[:post_id]
       @team_post = TeamPost.find_by(id: replyreply.team_post_id)
+    end
+    
+  # 대댓글(댓글의 댓글) 삭제 기능
+    def destroyreply
+      replyid = params[:id].to_i
+      @postid = params[:post_id]
+      @team_post = TeamPost.find_by(id: @postid)
+      if current_user.id == TeamPostReply.find(replyid).user.id || current_user.admin?
+        TeamPostReply.find(replyid).destroy
+        redirect_to :back
+      else
+        redirect_to :back
+      end
     end
     
   def require_login
