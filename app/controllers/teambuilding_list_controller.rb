@@ -46,5 +46,4 @@ class TeambuildingListController < ApplicationController
       @tag_team = @tag_team.select{|x| x.tags.include?(tag)}
     end
   end
-
 end
