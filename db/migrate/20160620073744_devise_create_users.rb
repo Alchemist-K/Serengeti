@@ -2,7 +2,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
+      t.string :email,              null: false, default: "", limit: 30
       t.string :encrypted_password, null: false, default: ""
       
       ## admin ?!
@@ -18,7 +18,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :unconfirmed_email # Only if using reconfirmable
 
       ## Recoverable
-      t.string   :reset_password_token
+      t.string   :reset_password_token, limit: 100
       t.datetime :reset_password_sent_at
 
       ## Rememberable
