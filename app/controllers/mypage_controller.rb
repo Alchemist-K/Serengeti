@@ -32,17 +32,22 @@ class MypageController < ApplicationController
     
     def myinfo
         @myinfo = User.where(email: current_user.email).all
-        @authorize = ispermitted
+        user = current_user
+        if user.name == nil || user.phone_number == nil || user.university == nil || user.major == nil || user.name == "" || user.phone_number == "" || user.university == "" || user.major == ""
+          @authorize = false
+        else
+          @authorize = true
+        end
     end
     
     def feedback
         
-        f = Feedback.new
-		f.username = current_user.name
-		f.feedback = params[:feedback]
-		f.save
+      f = Feedback.new
+	    f.username = current_user.name
+		  f.feedback = params[:feedback]
+		  f.save
 		
-        redirect_to :back
+      redirect_to :back
     
     end
 end

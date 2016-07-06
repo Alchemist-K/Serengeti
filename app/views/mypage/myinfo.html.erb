@@ -71,7 +71,7 @@
 
 <script>
   $(document).ready(function() {
-    <% if @authorize != true %>
+    <% if @authorize == false %>
       alert("추가 정보를 입력해야 이용 가능합니다.");
     <% end %>
   });
