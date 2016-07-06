@@ -78,7 +78,7 @@
           <!--    <input class="form-control" type="text" placeholder="Team Search">-->
           <!--</form>-->
       </div>
-      <!--/.Navbar-->       
+      <!--/.Navbar-->
       </nav>
 
       <%= yield %>
@@ -100,8 +100,8 @@
       <footer style="width:100%;padding:2.5rem;background-color:#373A3C;color:white;">
       <!--Copyright-->
       © 2016 Copyright: <a href="http://serengeti.team"> serengeti.team </a> <br>
-      Made By <strong> 김경도 외 7명 </strong> from SNU Likelion 4th <br>
-      누구나 세상을 바꿀 수 있다!
+      Made By <strong> 김경도, 박승환, 서동욱, 신동민(3rd), 윤현영, 이현민, 임정건 </strong> from SNU Likelion 4th <br>
+      세상을 바꾸고 싶은 사람들을 위하여.
       <!--/.Copyright-->
       </footer>
       <!--/.Footer-->
@@ -129,19 +129,19 @@
     <script>
       // Get the modal
       var modal = document.getElementById('myModal');
-      
+
       // Get the <span> element that closes the modal
       var span = document.getElementsByClassName("close")[0];
-      
+
       $(document).on("click", ".userbtn", function(){
         modal.style.display = "block";
       });
-  
+
       // When the user clicks on <span> (x), close the modal
       span.onclick = function() {
           modal.style.display = "none";
       }
-      
+
       // When the user clicks anywhere outside of the modal, close it
       window.onclick = function(event) {
           if (event.target == modal) {
