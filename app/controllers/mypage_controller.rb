@@ -32,6 +32,7 @@ class MypageController < ApplicationController
     
     def myinfo
         @myinfo = User.where(email: current_user.email).all
+        @authorize = ispermitted
     end
     
     def feedback

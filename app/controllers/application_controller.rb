@@ -6,8 +6,7 @@ class ApplicationController < ActionController::Base
   def ispermitted
     user = current_user
     if user.name != nil && user.phone_number != nil && user.university != nil && user.favor != nil && user.major != nil || user.admin == true
-      @authorize = true
-      return @authorize
+      return true
     else
       redirect_to "/mypage/myinfo"
     end
