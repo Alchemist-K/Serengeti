@@ -5,12 +5,14 @@ class Team < ActiveRecord::Base
   # DB 내 Array 저장
   serialize :tags, Array
   serialize :customTags, Array
-  
+
+=begin  
   searchable do
     #text :name, default_boost: 2
     text :content
   end
-  
+=end
+
   def self.default_scope
     where published: true
   end
