@@ -59,6 +59,9 @@ Rails.application.routes.draw do
   get 'mypage/member' => 'mypage#member'
   get 'mypage/myinfo' => "mypage#myinfo"
   get 'admin/index'
+  post 'admin/feedback' => "admin#feedback"
+  get 'admin/feedback' => "admin#feedback"
+  post 'mypage/feedback'
 
 
   get 'home/confirm_please'

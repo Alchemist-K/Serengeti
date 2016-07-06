@@ -8,6 +8,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## admin ?!
       t.boolean :admin, default: false
       
+      ## 추가 정보 기입 여부
+      t.boolean :authorize, default: false
+      
       ##Confirmable 이메일 인증 보내기위한 설정
       t.string   :confirmation_token
       t.datetime :confirmed_at

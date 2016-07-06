@@ -3,11 +3,6 @@ class AdminController < ApplicationController
   end
   
   def feedback
-    f = Feedback.new
-		f.user = current_user
-		f.text = params[:feedback][:text]
-		f.save
-
-		redirect_to :back
+    @feedback = Feedback.all
   end
 end

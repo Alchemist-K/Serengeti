@@ -2,7 +2,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
-
   #회원가입 후 인증 되어있지 않음을 알려줄 때,
   def after_inactive_sign_up_path_for(resource)
     '/home/confirm_please'
@@ -54,8 +53,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
     add_attrs = [:name, :university, :favor, :email, :password, :password_confirmation, :remeber_me, :major,
     :interest1, :interest2, :interest3, :phone_number]
     devise_parameter_sanitizer.permit(:account_update, keys: add_attrs)
+    
+    if current_user.name != nil && current_user.university != nil && current_user.favor != nil && current_user.phone_number != nil && current_user.major != nil
+      current_user.update_attribute :authorize, true
+    else
+      current_user.update_attribute :authorize, false
+    end
   end
-
+  
+  def user_authorize
+    
+  end
+  
   #The path used after sign up.
   # def after_sign_up_path_for(resource)
   #   super(resource)
