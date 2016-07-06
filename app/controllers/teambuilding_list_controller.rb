@@ -5,12 +5,8 @@ class TeambuildingListController < ApplicationController
     @teams = Team.all.reverse
     @page = Team.all.paginate(:page => params[:page], per_page: 12).order('id DESC')
     # perform a paginated query:
-    @page = Team.all.paginate(:page => params[:page], per_page: 12)
+    #@page = Team.all.paginate(:page => params[:page], per_page: 12)
 
-    @timeevent = Team.all.order(:created_at)
-
-    # @page = Team.all.paginate(:page => params[:page], per_page: 12)
-    
     # or, use an explicit "per page" limit:
 
     @button_tags = Serengeti.get_all_tags
@@ -47,4 +43,11 @@ class TeambuildingListController < ApplicationController
     end
   end
 
+  def timedesc
+    @timedesc = Team.all.order('created_at DESC')
+  end
+
+  def timeasc
+    @timeasc = Team.all.order('created_at ASC')
+  end
 end
