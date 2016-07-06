@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+#gem 'sunspot_rails'
+#gem 'sunspot_solr'
 gem 'progress_bar'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'will_paginate-bootstrap'
@@ -57,4 +57,3 @@ end
 group :production do
   gem 'mysql2'
 end
-

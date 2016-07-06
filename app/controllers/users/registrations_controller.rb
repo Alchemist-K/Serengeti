@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_inactive_sign_up_path_for(resource)
     '/home/confirm_please'
   end
-  
+
   # GET /resource/sign_up
   # def new
   #   super
@@ -23,9 +23,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  #def update
+  #  super
+  #end
 
   # DELETE /resource
   # def destroy
@@ -54,11 +54,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     :interest1, :interest2, :interest3, :phone_number]
     devise_parameter_sanitizer.permit(:account_update, keys: add_attrs)
   end
-  
+
   def user_authorize
-    
+
   end
-  
+
   #The path used after sign up.
   # def after_sign_up_path_for(resource)
   #   super(resource)
@@ -68,7 +68,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  
+
   def after_update_path_for(resource)
     "/mypage/myinfo"
   end
