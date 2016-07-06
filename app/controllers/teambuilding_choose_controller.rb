@@ -1,5 +1,6 @@
 class TeambuildingChooseController < ApplicationController
   before_action :require_login, only: [:replypost, :replyreply]
+  before_action :ispermitted
   
   # 첫 화면(팀을 고른 이후에 나타나게 되는 화면)
   def index

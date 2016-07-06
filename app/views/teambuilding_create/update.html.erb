@@ -2,40 +2,59 @@
 
   <!-- PORTFOLIO -->
 
-  <div id="wrapper-container" style="margin-top: 120px;">
+  <div id="wrapper-container" style="margin-top: 40px;">
 
     <div class="container object">
       <div class="work">
         <%= form_tag("/teambuilding_create/update_process/#{@update_team.id}", method: "POST", multipart: true) do%>
-          <div class="row"> 
-            <div class="col-xs-6">
-              <input type="button" id="file_upload_button"/>
-              <input type="file" name="picture" id="file_upload"/>
-            </div>
-            <div class="col-xs-6">
-              <div class="side-info" sytle="margin-top:3rem;">
-
-                <input class="team_info" type="text" id="team_name" name="name" value="<%= @update_team.name %>"/>
-                <label for="team_name">Team Name</label>
-
-                <input class="team_info" type="text" name="abstract" value="<%=@update_team.abstract%>"/>
-                <label for="abstract">Abstract</label>
-
-                <input class="team_info" type="text" name="leader" value="<%= User.find(@update_team.leader).name %>" readonly/>
-                <label for="team_number">Team Leader</label>
-
-                <input class="team_info" type="text" name="number" value="<%= @update_team.number%>"/>
-                <label for="team_number">The Number of Members</label>
+          <div class="row">
+              <div class="col-md-6">
+                <img id="file_upload_button" src="<%= @update_team.img_name %>">
+                <!-- <input type="button" id="file_upload_button"/> -->
+                <input type="file" name="picture" id="file_upload"/>
               </div>
-            </div>
-
-          </div> <!-- wrapper-text-description -->
-          <div class="row team_info">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="md-form" style="margin-top:3rem;">
+                      <i class="fa fa-sticky-note-o prefix"></i>
+                      <input type="text" id="team_name" name="name" class="form-control validate" value="<%= @update_team.name %>" style="z-index:2;" required/>
+                      <label for="form81" style="z-index:1;">팀 이름을 적어주세요!</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="md-form">
+                      <i class="fa fa-hand-o-right prefix"></i>
+                      <input type="text" id="team_name" name="abstract" class="form-control validate" value="<%=@update_team.abstract%>" required/>
+                      <label for="form81">간단한 팀 소개를 적어주세요!</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="md-form">
+                      <i class="fa fa-smile-o prefix"></i>
+                      <input type="text" id="team_name" name="leader" value="아이디어 제안자 : <%= current_user.name %>" value="<%= User.find(@update_team.leader).name %>" class="form-control" readonly/>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="md-form">
+                      <i class="fa fa-users prefix"></i>
+                      <input type="number" id="team_name" name="number" class="form-control validate" value="<%= @update_team.number%>" required/>
+                      <label for="form81">함께하고싶은 팀원 수</label>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="md-form">
+                      <i class="fa fa-save prefix"></i>
+                      <label for="team_uploadfile">File upload(아이디어를 가장 잘 나타낼 수 있는 파일을 올려주세요!)</label>
+                    </div>
+                      <input class="team_info" type="file" name="uploadfile">
+                </div>
+              </div>
+          <div class="team_info">
             <div class="col-xs-12">
               <textarea type="text" id="input-content" name="content" class="md-textarea" col=40><%= @update_team.content %></textarea>
             </div>
           </div>
-          <div id="tags" class="row team_info">
+          <div id="tags" class="team_info">
             <div class="col-xs-3">
               <a class="btn btn-info"style="width:100%"> Select Tag </a>
             </div>
@@ -52,9 +71,10 @@
               <button type="button" id="tag10" class="btn btn-default">기타</button>
             </div>
           </div>
+        </div> <!-- wrapper-text-description -->
           <div class="row team_info">
             <div class="col-xs-3">
-              <a class="btn btn-info" style="width:100%"> Put Your Tag </a>
+              <a class="btn btn-info" style="width:100%">해시태그를 직접 입력해주세요!</a>
             </div>
             <div class="col-xs-3">
               <input type="text" name="custom_tag1" value="<%= @update_team.customTags[0] %>">
@@ -71,6 +91,9 @@
             <input type="hidden" id="tag-input1" name="tag1" value=""></input>
             <input type="hidden" id="tag-input2" name="tag2" value=""></input>
             <input type="hidden" id="tag-input3" name="tag3" value=""></input>
+            <div class="col-xs-3">
+              <h6 style="text-align:center;"><strong>(태그검색기능도 곧 탑재됩니다!)</strong></h6>
+            </div>
           </div>
             <div class="row card_margin" style="margin-bottom:5rem;">
               <div class="col-xs-offset-4 col-xs-4">
@@ -81,35 +104,57 @@
 
       </div> <!-- work -->
     </div>
-  </div>      
+  </div>
 </div> <!-- container -->
 <script>
+
   $(document).ready(function(){
-  $('#tags button').click(function(e) {
-  var txt = $(e.target).text();
+    $('#tags button').click(function(e) {
+      var txt = $(e.target).text();
 
-  if( $(e.target).attr("class").split(" ")[3] == "btn-warning") {
+      if( $(e.target).attr("class").split(" ")[3] == "btn-warning") {
 
-  for(var i=1; i<4; i++) {
-  if( $('#tag-input'+i).val() == txt ) {
-  $('#tag-input'+i).val("");
-  $(e.target).removeClass("btn-warning").addClass("btn-default");
-  }
-  }
-  } else {
-  if( $('#tag-input1').val() == "" ) {
-  $('#tag-input1').attr('value', txt);
-  $(e.target).removeClass("btn-default").addClass("btn-warning");
-  } else if( $('#tag-input2').val() == "" ) {
-  $('#tag-input2').attr('value', txt);
-  $(e.target).removeClass("btn-default").addClass("btn-warning");
-  } else if( $('#tag-input3').val() == "") {
-  $('#tag-input3').attr('value', txt);
-  $(e.target).removeClass("btn-default").addClass("btn-warning");
-  } else {
-  alert("태그는 최대 3개까지 선택 가능합니다.");
-  }
-  }
-  });
-  });
+        for(var i=1; i<4; i++) {
+          if( $('#tag-input'+i).val() == txt ) {
+            $('#tag-input'+i).val("");
+            $(e.target).removeClass("btn-warning").addClass("btn-default");
+          }
+        }
+
+      } else {
+        if( $('#tag-input1').val() == "" ) {
+          $('#tag-input1').attr('value', txt);
+          $(e.target).removeClass("btn-default").addClass("btn-warning");
+        } else if( $('#tag-input2').val() == "" ) {
+          $('#tag-input2').attr('value', txt);
+          $(e.target).removeClass("btn-default").addClass("btn-warning");
+        } else if( $('#tag-input3').val() == "") {
+          $('#tag-input3').attr('value', txt);
+          $(e.target).removeClass("btn-default").addClass("btn-warning");
+        } else {
+          alert("태그는 최대 3개까지 선택 가능합니다.");
+        }
+      }
+    });
+
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+        reader.onload = function (e) {
+        //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+          $('#file_upload_button').attr('src', e.target.result);
+          //이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
+          //(아래 코드에서 읽어들인 dataURL형식)
+        }
+        reader.readAsDataURL(input.files[0]);
+        //File내용을 읽어 dataURL형식의 문자열로 저장
+      }
+    }//readURL()--
+
+    $("#file_upload").change(function(){
+      // alert(this.value); 선택한 이미지 경로 표시
+      readURL(this);
+    });
+
+  }); // end $(document).ready
 </script>

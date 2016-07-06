@@ -11,12 +11,4 @@ class User < ActiveRecord::Base
   has_many :teams, through: :teambuilds
   
   has_many :feedbacks
-  
-  def ispermmitted
-    if self.name != nil && self.phone_number != nil && self.university != nil && self.favor != nil && self.major != nil || self.admin == true
-      return true
-    else
-      return false
-    end
-  end
 end
