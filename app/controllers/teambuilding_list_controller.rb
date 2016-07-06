@@ -3,8 +3,9 @@ class TeambuildingListController < ApplicationController
   
   def index
     @teams = Team.all.reverse
+    @page = Team.all.paginate(:page => params[:page], per_page: 12).order('id DESC')
     # perform a paginated query:
-    @page = Team.all.paginate(:page => params[:page], per_page: 12)
+    # @page = Team.all.paginate(:page => params[:page], per_page: 12)
     
     # or, use an explicit "per page" limit:
     

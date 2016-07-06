@@ -6,7 +6,7 @@ gem 'progress_bar'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'will_paginate-bootstrap'
 gem 'will_paginate', '~> 3.1.0'
-gem "mini_magick"
+# gem "mini_magick"
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'figaro'

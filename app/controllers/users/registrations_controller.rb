@@ -23,31 +23,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  def update
-    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
-    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
-
-    resource_updated = update_resource(resource, account_update_params)
-    yield resource if block_given?
-    if resource_updated
-      if is_flashing_format?
-        flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
-          :update_needs_confirmation : :updated
-        set_flash_message :notice, flash_key
-      end
-      bypass_sign_in resource, scope: resource_name
-      respond_with resource, location: after_update_path_for(resource)
-    else
-      clean_up_passwords resource
-      respond_with resource
-    end
-    
-    if current_user.name != nil && current_user.university != nil && current_user.favor != nil && current_user.phone_number != nil && current_user.major != nil
-      current_user.update_attribute :authorize, true
-    else
-      current_user.update_attribute :authorize, false
-    end
-  end
+  # def update
+  #   super
+  # end
 
   # DELETE /resource
   # def destroy
