@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'mypage/index/deny/:request_id' => 'mypage#deny'
   get 'teambuilding_choose/choose/:id' => 'teambuilding_choose#choose'
   get 'teambuilding_choose/:id' => 'teambuilding_choose#index'
+  get 'teambuilding_choose/index/:id' => 'teambuilding_choose#index'
   
   post 'teambuilding_choose/write'
   post 'teambuilding_choose/replypost/:id' => 'teambuilding_choose#replypost'

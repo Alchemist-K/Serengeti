@@ -10,7 +10,8 @@ class TeambuildingListController < ApplicationController
     
     @button_tags = Serengeti.get_all_tags
   end
-  
+
+=begin
   def search
     sunspot_arr = Sunspot.search(Team) do
       fulltext params[:search_key]
@@ -22,6 +23,7 @@ class TeambuildingListController < ApplicationController
       format.js {render :action => 'tag_search.js.erb'}
     end
   end
+=end
 
   def tag_search
     tag = params[:input]
