@@ -54,8 +54,10 @@
             시간별 분류
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
-            <a class="dropdown-item" href=" ">가장 최근에 만들어진 팀</a>
-            <a class="dropdown-item" href=" ">가장 나중에 만들어진 팀</a>
+            <%= link_to "가장 최근에 만들어진 팀", teambuilding_list_timedesc_path, class: "dropdown-item", remote: true %>
+            <!-- <a class="dropdown-item" href="/teambuilding_list/timedesc">가장 최근에 만들어진 팀</a> -->
+            <%= link_to "가장 나중에 만들어진 팀", teambuilding_list_timeasc_path, class: "dropdown-item", remote: true %>
+            <!-- <a class="dropdown-item" href="/teambuilding_list/timeasc">가장 나중에 만들어진 팀</a> -->
           </div>
         </div>
       </div> <!-- row -->
