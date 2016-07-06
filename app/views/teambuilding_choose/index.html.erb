@@ -113,8 +113,6 @@
                 </div>
               </div>
   
-  
-  
               <!-- 대댓글 입력 -->
               <div class = "row">
                 <div class="col-xs-12">
@@ -153,7 +151,7 @@
                     <%= s.team_post_reply %>
                     <% if user_signed_in? %>
                       <% if s.user.id == current_user.id || current_user.admin? %>
-                        <a href="#">[삭제]</a>
+                        <%= link_to "[삭제]", teambuilding_choose_destroyreply_path(id: s.id, post_id: p.id), method: "post"%>
                       <% end %>
                     <% end %>
                   </div>
@@ -190,8 +188,6 @@
     </div> <!-- work -->
   </div>
 </div> <!-- container -->
-
-
 
 <script>
   //대댓글입력창 토글하기
