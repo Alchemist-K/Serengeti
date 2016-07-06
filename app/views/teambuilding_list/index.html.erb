@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    
+
     <div class="col-md-6 col-xs-12 card_margin" >
       <!--Card-->
       <div class="card">
@@ -21,7 +21,7 @@
       </div>
       <!--/.Card-->
     </div> <!-- /.col-md-6 col-xs-12 card_margin -->
-    
+
     <div class="col-md-6 col-xs-12 card_margin">
       <!--Card-->
       <div class="card">
@@ -46,9 +46,9 @@
         <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;"><strong><h3 class="card-text" id="arrivelist">태그로 찾기</h3></strong><hr>
           <% for i in 0..9 do %>
             <%= link_to @button_tags[i], teambuilding_list_tag_search_path(input: @button_tags[i], is_custom: false), class: "btn btn-default", remote: true %>
-          <% end %> 
+          <% end %>
         </div>
-        
+
         <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;"><strong><h3 class="card-text">다른 방법으로 찾기</h3></strong><hr>
           <button style="width:50%" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             시간별 분류
@@ -69,7 +69,7 @@
     <!--        <%#= submit_tag "찾기", style: "width:50%", class: "btn btn-primary" %>-->
     <!--      <%# end %>-->
     <!--    </div>-->
-        
+
     <!--    <div class="col-md-6 col-xs-12 card_margin" style="text-align:center;">-->
     <!--      <strong><h3 class="card-text">내용으로 찾기</h3></strong><hr>-->
     <!--      <%#= form_tag(teambuilding_list_search_path, method: "post", remote: true) do %>-->
