@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :notice_replies
 
   has_many :teambuilds
-  has_many :teams, -> {where(teambuilds: {status: 1}).order(:created_at)}, through: :teambuilds
+  has_many :teams, through: :teambuilds
 
   has_many :feedbacks
 end
