@@ -34,7 +34,7 @@
               </div>
               <div class="md-form">
                   <i class="fa fa-users prefix"></i>
-                  <input type="text" id="team_name" name="leader" value="함께하고싶은 팀원 수 : <%= @each_team.number %>명" class="form-control" style="height:15px;" readonly/>
+                  <input type="text" id="team_name" name="leader" value="함께하고싶은 팀원 수 : <%= @each_team.members.count %>명 / <%= @each_team.number %>명" class="form-control" style="height:15px;" readonly/>
               </div>
           </div>
         </div> <!-- row -->
