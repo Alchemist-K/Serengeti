@@ -1,35 +1,19 @@
-<!-- 댓글 출력 창-->
-<div id ="post_list">
-  <!-- 댓글 입력 -->
-  <div class="row">
-    <div class="col-xs-12">
-      <%= form_tag(teambuilding_choose_replypost_path(team_id: params[:id]), method: "post", remote: true) do %>
-        <input type="text" class="form-control" id="reply_post" name="reply_post" placeholder="피드백, 질문하고싶은 점, 참여의사, 기타 다양한 의견들을 남겨주세요^^">
-        <%= submit_tag("팀 리더에게 댓글", id:"reply_submit", class:"rebtn btn-primary" ) %>
-      <% end %>
-      <br>
-      <br>
-    </div>
-  </div>
-  <!-- 댓글 입력 -->  
-  <div class="row">
-    <h2 class="heading">Comments <span class="label blue"><%= teams.count %></span></h2>
-  </div>
+  <h2 class="heading">Comments <span class="label blue"><%= @team_post.count %></span></h2>
   <hr>
-  <% teams.each do |p| %>
-    <div class="row">
-      <strong>
-        <% if user_signed_in? %>
-          <%= link_to(home_get_userinform_path(user_id: p.user.id), method: "post", remote: true) do %>
-            <span class="userbtn"><i class="fa fa-comment"></i> <%= p.user.name %></span>
+    <% @team_post.each do |p| %>
+     <div class="row">
+        <strong>
+          <% if user_signed_in? %>
+            <%= link_to(home_get_userinform_path(user_id: p.user.id), method: "post", remote: true) do %>
+              <span class="userbtn"><i class="fa fa-comment"></i> <%= p.user.name %></span>
+            <% end %>
+          <% else %>
+            <span><%= p.user.name %></span>
           <% end %>
-        <% else %>
-          <span><%= p.user.name %></span>
-        <% end %>
-      </strong>
-      <i class="fa fa-clock-o"></i> <%= p.get_time %>
+        </strong>
+        <i class="fa fa-clock-o"></i> <%= p.get_time %>
       <button type="button" class="rebtn btn-primary rereply" value="<%=p.id%>">답글</button>
-    </div>
+     </div>
 
     <div class="row">
       <div class="col-xs-12">
@@ -42,9 +26,7 @@
       </div>
     </div>
 
-
-
-  <!-- 대댓글 입력 -->
+    <!-- 대댓글 입력 -->
     <div class = "row">
       <div class="col-xs-12">
         <div id="demo<%=p.id%>" class="collapse">
@@ -56,48 +38,39 @@
       </div>
     </div>
     <hr>
-  <!-- 대댓글 입력 -->
+    <!-- 대댓글 입력 -->
 
-<!-- 대댓글 출력 -->
-  <div class="rereply<%= p.id %>">
-    <% p.team_post_replies.each do |s| %>
-    <div class ="row">
-      <div class="col-xs-1"></div>
-      <div class="col-xs-11">
-        <strong>
-          <% if user_signed_in? %>
-            <%= link_to(home_get_userinform_path(user_id: s.user.id, p_id: p.id), method: "post", remote: true) do %>
-              <span class="userbtn"><i class="fa fa-comments"></i> <%= s.user.name %></span>
+    <!-- 대댓글 출력 -->
+    <div class="rereply<%= p.id %>">
+      <% p.team_post_replies.each do |s| %>
+        <div class ="row">
+          <div class="col-xs-1"></div>
+          <div class="col-xs-11">
+            <strong>
+              <% if user_signed_in? %>
+                <%= link_to(home_get_userinform_path(user_id: s.user.id, p_id: p.id), method: "post", remote: true) do %>
+                  <span class="userbtn"><i class="fa fa-comments"></i> <%= s.user.name %></span>
+                <% end %>
+              <% else %>
+                <span><i class="fa fa-comments"></i> <%= s.user.name %></span>
+              <% end %>
+            </strong>
+            <i class="fa fa-clock-o"></i> <%= s.get_time %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-1"></div>
+          <div class="col-xs-11">
+            <%= s.team_post_reply %>
+            <% if user_signed_in? %>
+              <% if s.user.id == current_user.id || current_user.admin? %>
+                <%= link_to "[삭제]", teambuilding_choose_destroyreply_path(id: s.id, post_id: p.id), method: "post"%>
+              <% end %>
             <% end %>
-          <% else %>
-            <span><i class="fa fa-comments"></i> <%= s.user.name %></span>
-          <% end %>
-        </strong>
-        <i class="fa fa-clock-o"></i> <%= s.get_time %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-1"></div>
-      <div class="col-xs-11">
-        <%= s.team_post_reply %>
-        <% if user_signed_in? %>
-          <% if s.user.id == current_user.id || current_user.admin? %>
-            <a href="#">[삭제]</a>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+            <hr>
+          </div>
+        </div>
 
-    <div class="row">
-      <div class="col-xs-1"></div>
-      <div class="col-xs-11">
-        <hr>
-      </div>
-    </div>
-
-  <% end %>
-  </div>
-<!-- 대댓글 출력 -->
-<% end %>
-</div>
-<!-- 댓글 창 -->
+    <% end %><!-- s에 대한 end -->
+   </div>
+<% end %><!-- p에 대한 end -->
