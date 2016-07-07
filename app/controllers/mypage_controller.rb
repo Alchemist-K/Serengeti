@@ -4,6 +4,7 @@ class MypageController < ApplicationController
 
     def index
         @myTeam = findMyTeam.all.paginate(:page => params[:page], per_page:3)
+        @teams = Team.all.reverse
     end
 
     def findMyTeam
@@ -33,7 +34,7 @@ class MypageController < ApplicationController
     def myinfo
         @myinfo = User.where(email: current_user.email).all
         user = current_user
-        if user.name == nil || user.phone_number == nil || user.university == nil || user.major == nil || user.name == "" || user.phone_number == "" || user.university == "" || user.major == "" || user.admin == false
+        if user.name == nil || user.phone_number == nil || user.university == nil || user.major == nil || user.name == "" || user.phone_number == "" || user.university == "" || user.major == ""
           @authorize = false
         else
           @authorize = true

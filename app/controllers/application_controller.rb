@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def ispermitted
     user = current_user
-    if user.name == nil || user.phone_number == nil || user.university == nil || user.major == nil || user.name == "" || user.phone_number == "" || user.university == "" || user.major == "" || user.admin == false
+    if user.name == nil || user.phone_number == nil || user.university == nil || user.major == nil || user.name == "" || user.phone_number == "" || user.university == "" || user.major == ""
       redirect_to "/mypage/myinfo"
     else
       return true
