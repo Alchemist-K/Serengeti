@@ -61,12 +61,13 @@
                 <div class="text-view"><%= @each_team.number %></div>
               </div>
             </div>  -->
+
               <div class="col-md-6 col-sm-6">
                 <div class="wrapper-view" style="height:70px;">
                   <h6 style="team_detail_label"><strong>이 팀의 해시태그</strong></h6>
                   <% for i in 0..2 %>
                     <% unless @each_team.customTags[i].nil? %>
-                      <div class="text-view"><%= @each_team.customTags[i] %></div>
+                      <div class="text-view"><%= @each_team.customTags[i].to_s %></div>
                     <% end %>
                   <% end %>
                 </div>
@@ -81,27 +82,28 @@
                 </div>
               </div>
 
+              <div class="col-xs-12">
+                <h6 style="team_detail_label"><strong>아이디어 소개</strong></h6>
+                  <% if @each_team.content != nil %>
+                    <div class="team-content" class="md-textarea"><%= @each_team.content %></div>
+                  <% else %>
+                    <input type="text" id="team_content" value="팀에 대한 설명을 입력해주세요." class="form-control" readonly/>
+                  <% end %>
+                <hr>
 
-            <% if @each_team.leader == current_user.id %>
-              <button class="btn btn-danger-outline waves-effect btn-size input-submit" style="float:right;" onclick="location.href='/teambuilding_create/delete/<%= @each_team.id %>'">삭제하기</button>
-              <button type="submit" style="float:right;" class="btn btn-default input-submit" onclick="location.href='/teambuilding_create/update/<%= @each_team.id =%>'">수정하기</button>
-            <% else %>
-              <%= form_tag("/teambuilding_create/apply/#{@each_team.id}", method: "POST") do %>
-                <button class="btn btn-default-outline waves-effect btn-size input-submit" style="width:200px; float:right;" type="submit"><strong>가입 신청하기</strong></button>
-              <% end %>
-            <% end %>
 
-            <div class="row" >
-              <div class="col-md-12 col-xs-12">
-                <% if @each_team.content != nil %>
-                  <div class="team-content" class="md-textarea"><%= @each_team.content %></div>
+                <% if @each_team.leader == current_user.id %>
+                  <button class="btn btn-danger-outline waves-effect btn-size input-submit" style="float:right;" onclick="location.href='/teambuilding_create/delete/<%= @each_team.id %>'">삭제하기</button>
+                  <button type="submit" style="float:right;" class="btn btn-default input-submit" onclick="location.href='/teambuilding_create/update/<%= @each_team.id =%>'">수정하기</button>
                 <% else %>
-                  <input type="text" id="team_content" value="팀에 대한 설명을 입력해주세요." class="form-control" readonly/>
+                  <%= form_tag("/teambuilding_create/apply/#{@each_team.id}", method: "POST") do %>
+                    <button class="btn btn-default-outline waves-effect btn-size input-submit" style="width:200px; float:right;" type="submit"><strong>가입 신청하기</strong></button>
+                  <% end %>
                 <% end %>
-              </div>
-            </div>
+              </div><hr><br>
 
                 <!-- 댓글 출력 창-->
+                <hr>
                 <div id ="post_list">
                   <div class="row">
                     <h2 class="heading">Comments <span class="label blue"><%= @team_post.count %></span></h2>
