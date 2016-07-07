@@ -61,7 +61,7 @@
                 <div class="text-view"><%= @each_team.number %></div>
               </div>
             </div>  -->
-
+              <br><br>
               <div class="col-md-6 col-sm-6">
                 <div class="wrapper-view" style="height:70px;">
                   <h6 style="team_detail_label"><strong>이 팀의 해시태그</strong></h6>
@@ -95,10 +95,12 @@
                 <% if @each_team.leader == current_user.id %>
                   <button class="btn btn-danger-outline waves-effect btn-size input-submit" style="float:right;" onclick="location.href='/teambuilding_create/delete/<%= @each_team.id %>'">삭제하기</button>
                   <button type="submit" style="float:right;" class="btn btn-default input-submit" onclick="location.href='/teambuilding_create/update/<%= @each_team.id =%>'">수정하기</button>
+                <% elsif Teambuild.find_by(team_id: params[:id], user_id: current_user.id) != nil %>
+                    <a class="btn btn-default-outline waves-effect btn-lg" href="/mypage/member" style="float:right;"><strong>가입신청이 완료되었습니다! My Page에서 승인여부를 확인해주세요!</strong></a>
                 <% else %>
-                  <%= form_tag("/teambuilding_create/apply/#{@each_team.id}", method: "POST") do %>
-                    <button class="btn btn-default-outline waves-effect btn-size input-submit" style="width:200px; float:right;" type="submit"><strong>가입 신청하기</strong></button>
-                  <% end %>
+                    <%= form_tag("/teambuilding_create/apply/#{@each_team.id}", method: "POST") do %>
+                      <button class="btn btn-default-outline waves-effect btn-size input-submit" style="width:200px; float:right;" type="submit"><strong>가입 신청하기</strong></button>
+                    <% end %>
                 <% end %>
               </div><hr><br>
 
@@ -108,6 +110,18 @@
                   <div class="row">
                     <h2 class="heading">Comments <span class="label blue"><%= @team_post.count %></span></h2>
                     <hr>
+                    <!-- 댓글 입력 -->
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <%= form_tag(teambuilding_choose_replypost_path(team_id: params[:id]), method: "post", remote: true) do %>
+                          <input type="text" class="form-control" id="reply_post" name="reply_post" placeholder="피드백, 질문하고싶은 점, 참여의사, 기타 다양한 의견들을 남겨주세요^^">
+                          <%= submit_tag("팀 리더에게 댓글", id:"reply_submit", class:"rebtn btn-primary" ) %>
+                        <% end %>
+                        <br>
+                        <br>
+                      </div>
+                    </div>
+                    <!-- 댓글 입력 -->
                     <% @team_post.each do |p| %>
                       <div class="row">
                         <strong>
@@ -189,19 +203,6 @@
                    </div>
                 <% end %>
                 </div>
-
-              <!-- 댓글 입력 -->
-              <div class="row">
-                <div class="col-xs-12">
-                  <%= form_tag(teambuilding_choose_replypost_path(team_id: params[:id]), method: "post", remote: true) do %>
-                    <input type="text" class="form-control" id="reply_post" name="reply_post" placeholder="피드백, 질문하고싶은 점, 참여의사, 기타 다양한 의견들을 남겨주세요^^">
-                    <%= submit_tag("팀 리더에게 댓글", id:"reply_submit", class:"rebtn btn-primary" ) %>
-                  <% end %>
-                  <br>
-                  <br>
-                </div>
-              </div>
-              <!-- 댓글 입력 -->
              </div><!-- 댓글 총 창 -->
               <!-- 대댓글 출력 -->
             </div><!-- col-md-12 -->

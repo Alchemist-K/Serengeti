@@ -1,6 +1,17 @@
-
 <!-- 댓글 출력 창-->
 <div id ="post_list">
+  <!-- 댓글 입력 -->
+  <div class="row">
+    <div class="col-xs-12">
+      <%= form_tag(teambuilding_choose_replypost_path(team_id: params[:id]), method: "post", remote: true) do %>
+        <input type="text" class="form-control" id="reply_post" name="reply_post" placeholder="피드백, 질문하고싶은 점, 참여의사, 기타 다양한 의견들을 남겨주세요^^">
+        <%= submit_tag("팀 리더에게 댓글", id:"reply_submit", class:"rebtn btn-primary" ) %>
+      <% end %>
+      <br>
+      <br>
+    </div>
+  </div>
+  <!-- 댓글 입력 -->  
   <div class="row">
     <h2 class="heading">Comments <span class="label blue"><%= teams.count %></span></h2>
   </div>
@@ -19,7 +30,7 @@
       <i class="fa fa-clock-o"></i> <%= p.get_time %>
       <button type="button" class="rebtn btn-primary rereply" value="<%=p.id%>">답글</button>
     </div>
-  
+
     <div class="row">
       <div class="col-xs-12">
         <%= p.team_post %>
@@ -32,7 +43,7 @@
     </div>
 
 
-   
+
   <!-- 대댓글 입력 -->
     <div class = "row">
       <div class="col-xs-12">
@@ -46,7 +57,7 @@
     </div>
     <hr>
   <!-- 대댓글 입력 -->
-  
+
 <!-- 대댓글 출력 -->
   <div class="rereply<%= p.id %>">
     <% p.team_post_replies.each do |s| %>
@@ -60,7 +71,7 @@
             <% end %>
           <% else %>
             <span><i class="fa fa-comments"></i> <%= s.user.name %></span>
-          <% end %> 
+          <% end %>
         </strong>
         <i class="fa fa-clock-o"></i> <%= s.get_time %>
       </div>
@@ -76,14 +87,14 @@
         <% end %>
       </div>
     </div>
-    
+
     <div class="row">
       <div class="col-xs-1"></div>
       <div class="col-xs-11">
-        <hr>  
+        <hr>
       </div>
     </div>
-  
+
   <% end %>
   </div>
 <!-- 대댓글 출력 -->
