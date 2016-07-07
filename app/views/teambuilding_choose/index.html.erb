@@ -1,34 +1,30 @@
 <div class="container">
-  <div id="wrapper-container" style="margin-top: 40px;">
+  <div id="wrapper-container" style="margin-top: 70px;">
     <div class="container object">
      <div class="row">
       <div class="work">
         <div class="col-md-12">
-          <div class="col-xs-6">
-            <% if @each_team.img_name == "" %>
-              <img id="team_img" src="<%= asset_path("teamlist/14.png") %>" style="max-width:500px;"/>
-            <% else %>
-              <img id="team_img" src="<%= @each_team.img_name %>" style="max-width:500px;"/>
-            <% end %>
+         <div class="row">
+          <div class="col-md-6 col-xs-6">
+              <% if @each_team.img_name == "" %>
+                <img id="team_img" src="<%= asset_path("teamlist/14.png") %>" style="max-width:500px;"/>
+              <% else %>
+                <img id="team_img" src="<%= @each_team.img_name %>" style="max-width:500px;"/>
+              <% end %>
           </div>
-          <div class="col-xs-6" style="text-weight:bold;">
-            <div class="row">
+          <div class="col-md-6 col-xs-6" style="text-weight:bold;">
               <div class="md-form">
                   <i class="fa fa-sticky-note-o prefix"></i>
-                  <input type="text" id="team_name" name="leader" value="팀 이름 : <%= @each_team.name %>" class="form-control" readonly/>
+                  <input type="text" id="team_name" name="leader" value="팀 이름 : <%= @each_team.name %>" class="form-control" style="height:15px;" readonly/>
               </div>
-            </div>
-            <div class="row">
               <div class="md-form">
                   <i class="fa fa-hand-o-right prefix"></i>
-                  <input type="text" id="team_name" name="leader" value="한 줄 팀 소개 : <%= @each_team.abstract %>" class="form-control" readonly/>
+                  <input type="text" id="team_name" name="leader" value="한 줄 팀 소개 : <%= @each_team.abstract %>" class="form-control" style="height:15px;" readonly/>
               </div>
-            </div>
-            <div class="row">
               <div class="md-form">
                   <i class="fa fa-smile-o prefix"></i>
                     <% if user_signed_in? %>
-                      <input type="text" id="team_name" name="leader" class="form-control" value="아이디어 제안자 : <%= User.find(@each_team.leader).name %>" readonly/>
+                      <input type="text" id="team_name" name="leader" class="form-control" value="아이디어 제안자 : <%= User.find(@each_team.leader).name %>" style="height:15px;" readonly/>
                       <%#= link_to(home_get_userinform_path(user_id: @each_team.leader), method: "post", remote: true) do %>
                       <!-- <div class="userbtn"><%= User.find(@each_team.leader).name %></div> -->
                       <%# end %>
@@ -36,13 +32,12 @@
                       <%= User.find(@each_team.leader).name %>
                     <% end %>
               </div>
-            </div>
-            <div class="row">
               <div class="md-form">
                   <i class="fa fa-users prefix"></i>
-                  <input type="text" id="team_name" name="leader" value="함께하고싶은 팀원 수 : <%= @each_team.number %>명" class="form-control" readonly/>
+                  <input type="text" id="team_name" name="leader" value="함께하고싶은 팀원 수 : <%= @each_team.number %>명" class="form-control" style="height:15px;" readonly/>
               </div>
-            </div>
+          </div>
+        </div> <!-- row -->
          <!-- <div class="wrapper-view" style="height:70px;">
                 <h6 class="team_detail_label">Abstract</h6>
                 <div class="text-view"><%= @each_team.abstract %></div>
@@ -66,9 +61,7 @@
                 <div class="text-view"><%= @each_team.number %></div>
               </div>
             </div>  -->
-          </div><br><br>
-            <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6 col-sm-6">
                 <div class="wrapper-view" style="height:70px;">
                   <h6 style="team_detail_label"><strong>이 팀의 해시태그</strong></h6>
                   <% for i in 0..2 %>
@@ -78,7 +71,7 @@
                   <% end %>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-5 col-sm-5">
                 <div class="wrapper-view" style="height:70px;">
                   <h6 class="team_detail_label"><strong>File Download</strong></h6>
                   <% if @each_team.origin_file_name != nil %>
@@ -87,7 +80,7 @@
                   <% end %>
                 </div>
               </div>
-            </div>
+
 
             <% if @each_team.leader == current_user.id %>
               <button class="btn btn-danger-outline waves-effect btn-size input-submit" style="float:right;" onclick="location.href='/teambuilding_create/delete/<%= @each_team.id %>'">삭제하기</button>
@@ -99,7 +92,7 @@
             <% end %>
 
             <div class="row" >
-              <div class="col-xs-12">
+              <div class="col-md-12 col-xs-12">
                 <% if @each_team.content != nil %>
                   <div class="team-content" class="md-textarea"><%= @each_team.content %></div>
                 <% else %>
@@ -126,7 +119,7 @@
                         </strong>
                         <i class="fa fa-clock-o"></i> <%= p.get_time %>
                       <button type="button" class="rebtn btn-primary rereply" value="<%=p.id%>">답글</button>
-                    </div>
+                     </div>
 
                     <div class="row">
                       <div class="col-xs-12">
@@ -169,19 +162,19 @@
                               <% end %>
                             </strong>
                             <i class="fa fa-clock-o"></i> <%= s.get_time %>
+                          </div>
                         </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-xs-1"></div>
-                        <div class="col-xs-11">
-                          <%= s.team_post_reply %>
-                          <% if user_signed_in? %>
-                            <% if s.user.id == current_user.id || current_user.admin? %>
-                              <%= link_to "[삭제]", teambuilding_choose_destroyreply_path(id: s.id, post_id: p.id), method: "post"%>
+                        <div class="row">
+                          <div class="col-xs-1"></div>
+                          <div class="col-xs-11">
+                            <%= s.team_post_reply %>
+                            <% if user_signed_in? %>
+                              <% if s.user.id == current_user.id || current_user.admin? %>
+                                <%= link_to "[삭제]", teambuilding_choose_destroyreply_path(id: s.id, post_id: p.id), method: "post"%>
+                              <% end %>
                             <% end %>
-                          <% end %>
+                          </div>
                         </div>
-                      </div>
 
                       <div class="row">
                         <div class="col-xs-1"></div>
@@ -191,12 +184,9 @@
                       </div>
 
                     <% end %>
-                  </div>
+                   </div>
                 <% end %>
                 </div>
-                <!-- 대댓글 출력 -->
-              <!-- 댓글 창 -->
-              </div>
 
               <!-- 댓글 입력 -->
               <div class="row">
@@ -210,13 +200,14 @@
                 </div>
               </div>
               <!-- 댓글 입력 -->
+             </div><!-- 댓글 총 창 -->
+              <!-- 대댓글 출력 -->
+            </div><!-- col-md-12 -->
+          </div> <!-- work -->
+        </div> <!-- row -->
 
-          </div> <!-- wrapper-text-description -->
-        </div>
-
-      </div>
-    </div> <!-- work -->
-  </div>
+      </div> <!-- container object -->
+    </div> <!-- wrapper container -->
 </div> <!-- container -->
 
 <script>

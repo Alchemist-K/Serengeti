@@ -36,8 +36,8 @@
                         <p><strong>가입된 팀원</strong></p><hr>
                         <% t.members.each do |m| %>
                             <%= link_to(home_get_userinformwithphone_path(user_id: m.id), method: "post", remote: true) do %>
-                            <div class="userbtn"><%= User.find(m.id).name %></div>
-                          <% end %>
+                              <div class="userbtn"><%= User.find(m.id).name %></div>
+                            <% end %>
                         <% end %>
                       <% end %>
                     </div>
