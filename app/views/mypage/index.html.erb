@@ -30,6 +30,7 @@
                     </div>
                     <div class="col-md-4 col-sm-4" style="text-align:center;">
                       <% if t.members.empty? %>
+                        <p><strong>가입신청 현황</strong></p><hr>
                         <p>팀원으로 가입된 사람이 없습니다</p>
                       <% else %>
                         <p><strong>가입된 팀원</strong></p><hr>
@@ -66,10 +67,10 @@
                           <p>만들어진 날짜 : <%= r.created_at %></p>
                           <!--"Read more" button-->
                           <%= form_tag("/mypage/index/accept/#{r.id}", method: "GET") do %>
-                            <button class="btn btn-primary" type="submit">함께해요~</button>
+                            <button class="btn btn-primary" type="submit">함께해요 !!</button>
                           <% end %>
                           <%= form_tag("/mypage/index/deny/#{r.id}", method: "GET") do %>
-                            <button class="btn btn-danger" type="submit">미안해요~</button>
+                            <button class="btn btn-danger" type="submit">미안해요ㅠㅠ</button>
                           <% end %>
                         </div> <!-- end col -->
 
