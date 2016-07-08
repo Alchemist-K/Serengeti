@@ -1,0 +1,11 @@
+
+<% u = User.find(user_id) %>
+<ul class="list-group">
+ <li class="list-group-item"><strong>이름 :  <%= u.name %></strong></li>
+ <li class="list-group-item"><strong>전공 : <%= u.major %></strong></li>
+ <li class="list-group-item"><strong>한 줄 소개 : <%= u.favor %></strong></li>
+ <li class="list-group-item"><strong>핸드폰번호 : <%= u.phone_number %></strong></li>
+ <li class="list-group-item"><strong>관심사1 : <%= u.interest1 %></strong></li>
+ <li class="list-group-item"><strong>관심사2 : <%= u.interest2 %></strong></li>
+ <li class="list-group-item"><strong>관심사3 : <%= u.interest3 %></strong></li>
+</ul>

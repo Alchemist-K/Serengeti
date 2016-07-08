@@ -56,7 +56,8 @@ Rails.application.routes.draw do
   post 'notice/update/:post_id' => 'notice#update'
   post 'notice/reply_write'
   post 'notice/reply_delete'
-  post 'home/get_userinform'
+  post 'home/get_userinform' => 'home#get_userinform', as: :home_get_userinform
+  post 'home/get_userinformwithphone/:user_id' => 'home#get_userinformwithphone', as: :home_get_userinformwithphone
 
 
 

@@ -1,5 +1,6 @@
 class TeambuildingCreateController < ApplicationController
   before_action :authenticate_user!
+  before_action :ispermitted
   
   def apply
     new_member = Teambuild.new(user_id: current_user.id, team_id: params[:id], status: 0)

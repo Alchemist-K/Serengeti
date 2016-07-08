@@ -5,7 +5,7 @@
 
       <!--Main column-->
       <div class="col-md-8">
-  
+
         <% @appliedteam.each do |p| %>
           <!--Card-->
           <div class="card">
@@ -14,7 +14,7 @@
               <!--Post-->
               <div class="post-wrapper">
                   <!--Post data-->
-                <a href="teambuilding_choose/index"><h2><%= p.name %> </h2></a>
+                <a href="/teambuilding_choose/index/<%= p.id %>"><h2><%= p.name %> </h2></a>
                 <strong>
                   <%= link_to(home_get_userinform_path(user_id: p.leader), method: "post", remote: true) do %>
                       <div class="userbtn"><%= User.find(p.leader).name %>,</div>
@@ -68,7 +68,7 @@
         <hr>
       </div>
       <!-- /.Main column-->
-  
+
       <!--Sidebar-->
       <div class="col-md-4">
         <div class="widget-wrapper">
@@ -80,7 +80,7 @@
           </div>
         </div>
         <br>
-  
+
         <div class="widget-wrapper">
           <div class="card">
             <div class="card-block">
@@ -98,7 +98,7 @@
         </div>
       </div>
       <!--/.Sidebar-->
-    
+
     </div>
   </div>
   <!--/.Main layout-->

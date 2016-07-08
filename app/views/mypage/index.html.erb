@@ -11,6 +11,7 @@
           <div class="card">
             <!--Card content-->
             <div class="card-block">
+              <p><strong>가입신청 현황</strong></p><hr>
               <p>가입신청이 없습니다.</p>
             </div>
           </div> <!-- end Card -->
@@ -23,10 +24,25 @@
                 <!--Card content-->
                 <div class="card-block">
                   <div class="row">
-                    <div class="col-md-5 col-sm-4">
+                    <div class="col-md-5 col-sm-5" style="text-align:center;">
+                      <p><strong>가입신청 현황</strong></p><hr>
                       <p>이 팀에 대한 가입신청이 없습니다.</p>
                     </div>
-                    <div class="col-md-5 col-sm-4" style="text-align:center;">
+                    <div class="col-md-4 col-sm-4" style="text-align:center;">
+                      <% if t.members.empty? %>
+                        <p><strong>가입신청 현황</strong></p><hr>
+                        <p>팀원으로 가입된 사람이 없습니다</p>
+                      <% else %>
+                        <p><strong>가입된 팀원</strong></p><hr>
+                        <% t.members.each do |m| %>
+                            <%= link_to(home_get_userinformwithphone_path(user_id: m.id), method: "post", remote: true) do %>
+                              <div class="userbtn"><%= User.find(m.id).name %></div>
+                            <% end %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="col-md-3 col-sm-3" style="text-align:center;">
+                      <p><strong>팀 한 줄 소개</strong></p><hr>
                       <p><%= t.abstract %></p>
                     </div>
                   </div> <!-- end row -->
@@ -42,24 +58,25 @@
                     <div class="post-wrapper">
                       <!--Post data-->
                       <div class="row">
-                        <div class="col-md-5 col-sm-4" style="text-align:center;">
+                        <div class="col-md-6 col-sm-6" style="text-align:center;">
                           <strong>
                             <%= link_to(home_get_userinform_path(user_id: r.user_id), method: "post", remote: true) do %>
                               <div class="userbtn"><%= User.find(r.user_id).name %></div>
                             <% end %>
                           </strong>
-                          <p>Written at <%= r.created_at %></p>
+                          <p>만들어진 날짜 : <%= r.created_at %></p>
                           <!--"Read more" button-->
                           <%= form_tag("/mypage/index/accept/#{r.id}", method: "GET") do %>
-                            <button class="btn btn-primary" type="submit">함께해요~</button>
+                            <button class="btn btn-primary" type="submit">함께해요 !!</button>
                           <% end %>
                           <%= form_tag("/mypage/index/deny/#{r.id}", method: "GET") do %>
-                            <button class="btn btn-danger" type="submit">미안해요~</button>
+                            <button class="btn btn-danger" type="submit">미안해요ㅠㅠ</button>
                           <% end %>
                         </div> <!-- end col -->
-                   
-                        <div class="col-md-5 col-sm-4" style="text-align:center;">
-                          <p><%= Team.find(t.id).abstract %></p>
+
+                        <div class="col-md-6 col-sm-6" style="text-align:center;">
+                          <p><strong>팀 한 줄 소개</strong></p><hr>
+                          <p style="text-align:center;"><%= Team.find(t.id).abstract %></p>
                         </div>
                       </div> <!-- end row -->
                       <br>
@@ -73,9 +90,9 @@
             <hr>
           <% end %> <!-- MyTeam ~ do -->
         <% end %> <!-- if ~ else ~ end -->
-      
+
       </div> <!-- end Main-column -->
-              
+
       <!--Sidebar-->
       <div class="col-md-4">
         <div class="widget-wrapper">
@@ -87,7 +104,7 @@
           </div>
         </div>
         <br>
-  
+
         <div class="widget-wrapper">
           <div class="card">
             <div class="card-block">
@@ -106,7 +123,7 @@
         </div>
       </div>
       <!--/.Sidebar-->
-          
+
       <!--Pagination-->
       <nav class="text-xs-center">
       <%= will_paginate @myTeam, renderer: BootstrapPagination::Rails  %>

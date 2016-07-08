@@ -1,29 +1,55 @@
+<!-- container -->
 <div class="container">
-  <div id="wrapper-container" style="margin-top: 120px;">
+  <!-- wrapper-container -->
+  <div id="wrapper-container" style="margin-top: 70px;">
+    <!-- container object -->
     <div class="container object">
-      <div class="work">
-        <div class="row">
-          <div class="col-xs-6">
-            <% if @each_team.img_name == "" %>
-              <img id="team_img" src="<%= asset_path("teamlist/14.png") %>" style="max-width:500px;"/>
-            <% else %>
-              <img id="team_img" src="<%= @each_team.img_name %>" style="max-width:500px;"/>
-            <% end %>
-          </div> 
-          <div class="col-xs-6">
-            <div class="side-info">
-
-              <div class="wrapper-view" style="height:70px;">
-                <h6 class="team_detail_label">Team Name</h6>
-                <div class="text-view"><%= @each_team.name %></div>
+      <!-- row -->
+      <div class="row">
+        <!-- work -->
+        <div class="work">
+          <!-- col-md-12 -->
+          <div class="col-md-12">
+            <!-- row -->
+           <div class="row">
+            <div class="col-md-6 col-xs-6">
+              <% if @each_team.img_name == "" %>
+                <img id="team_img" src="<%= asset_path("teamlist/14.png") %>" style="max-width:500px;"/>
+              <% else %>
+                <img id="team_img" src="<%= @each_team.img_name %>" style="max-width:500px;"/>
+              <% end %>
+            </div>
+            <div class="col-md-6 col-xs-6" style="text-weight:bold;">
+              <div class="md-form">
+                  <i class="fa fa-sticky-note-o prefix"></i>
+                  <input type="text" id="team_name" name="leader" value="팀 이름 : <%= @each_team.name %>" class="form-control" style="height:15px;" readonly/>
               </div>
-
-              <div class="wrapper-view" style="height:70px;">
+              <div class="md-form">
+                  <i class="fa fa-hand-o-right prefix"></i>
+                  <input type="text" id="team_name" name="leader" value="한 줄 팀 소개 : <%= @each_team.abstract %>" class="form-control" style="height:15px;" readonly/>
+              </div>
+              <div class="md-form">
+                  <i class="fa fa-smile-o prefix"></i>
+                    <% if user_signed_in? %>
+                      <input type="text" id="team_name" name="leader" class="form-control" value="아이디어 제안자 : <%= User.find(@each_team.leader).name %>" style="height:15px;" readonly/>
+                      <%#= link_to(home_get_userinform_path(user_id: @each_team.leader), method: "post", remote: true) do %>
+                      <!-- <div class="userbtn"><%= User.find(@each_team.leader).name %></div> -->
+                      <%# end %>
+                    <% else %>
+                      <%= User.find(@each_team.leader).name %>
+                    <% end %>
+              </div>
+              <div class="md-form">
+                  <i class="fa fa-users prefix"></i>
+                  <input type="text" id="team_name" name="leader" value="함께하고싶은 팀원 수 : <%= @each_team.members.count %>명 / <%= @each_team.number %>명" class="form-control" style="height:15px;" readonly/>
+              </div>
+            </div>
+          </div> <!-- row -->
+         <!-- <div class="wrapper-view" style="height:70px;">
                 <h6 class="team_detail_label">Abstract</h6>
                 <div class="text-view"><%= @each_team.abstract %></div>
-              </div>
-
-              <div class="wrapper-view" style="height:70px;">
+              </div> -->
+        <!-- <div class="wrapper-view" style="height:70px;">
                 <h6 class="team_detail_label">Team Leader</h6>
                 <div class="text-view">
                   <strong>
@@ -36,158 +62,161 @@
                     <% end %>
                   </strong>
                 </div>
-              </div>       
-
-              <div class="wrapper-view" style="height:70px;">
+              </div>        -->
+              <!-- <div class="wrapper-view" style="height:70px;">
                 <h6 class="team_detail_label">Number of member</h6>
                 <div class="text-view"><%= @each_team.number %></div>
               </div>
-            </div> 
-            <div class="row">
-              <div class="wrapper-view" style="height:70px;">
-                <h6 class="team_detail_label">File Download</h6>
-                <% if @each_team.origin_file_name != nil %>
-                  <a href="<%= @each_team.file_name %>" download="<%= @each_team.origin_file_name %>"><%= @each_team.origin_file_name %></a>
+            </div>  -->
+              <br><br>
+              <div class="col-md-6 col-sm-6">
+                <div class="wrapper-view" style="height:70px;">
+                  <h6 style="team_detail_label"><strong>이 팀의 해시태그</strong></h6>
+                  <% for i in 0..2 %>
+                    <% unless @each_team.customTags[i].nil? %>
+                      <div class="text-view"><%= @each_team.customTags[i].to_s %></div>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col-md-5 col-sm-5">
+                <div class="wrapper-view" style="height:70px;">
+                  <h6 class="team_detail_label"><strong>File Download</strong></h6>
+                  <% if @each_team.origin_file_name != nil %>
+                    <a href="<%= @each_team.file_name %>" download="<%= @each_team.origin_file_name %>"><%= @each_team.origin_file_name %></a>
+                  <% else %>
+                  <% end %>
+                </div>
+              </div>
+
+              <div class="col-xs-12">
+                <h6 style="team_detail_label"><strong>아이디어 소개</strong></h6>
+                  <% if @each_team.content != nil %>
+                    <div class="team-content" class="md-textarea"><%= @each_team.content %></div>
+                  <% else %>
+                    <input type="text" id="team_content" value="팀에 대한 설명을 입력해주세요." class="form-control" readonly/>
+                  <% end %>
+                <hr>
+
+
+                <% if @each_team.leader == current_user.id %>
+                  <button class="btn btn-danger-outline waves-effect btn-size input-submit" style="float:right;" onclick="location.href='/teambuilding_create/delete/<%= @each_team.id %>'">삭제하기</button>
+                  <button type="submit" style="float:right;" class="btn btn-default input-submit" onclick="location.href='/teambuilding_create/update/<%= @each_team.id =%>'">수정하기</button>
+                <% elsif Teambuild.find_by(team_id: params[:id], user_id: current_user.id) != nil %>
+                    <a class="btn btn-default-outline waves-effect btn-lg" href="/mypage/member" style="float:right;"><strong>가입신청이 완료되었습니다! My Page에서 승인여부를 확인해주세요!</strong></a>
                 <% else %>
-
+                    <%= form_tag("/teambuilding_create/apply/#{@each_team.id}", method: "POST") do %>
+                      <button class="btn btn-default-outline waves-effect btn-size input-submit" style="width:200px; float:right;" type="submit"><strong>가입 신청하기</strong></button>
+                    <% end %>
                 <% end %>
-              </div>
+              </div><hr><br>
 
-              <div class="wrapper-view" style="height:70px;">
-                <h6 style="team_detail_label">Tags</h6>
-                <% for i in 0..2 %>
-                  <% unless @each_team.customTags[i].nil? %>
-                    <div class="text-view"><%= @each_team.customTags[i] %></div>
-                  <% end %>
-                <% end %>
-              </div>
-            </div> 
+                <!-- 댓글 출력 창-->
+                <hr>
+                  <div class="row">
+                    <!-- 댓글 입력 -->
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <%= form_tag(teambuilding_choose_replypost_path(team_id: params[:id]), method: "post", remote: true) do %>
+                          <input type="text" class="form-control" id="reply_post" name="reply_post" placeholder="피드백, 질문하고싶은 점, 참여의사, 기타 다양한 의견들을 남겨주세요^^">
+                          <%= submit_tag("팀 리더에게 댓글", id:"reply_submit", class:"rebtn btn-primary" ) %>
+                        <% end %>
+                        <br>
+                        <br>
+                      </div>
+                    </div>
+                    <!-- 댓글 입력 -->
+                    <div id ="post_list">
+                      <h2 class="heading">Comments <span class="label blue"><%= @team_post.count %></span></h2>
+                      <hr>
+                      <% @team_post.each do |p| %>
+                       <div class="row">
+                          <strong>
+                            <% if user_signed_in? %>
+                              <%= link_to(home_get_userinform_path(user_id: p.user.id), method: "post", remote: true) do %>
+                                <span class="userbtn"><i class="fa fa-comment"></i> <%= p.user.name %></span>
+                              <% end %>
+                            <% else %>
+                              <span><%= p.user.name %></span>
+                            <% end %>
+                          </strong>
+                          <i class="fa fa-clock-o"></i> <%= p.get_time %>
+                        <button type="button" class="rebtn btn-primary rereply" value="<%=p.id%>">답글</button>
+                       </div>
 
-            <% if @each_team.leader == current_user.id %>
-              <button type="submit" class="btn btn-default input-submit" onclick="location.href='/teambuilding_create/update/<%= @each_team.id =%>'">수정</button>
-              <button class="btn btn-danger-outline waves-effect btn-size input-submit" onclick="location.href='/teambuilding_create/delete/<%= @each_team.id %>'">삭제</button>
-            <% else %>
-              <%= form_tag("/teambuilding_create/apply/#{@each_team.id}", method: "POST") do %>
-                <button class="btn btn-primary-outline waves-effect btn-size input-submit" type="submit">가입</button>
-              <% end %>
-            <% end %>
-          </div> <!-- wrapper-text-description -->
-        </div>
-        <div class="row" >
-          <div class="col-xs-12">
-            <% if @each_team.content != nil %>
-              <div class="team-content" class="md-textarea"><%= @each_team.content %></div>
-            <% else %>
-              <div class="team-content">팀에 대한 설명을 입력해 주세요.</div>
-            <% end %>
-          </div>
-        </div>
-          <!-- 댓글 출력 창-->
-          <div id ="post_list">
-            <div class="row">
-              <h2 class="heading">Comments <span class="label blue"><%= @team_post.count %></span></h2>
-              <hr>
-              <% @team_post.each do |p| %>
-                <div class="row">
-                  <strong>
-                    <% if user_signed_in? %>
-                      <%= link_to(home_get_userinform_path(user_id: p.user.id), method: "post", remote: true) do %>
-                        <span class="userbtn"><i class="fa fa-comment"></i> <%= p.user.name %></span>
-                      <% end %>
-                    <% else %>
-                      <span><%= p.user.name %></span>
-                    <% end %>
-                  </strong>
-                  <i class="fa fa-clock-o"></i> <%= p.get_time %>
-                <button type="button" class="rebtn btn-primary rereply" value="<%=p.id%>">답글</button>
-              </div>
-  
-              <div class="row">
-                <div class="col-xs-12">
-                  <%= p.team_post %>
-                  <% if user_signed_in? %>
-                    <% if p.user.id == current_user.id || current_user.admin? %>
-                      <a href="/teambuilding_choose/destroy/<%= p.id %>">[삭제]</a>
-                    <% end %>
-                  <% end %>
-                </div>
-              </div>
-  
-              <!-- 대댓글 입력 -->
-              <div class = "row">
-                <div class="col-xs-12">
-                  <div id="demo<%=p.id%>" class="collapse">
-                    <%= form_tag(teambuilding_choose_replyreply_path(post_id: p.id), method: "post", remote: true) do %>
-                      <input type="text" class="form-control" name="reply_reply" id="rereply<%=p.id%>" placeholder="내용">
-                      <%= submit_tag("답글달기", class: "rebtn btn-primary") %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-              <hr>
-              <!-- 대댓글 입력 -->
-  
-              <!-- 대댓글 출력 -->
-              <div class="rereply<%= p.id %>">
-                <% p.team_post_replies.each do |s| %>
-                  <div class ="row">
-                    <div class="col-xs-1"></div>
-                    <div class="col-xs-11">
-                      <strong>
-                        <% if user_signed_in? %>
-                          <%= link_to(home_get_userinform_path(user_id: s.user.id, p_id: p.id), method: "post", remote: true) do %>
-                            <span class="userbtn"><i class="fa fa-comments"></i> <%= s.user.name %></span>
+                      <div class="row">
+                        <div class="col-xs-12">
+                          <%= p.team_post %>
+                          <% if user_signed_in? %>
+                            <% if p.user.id == current_user.id || current_user.admin? %>
+                              <a href="/teambuilding_choose/destroy/<%= p.id %>">[삭제]</a>
+                            <% end %>
                           <% end %>
-                        <% else %>
-                          <span><i class="fa fa-comments"></i> <%= s.user.name %></span>
-                        <% end %> 
-                      </strong>
-                      <i class="fa fa-clock-o"></i> <%= s.get_time %>
-                  </div>
+                        </div>
+                      </div>
+
+                      <!-- 대댓글 입력 -->
+                      <div class = "row">
+                        <div class="col-xs-12">
+                          <div id="demo<%=p.id%>" class="collapse">
+                            <%= form_tag(teambuilding_choose_replyreply_path(post_id: p.id), method: "post", remote: true) do %>
+                              <input type="text" class="form-control" name="reply_reply" id="rereply<%=p.id%>" placeholder="내용">
+                              <%= submit_tag("답글달기", class: "rebtn btn-primary") %>
+                            <% end %>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <!-- 대댓글 입력 -->
+
+                      <!-- 대댓글 출력 -->
+                      <div class="rereply<%= p.id %>">
+                        <% p.team_post_replies.each do |s| %>
+                          <div class ="row">
+                            <div class="col-xs-11" style="margin-left:15px;">
+                              <strong>
+                                <% if user_signed_in? %>
+                                  <%= link_to(home_get_userinform_path(user_id: s.user.id, p_id: p.id), method: "post", remote: true) do %>
+                                    <span class="userbtn"><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;<i class="fa fa-comments"></i> <%= s.user.name %></span>
+                                  <% end %>
+                                <% else %>
+                                  <span><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;<i class="fa fa-comments"></i> <%= s.user.name %></span>
+                                <% end %>
+                              </strong>
+                              <i class="fa fa-clock-o"></i> <%= s.get_time %>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xs-11" style="margin-left:15px;">
+                              <%= s.team_post_reply %>
+                              <% if user_signed_in? %>
+                                <% if s.user.id == current_user.id || current_user.admin? %>
+                                  <%= link_to "[삭제]", teambuilding_choose_destroyreply_path(id: s.id, post_id: p.id), method: "post"%>
+                                <% end %>
+                              <% end %>
+                              <hr>
+                            </div>
+                          </div>
+                        <% end %><!-- s에 대한 end -->
+                      </div><!-- 대댓글 출력 -->
+                   <br>
+                   <% end %><!-- p에 대한 end -->
                 </div>
-                <div class="row">
-                  <div class="col-xs-1"></div>
-                  <div class="col-xs-11">
-                    <%= s.team_post_reply %>
-                    <% if user_signed_in? %>
-                      <% if s.user.id == current_user.id || current_user.admin? %>
-                        <%= link_to "[삭제]", teambuilding_choose_destroyreply_path(id: s.id, post_id: p.id), method: "post"%>
-                      <% end %>
-                    <% end %>
-                  </div>
-                </div>
-  
-                <div class="row">
-                  <div class="col-xs-1"></div>
-                  <div class="col-xs-11">
-                    <hr>  
-                  </div>
-                </div>
-  
-              <% end %>
-            </div>
-          <% end %>
+                <!-- post_list -->
+             </div>
+              <!-- row -->
           </div>
-          <!-- 대댓글 출력 -->
-        <!-- 댓글 창 -->
+            <!-- col-md-12 -->
         </div>
-      
-        <!-- 댓글 입력 -->
-        <div class="row">
-          <div class="col-xs-12">
-            <%= form_tag(teambuilding_choose_replypost_path(team_id: params[:id]), method: "post", remote: true) do %>
-              <input type="text" class="form-control" id="reply_post" name="reply_post" placeholder="피드백, 질문하고싶은 점, 참여의사, 기타 다양한 의견들을 남겨주세요^^">
-              <%= submit_tag("팀 리더에게 댓글", id:"reply_submit", class:"rebtn btn-primary" ) %>
-            <% end %>
-            <br>
-            <br>
-          </div>
-        </div>
-        <!-- 댓글 입력 -->
+          <!-- work -->
       </div>
-    </div> <!-- work -->
+      <!-- row -->
+    </div>
+       <!-- container object -->
   </div>
-</div> <!-- container -->
+    <!-- wrapper container -->
+</div>
+ <!-- container -->
 
 <script>
   //대댓글입력창 토글하기
