@@ -15,17 +15,17 @@
           <p class="lead"><%= simple_format(@notice.content) %></p>
           <hr class="m-y-2">
         </div>
-    
+
         <div class="col-xs-12">
-        <p class="lead">
+        <p class="lead" style="float:right;">
             <a href="/notice/index"class="btn btn-primary btn-sm" role="button">목록으로</a>
             <% if user_signed_in? %>
-              <% if current_user.admin? %> 
+              <% if current_user.admin? %>
               <a href="/notice/update_view/<%= @notice.id %>"class="btn btn-primary btn-sm" role="button">수정하기</a>
               <a href="/notice/delete/<%= @notice.id %>"class="btn btn-primary btn-sm" role="button">삭제하기</a>
               <% end %>
-            <% end %>  
-        </p>
+            <% end %>
+        </p>  <br><br><br><hr>
         </div>
       </div>
 
@@ -52,7 +52,7 @@
             <div class="card-data col-xs-2">
               <i class="fa fa-clock-o"></i> <%= r.get_time %>
             </div>
-                
+
             <div class="col-xs-12">
               <%= r.content %>
               <% if user_signed_in? %>
@@ -66,8 +66,8 @@
           </div>
         <% end %>
       </div>
-    
-    
+
+
     <!-- 댓글 입력창 -->
     <% if user_signed_in? && !current_user.name.nil? %>
       <%= form_tag(notice_reply_write_path(notice_id: params[:post_id]), method: "post", remote: true) do %>
