@@ -3,9 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .replyreply {
-  margin-left:15px;
+  margin-left: 35px;
 }
 
+.replyreply_content {
+	margin-left: 75px;
+}
+
+.replypost {
+	margin-left: 15px;
+}
+
+.replypost_content {
+	margin-left: 35px;
+}
 @font-face {
     font-family: 'socialicoregular';
     src: url('font/socialico-webfont.eot');
