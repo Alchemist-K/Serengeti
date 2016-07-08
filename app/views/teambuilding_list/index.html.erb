@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row" style="margin-top:60px;">
+  <div class="row" style="margin-top:10vh;">
 
-    <div class="col-md-6 col-xs-12 card_margin" >
+    <div class="col-md-6 col-xs-12" >
       <!--Card-->
       <div class="card">
         <!--Card image-->
@@ -22,7 +22,7 @@
       <!--/.Card-->
     </div> <!-- /.col-md-6 col-xs-12 card_margin -->
 
-    <div class="col-md-6 col-xs-12 card_margin">
+    <div class="col-md-6 col-xs-12">
       <!--Card-->
       <div class="card">
         <!--Card image-->
@@ -96,7 +96,7 @@
                   <% if t.img_name != "" %>
                     <img style="margin:5%" src="<%= t.img_name %>" />
                   <% else %>
-                    <img style="margin:5%" src="<%= image_path "teamlist/14.png" %>"/>
+                    <img style="margin:5%" src="<%= image_path "default_teamimg.png" %>"/>
                   <% end %>
                   <dl>
                     <dt><%= t.abstract %></dt>
