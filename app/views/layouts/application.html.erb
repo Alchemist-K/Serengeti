@@ -46,7 +46,6 @@
           <li class="nav-item <% if (params[:controller] == 'teambuilding_choose') or (params[:controller] == 'teambuilding_list') or (params[:controller] == 'teambuilding_create') %>active<% end %>">
           <a class="nav-link" href="/teambuilding_list/index">Team Building</a>
           </li>
-
           <% if user_signed_in? %>
             <li class="nav-item">
             <a class="nav-link <% if params[:controller] == 'mypage' %>active<% end %>" href="/mypage/index">My Page</a>
@@ -61,7 +60,7 @@
             <li class="nav-item right">
             <%= link_to '로그아웃', destroy_user_session_path, method: 'DELETE', class:"nav-link", style: "font-weight:bold; color:white;"  %>
             </li>
-            <li class="nav-item right" style="margin-left:15vw;">
+            <li class="nav-item right" style="margin-left:14vw;">
             <%= link_to '회원정보 수정', edit_user_registration_path, class: "nav-link", style: "font-weight:bold; color:white;" %>
             </li>
           <% else %>
@@ -72,82 +71,83 @@
             <%= link_to '로그인하기', new_user_session_path, class: "nav-link", style: "float:right; font-weight:bold; color:white;"  %>
             </li>
           <% end %>
-        </ul>
-        <!--Search form-->
-        <!--<form class="form-inline">-->
-          <!--    <input class="form-control" type="text" placeholder="Team Search">-->
-          <!--</form>-->
-      </div>
-      <!--/.Navbar-->       
-      </nav>
+        </div>
+      </ul>
+      <!--Search form-->
+      <!--<form class="form-inline">-->
+        <!--    <input class="form-control" type="text" placeholder="Team Search">-->
+        <!--</form>-->
+    </div>
+    <!--/.Navbar-->       
+    </nav>
 
-      <%= yield %>
+    <%= yield %>
 
-      <!-- SCRIPTS -->
+    <!-- SCRIPTS -->
 
-      <!-- JQuery -->
-      <script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
 
-      <!-- Bootstrap tooltips -->
-      <script type="text/javascript" src="/js/tether.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="/js/tether.min.js"></script>
 
-      <!-- Bootstrap core JavaScript -->
-      <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 
-      <!-- MDB core JavaScript -->
-      <script type="text/javascript" src="/js/mdb.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/js/mdb.min.js"></script>
 
-      <footer style="width:100%;padding:2.5rem;background-color:#373A3C;color:white;">
-      <!--Copyright-->
-      © 2016 Copyright: <a href="http://serengeti.team"> serengeti.team </a> <br>
-      Made By <strong> 김경도 외 7명 </strong> from SNU Likelion 4th <br>
-      누구나 세상을 바꿀 수 있다!
-      <!--/.Copyright-->
-      </footer>
-      <!--/.Footer-->
+    <footer style="width:100%;padding:2.5rem;background-color:#373A3C;color:white;">
+    <!--Copyright-->
+    © 2016 Copyright: <a href="http://serengeti.team"> serengeti.team </a> <br>
+    Made By <strong> 김경도 외 7명 </strong> from SNU Likelion 4th <br>
+    누구나 세상을 바꿀 수 있다!
+    <!--/.Copyright-->
+    </footer>
+    <!--/.Footer-->
 
-      <!-- 회원정보 modal!-->
-      <div id="myModal" class="modal">
+    <!-- 회원정보 modal!-->
+    <div id="myModal" class="modal">
 
-        <!-- Modal content -->
-        <div class="modal-content">
-          <div class="modal-header">
-            <span class="close">&times</span>
-            <h2>회원정보</h2>
-          </div>
-          <div class="userinform">
-            <h1>나는....</h1>
-          </div>
-          <div class="modal-footer">
-            <h3 class="brandlogo">SERENGETI</h3>
-          </div>
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times</span>
+          <h2>회원정보</h2>
+        </div>
+        <div class="userinform">
+          <h1>나는....</h1>
+        </div>
+        <div class="modal-footer">
+          <h3 class="brandlogo">SERENGETI</h3>
         </div>
       </div>
+    </div>
 
 
     <!-- 회원정보 클릭/열람 모달 -->
     <script>
       // Get the modal
       var modal = document.getElementById('myModal');
-      
+
       // Get the <span> element that closes the modal
-      var span = document.getElementsByClassName("close")[0];
-      
-      $(document).on("click", ".userbtn", function(){
+        var span = document.getElementsByClassName("close")[0];
+
+        $(document).on("click", ".userbtn", function(){
         modal.style.display = "block";
-      });
-  
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function() {
+        });
+
+        // When the user clicks on <span> (x), close the modal
+          span.onclick = function() {
           modal.style.display = "none";
-      }
-      
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function(event) {
-          if (event.target == modal) {
-              modal.style.display = "none";
           }
-      }
-    </script>
-  </body>
-</html>
+
+          // When the user clicks anywhere outside of the modal, close it
+          window.onclick = function(event) {
+          if (event.target == modal) {
+          modal.style.display = "none";
+          }
+          }
+        </script>
+      </body>
+    </html>
