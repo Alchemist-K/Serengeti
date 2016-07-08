@@ -1,10 +1,10 @@
-    <!-- name이 없을 때, 팀빌딩을 할 수 없으니 정보를 수정하라는 알람  -->  
+    <!-- name이 없을 때, 팀빌딩을 할 수 없으니 정보를 수정하라는 알람  -->
     <% if user_signed_in? %>
       <% if current_user.name.nil? %>
         <div class="card card-info text-xs-center" style="margin-bottom:0">
             <div class="card-block">
               <p class="white-text">팀빌딩을 위해 회원정보를 추가해주세요.
-              <a href="/mypage/myinfo">추가하기</a></p>
+              <a href="/mypage/myinfo">추가하러 가기</a></p>
             </div>
         </div>
       <% end %>
@@ -20,10 +20,10 @@
       <li data-target="#carousel-example-1" data-slide-to="1"></li>
     </ol>
     <!--/.Indicators-->
-  
+
     <!--Slides-->
     <div class="carousel-inner" role="listbox">
-    
+
       <!--First slide-->
       <div class="carousel-item active">
         <!--Mask-->
@@ -84,7 +84,7 @@
               <p>Let's make the world work better</p>
               </li>
               <li>
-              <a href="http://mdbootstrap.com/forums/forum/support/" class="btn btn-default btn-lg">How to use Serengeti?</a>
+              <a id="home_modal_btn" class="btn btn-default btn-lg">How to use Serengeti?</a>
               </li>
             </ul>
           </div>
@@ -108,5 +108,21 @@
     <!--/.Controls-->
   </div>
   <!--/.Carousel Wrapper-->
-
 </body>
+
+<!-- modal -->
+<div id="home_modal" class="modal">
+  <img id="home_modal_img" src="/img/homemodal.jpeg" style="vertical-align:middle; text-align:center;"/>
+</div>
+<!-- modal -->
+
+<script>
+  $(document).on("click", "#home_modal_btn", function() {
+    $("#home_modal").modal("show");
+  });
+
+  $(document).on("click", "#home_modal", function() {
+    $("#home_modal").modal("hide");
+  });
+
+</script>
