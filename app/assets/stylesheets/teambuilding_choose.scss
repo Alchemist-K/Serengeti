@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.replyreply {
+  margin-left:15px;
+}
 
 @font-face {
     font-family: 'socialicoregular';
@@ -38,8 +41,8 @@ a {
 	text-decoration:none;
 }
 
-ul { 
-	list-style-type: none; 
+ul {
+	list-style-type: none;
 	margin:0;
 	padding:0;
 }
@@ -100,7 +103,7 @@ body,html{
 	width:20%;
 	right:7.5%;
 	height:auto;
-	margin-top:85px;	
+	margin-top:85px;
 }
 .wrapper-view {
   margin-bottom:3rem;
@@ -158,8 +161,8 @@ body,html{
 .text-download a{
 	color:#A1A1A1;
 	transition: all 0.2s ease-in-out;
-    -webkit-transition: all 0.2s ease-in-out; 
-    -moz-transition: all 0.2s ease-in-out; 
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
 }
 
@@ -368,7 +371,7 @@ body,html{
 // }
 
 /* Smaller viewports — more tablets, old monitors */
- 
+
 @media only screen and (max-width: 860px) {
 
 .part-info-image{
@@ -378,7 +381,7 @@ body,html{
 }
 
 /* Even smaller viewports — more tablets, etc. */
- 
+
 @media only screen and (max-width: 740px) {
 
 .wrapper-text-description{
@@ -392,7 +395,7 @@ body,html{
 }
 
 /* Mobile phones (Landscape) and Tablets (Portrait) */
- 
+
 @media only screen and (max-width: 610px) {
 .part-info-image{
 	float:left;
@@ -404,11 +407,11 @@ body,html{
 	margin-left:4%;
 }
 
-    
+
 }
 
 /* Mobile phones (Landscape) and Tablets (Portrait) */
- 
+
 @media only screen and (max-width: 480px) {
 
 .title-item{
