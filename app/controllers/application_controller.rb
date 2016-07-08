@@ -10,5 +10,5 @@ class ApplicationController < ActionController::Base
     else
       return true
     end
-  end
+  end  
 end
