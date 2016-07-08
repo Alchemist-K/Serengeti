@@ -1,15 +1,51 @@
 <!--Main layout-->
 <div class="container">
- <div class="row">
-    <!--Main column-->
-     <div class="col-md-8">
-        <%= render partial: '/admin/menu_list' %>
+  <div class="row">
+    <div class="col-md-12" style="margin-top:30px;">
+      <!--Main column-->
+      <div class="col-md-8">
+        <table>
+            <thead class="thead-inverse" style="text-align:center;">
+              <tr>
+                <th>id</th>
+                <th>이름</th>
+                <th>대학</th>
+                <th>전공</th>
+                <th>핸드폰</th>
+                <th>한줄소개</th>
+                <th>정보입력여부</th>
+                <th>가입시간</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @alluser.each do |v| %>
+              <tr>
+                <th scope="row"><%= v.email %></th>
+                <%= link_to(home_get_userinformwithphone_path(user_id: v.id), method: "post", remote: true) do %>
+                  <td><div class="userbtn"><%= v.name %></div></td>
+                <% end %>
+                <td><%= v.university %></td>
+                <td><%= v.major %></td>
+                <td><%= v.phone_number %></td>
+                <td><%= v.favor %></td>
+                <td><%= v.authorize %></td>
+                <td><%= v.created_at %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+      </div>
+      <div class="col-md-4">
+        <div class="widget-wrapper">
+            <h4><strong>관리자 페이지</strong></h4>
+            <div class="list-group">
+                <a href="#" class="list-group-item active">세렝게티 현황</a>
+                <a href="/admin/feedback" class="list-group-item">피드백 내용</a>
+                <a href="/admin/team" class="list-group-item">팀 현황</a>
+                <a href="/admin/teambuild" class="list-group-item">팀빌딩 현황</a>
+            </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-
-              <%= form_for :feedback, url: 'feedback' do |f| %>
-                <%= f.text_area :text, :autocomplete => :off, rows: "5", class: "col-md-12 form-control" %>
-                <%= f.submit "feedback", class: "btn btn-sm btn-primary col-md-12" %>
-              <% end %>

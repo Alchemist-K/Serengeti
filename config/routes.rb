@@ -66,6 +66,8 @@ Rails.application.routes.draw do
   get 'admin/index'
   post 'admin/feedback' => "admin#feedback"
   get 'admin/feedback' => "admin#feedback"
+  get 'admin/team'
+  get 'admin/teambuild'
   post 'mypage/feedback'
 
 

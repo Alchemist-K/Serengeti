@@ -1,28 +1,31 @@
 <!--Main layout-->
 <div class="container">
   <div class="row">
-    <div class="col-md-12" style="margin-top:30px;">
+    <div class="col-md-12">
     <!--Main column-->
       <div class="col-md-8">
         <!--/.Card-->
-        <% @feedback.each do |f| %>
+        <% @allteambuild.each do |a| %>
           <div class="card">
             <!--Card content-->
             <div class="card-block">
-              <p><strong>이름 : <%= f.username %></strong></p><hr>
-              <p><%= f.feedback %></p>
+              <p>팀 아이디 : <%= a.team_id %></p><br>
+              <p>생성시간 : <%= a.created_at %></p><br>
+              <p>수정시간 : <%= a.updated_at %></p><hr>
+              <p>유저이름 : <%= a.user_id %></p><br>
+              <p>상태 : <%= a.status %></p>
             </div>
           </div> <!-- end card-block -->
         <% end %>
-      </div> <!-- end card-->
+      </div>
       <div class="col-md-4">
         <div class="widget-wrapper">
             <h4><strong>관리자 페이지</strong></h4>
             <div class="list-group">
                 <a href="/admin/index" class="list-group-item">세렝게티 현황</a>
-                <a href="#" class="list-group-item active">피드백 내용</a>
+                <a href="/admin/feedback" class="list-group-item">피드백 내용</a>
                 <a href="/admin/team" class="list-group-item">팀 현황</a>
-                <a href="/admin/teambuild" class="list-group-item">팀빌딩 현황</a>
+                <a href="#" class="list-group-item active">팀빌딩 현황</a>
             </div>
         </div>
       </div>
