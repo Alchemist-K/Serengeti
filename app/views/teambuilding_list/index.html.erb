@@ -99,11 +99,15 @@
                     <img style="margin:5%" src="<%= image_path "noimage.jpg" %>"/>
                   <% end %>
                   <dl>
-                    <dt><%= t.abstract %></dt>
-                    <dd><%= t.content %></dd>
-                    <br>
-                    <dd>팀장 : <%= User.find(t.leader).name %></dd>
-                    <dd>팀원 : <%= t.members.count %>명 / <%= t.number %>명</dd>
+                    <dt style="text-align:center;"><%= t.abstract %></dt>
+                    <% if t.content.length < 25 %>
+                      <dd style="text-align:center;"><%= t.content %></dd>
+                    <% else %>
+                      <dd style="text-align:center;"><%= t.content.first(24) %>...
+                    <% end %>
+                    <br><hr>
+                    <dd style="text-align:center;">팀장 : <%= User.find(t.leader).name %></dd>
+                    <dd style="text-align:center;">팀원 : <%= t.members.count %>명 / <%= t.number %>명</dd>
                   </dl>
                 </a>
               </figure>
