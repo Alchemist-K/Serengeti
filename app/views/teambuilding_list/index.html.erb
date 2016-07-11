@@ -99,7 +99,11 @@
                     <img style="margin:5%" src="<%= image_path "noimage.jpg" %>"/>
                   <% end %>
                   <dl>
-                    <dt style="text-align:center;"><%= t.abstract %></dt>
+                    <% if t.abstract.length < 17 %>
+                      <dt style="text-align:center;"><%= t.abstract %></dt>
+                    <% else %>
+                      <dt style="text-align:center;"><%= t.abstract.first(16) %>...</dt>
+                    <% end %>
                     <% if t.content.length < 51 %>
                       <dd style="text-align:center;"><%= t.content %></dd>
                     <% else %>
