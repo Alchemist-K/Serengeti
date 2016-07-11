@@ -100,12 +100,12 @@
                   <% end %>
                   <dl>
                     <dt style="text-align:center;"><%= t.abstract %></dt>
-                    <% if t.content.length < 25 %>
+                    <% if t.content.length < 51 %>
                       <dd style="text-align:center;"><%= t.content %></dd>
                     <% else %>
-                      <dd style="text-align:center;"><%= t.content.first(24) %>...
+                      <dd style="text-align:center;"><%= t.content.first(50) %>...
                     <% end %>
-                    <br><hr>
+                    <hr>
                     <dd style="text-align:center;">팀장 : <%= User.find(t.leader).name %></dd>
                     <dd style="text-align:center;">팀원 : <%= t.members.count %>명 / <%= t.number %>명</dd>
                   </dl>
