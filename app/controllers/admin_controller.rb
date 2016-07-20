@@ -4,6 +4,12 @@ class AdminController < ApplicationController
     @alluser = User.all
   end
 
+  def destroy
+    @userone = User.find(params[:id])
+    @userone.destroy
+    redirect_to "/admin/index"
+  end
+
   def feedback
     @feedback = Feedback.all
   end
